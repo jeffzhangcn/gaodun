@@ -5,7 +5,9 @@ API Index
     * Home\Controller
         * [BaseRestController](Home-Controller-BaseRestController.md)
         * [CourseRestController](Home-Controller-CourseRestController.md)
-        * [CourseSyllabusRestController](Home-Controller-CourseSyllabusRestController.md)
-        * [SyllabusWareRestController](Home-Controller-SyllabusWareRestController.md)
         * [WareResourceRestController](Home-Controller-WareResourceRestController.md)
+        * [SyllabusWareRestController](Home-Controller-SyllabusWareRestController.md)
+        * [CourseSyllabusRestController](Home-Controller-CourseSyllabusRestController.md)
+        * [ResourceRestController](Home-Controller-ResourceRestController.md)
+        * [WareRestController](Home-Controller-WareRestController.md)
 
