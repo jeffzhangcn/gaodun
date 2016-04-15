@@ -63,7 +63,7 @@ Methods
 
 请求格式
 ```
-  GET  /course/Home/CourseSyllabusRest/course_id=11&level=2
+  GET  /course/Home/CourseSyllabusRest/course_id=11&level=2&syllabus_id=xx
  header [
    Accept: application/json
    App-Id-Key: gd_demo_abcdef
