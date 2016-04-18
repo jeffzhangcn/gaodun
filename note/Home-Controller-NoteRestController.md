@@ -215,19 +215,6 @@ result=>[
 
 
 
-### test
-
-    mixed Home\Controller\NoteRestController::test()
-
-
-
-
-
-* Visibility: **public**
-
-
-
-
 ### _initialize
 
     mixed Home\Controller\BaseRestController::_initialize()
