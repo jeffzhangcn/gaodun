@@ -184,7 +184,7 @@ Methods
 
 
 
-### store
+### question
 
     mixed Home\Controller\QuestionRestController::question()
 
