@@ -102,9 +102,9 @@ Methods
 
 
 
-### getIndex
+### notes 
 
-    mixed Home\Controller\NoteRestController::getIndex()
+    mixed Home\Controller\NoteRestController::notes()
 
 获取笔记列表
 
@@ -172,9 +172,9 @@ Methods
 
 
 
-### store
+### note
 
-    mixed Home\Controller\NoteRestController::store()
+    mixed Home\Controller\NoteRestController::note()
 
 写笔记
 
