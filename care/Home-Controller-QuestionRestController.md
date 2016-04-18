@@ -102,7 +102,7 @@ Methods
 
 
 
-### getIndex
+### questions
 
     mixed Home\Controller\QuestionRestController::questions()
 
@@ -111,6 +111,17 @@ Methods
 请求格式
 ```
  GET  /care/home/questions
+ query [
+	  course_id=1//课程id
+  course_ware_id=2//课件id
+  courseware_part_id=3//课件段id
+  student_id=89//学生id
+  type=1//类型
+  order='id desc'//order规则
+  ps=10//每页数量
+  page=1//页码
+]
+get参数均选填
  header [
    Accept: application/json
    App-Id-Key: gd_care_partner
@@ -121,8 +132,8 @@ Methods
 ```
 返回格式
 ```
-result=>[
-   status    => 0,//错误代码
+[
+   status	=> 0,//错误代码
 	  info   	=> '',//错误信息
    result   => [
       questions => [
@@ -174,7 +185,7 @@ result=>[
   	  ]
 	  total=>102,//总数量
 	  page=>1,//页码
-	  ps=>10,每页数量
+		  ps=>10,每页数量
 	]
 ]
 ```
@@ -184,7 +195,7 @@ result=>[
 
 
 
-### store
+### question
 
     mixed Home\Controller\QuestionRestController::question()
 
@@ -193,6 +204,15 @@ result=>[
 请求格式
 ```
  POST  /care/home/question
+ form-param [
+	  course_id=1//课程id
+  course_ware_id=2//课件id
+  courseware_part_id=3//课件段id
+  student_id=89//学生id
+  type=1//类型
+  content='tsetss'//内容
+]
+post参数均选填
  header [
    Accept: application/json
    App-Id-Key: gd_care_partner
@@ -211,6 +231,8 @@ result=>[
 ```
 
 * Visibility: **public**
+
+
 
 
 
