@@ -102,7 +102,7 @@ Methods
 
 
 
-### getIndex
+### questions
 
     mixed Home\Controller\QuestionRestController::questions()
 
@@ -121,9 +121,9 @@ Methods
 ```
 返回格式
 ```
-result=>[
+[
    status    => 0,//错误代码
-	  info   	=> '',//错误信息
+   info      => '',//错误信息
    result   => [
       questions => [
 			0=>[
