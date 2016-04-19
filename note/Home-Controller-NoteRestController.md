@@ -118,6 +118,7 @@ Methods
      student_id=89//学生id
      type=1//类型
      order='id desc'//order规则
+     _string=''//sql附加string条件
      ps=10//每页数量
      page=1//页码
    ]
@@ -191,7 +192,7 @@ Methods
      student_id=89//学生id
      type=1//类型
      content='tsetss'//内容
-     _string=''//sql附加string条件
+
    ]
    post参数均选填
  header [
