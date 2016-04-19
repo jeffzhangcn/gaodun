@@ -1,7 +1,7 @@
 Home\Controller\NoteRestController
 ===============
 
-QuestionController
+NoteRestController
 
 
 
@@ -102,7 +102,7 @@ Methods
 
 
 
-### notes 
+### notes
 
     mixed Home\Controller\NoteRestController::notes()
 
@@ -110,7 +110,7 @@ Methods
 
 请求格式
 ```
- GET  /care/home/notes
+ GET  /note/home/notes
  query [
       course_id=1//课程id
      course_ware_id=2//课件id
@@ -180,9 +180,9 @@ Methods
 
 请求格式
 ```
- POST  /care/home/note
+ POST  /note/home/note
  form-param [
-      course_id=1//课程id
+     course_id=1//课程id
      course_ware_id=2//课件id
      courseware_part_id=3//课件段id
      project_id=4
@@ -191,6 +191,7 @@ Methods
      student_id=89//学生id
      type=1//类型
      content='tsetss'//内容
+     _string=''//sql附加string条件
    ]
    post参数均选填
  header [
