@@ -55,9 +55,9 @@ Methods
 -------
 
 
-### get_index
+### getIndex
 
-    mixed Home\Controller\SyllabusWareRestController::get_index()
+    mixed Home\Controller\SyllabusWareRestController::getIndex()
 
 获取大纲课件
 

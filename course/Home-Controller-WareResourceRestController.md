@@ -55,9 +55,9 @@ Methods
 -------
 
 
-### get_index
+### getIndex
 
-    mixed Home\Controller\WareResourceRestController::get_index()
+    mixed Home\Controller\WareResourceRestController::getIndex()
 
 获取课件对应资源
 

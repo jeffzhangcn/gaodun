@@ -55,15 +55,15 @@ Methods
 -------
 
 
-### get_index
+### getIndex
 
-    mixed Home\Controller\CourseSyllabusRestController::get_index()
+    mixed Home\Controller\CourseSyllabusRestController::getIndex()
 
 获取课程大纲
 
 请求格式
 ```
-  GET  /course/Home/CourseSyllabusRest/course_id=11&level=2&syllabus_id=xx
+  GET  /course/Home/CourseSyllabusRest/?course_id=11&level=2&syllabus_id=xx
  header [
    Accept: application/json
    App-Id-Key: gd_demo_abcdef
