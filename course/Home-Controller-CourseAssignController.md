@@ -55,20 +55,20 @@ Methods
 -------
 
 
-### setAssign
+### post
 
-    mixed Home\Controller\CourseAssignController::setAssign()
+    mixed Home\Controller\CourseAssignController::post()
 
 派课
 
 请求格式
 ```
-  GET  /course/Home/CourseAssign/setAssign?course_id=11&student_id=11220
+  POST  /course/Home/CourseAssign
  header [
    Accept: application/json
    App-Id-Key: gd_course_assign
    App-Timestamp: 212121
-   App-Nonce: eewewew
+   App-Nonce: notice
    App-Signature: babc722817e366cf62f883e2b61532505c674920a
  ]
 
@@ -84,7 +84,7 @@ request [
      invalid_time : 截止日期
      isprobation : 0试听 1正式
      source : 来源
-     admin_name : 后台派课管理员名字
+     admin_name : 后台派课管理员名字 如果不是则不传
 
 ]
 
