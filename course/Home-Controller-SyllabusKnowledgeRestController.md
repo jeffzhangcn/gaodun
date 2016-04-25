@@ -59,7 +59,7 @@ Methods
 
     mixed Home\Controller\SyllabusKnowledgeRestController::get($name)
 
-获取课件
+获取大纲详情
 
 请求格式
 ```
