@@ -20,7 +20,7 @@ Properties
 
 ### $allowMethod
 
-    protected string $allowMethod = array('get', 'post', 'put')
+    protected string $allowMethod = array('get', 'post', 'put', 'delete')
 
 allowMethod
 
