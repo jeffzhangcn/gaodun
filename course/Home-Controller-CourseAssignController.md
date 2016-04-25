@@ -12,15 +12,52 @@ CourseAssignController
 
 
 
+Constants
+----------
+
+
+### DB_ERROR
+
+    const DB_ERROR = 10001
+
+
+
+
+
+### PARAM_ERROR
+
+    const PARAM_ERROR = 10002
+
+
+
+
+
+### ERROR
+
+    const ERROR = 10003
+
+
+
 
 
 Properties
 ----------
 
 
+### $_type
+
+    protected mixed $_type = array('', ' id desc ', ' id asc ')
+
+
+
+
+
+* Visibility: **protected**
+
+
 ### $allowMethod
 
-    protected string $allowMethod = array('get', 'post', 'put')
+    protected string $allowMethod = array('get', 'post', 'put', 'delete')
 
 allowMethod
 
@@ -67,50 +104,178 @@ Methods
  header [
    Accept: application/json
    App-Id-Key: gd_course_assign
-   App-Timestamp: 212121
-   App-Nonce: notice
-   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+   App-Timestamp: 1
+   App-Nonce: 1
+   App-Signature: b561244fca99a87783fb3cbf29ce294e35607634
  ]
 
 ```
 请求说明
-<table>
 
 ```
 request [
-     student_id : 学生id
-     course_id : 课程id
+     student_id : 1694699    学生id
+     course_id : 5   课程id
      appoint_type : 0正常  1延期
-     invalid_time : 截止日期
+     invalid_time : 6    截止日期
      isprobation : 0试听 1正式
-     source : 来源
-     admin_name : 后台派课管理员名字 如果不是则不传
+     source : 网校     来源
+     admin_name : admin   后台派课管理员名字 如果不是则不传
 
 ]
 
 ```
 
-</table>
 
 
 返回格式
 ```
 [
-    'err_no'   => '', //错误代码
-    'err_msg'  => '', //错误信息
-    'resut'  => [
-       assign:[
-         {
-          "id": "1290"
-       }
+    "status": 10003,
+"info": "error",
+"result": [
+{
+"1281": {
+"status": 10001,
+"info": {
+"invalid_time": "截止日期错误！"
+}
+}
+},
+```
 
-        ]
+* Visibility: **public**
+
+
+
+
+### getIndex
+
+    mixed Home\Controller\CourseAssignController::getIndex()
+
+派课查询
+
+请求格式
+```
+  Get  /course/Home/CourseAssign
+ header [
+   Accept: application/json
+   App-Id-Key: gd_course_assign
+   App-Timestamp: 1
+   App-Nonce: 1
+   App-Signature: b561244fca99a87783fb3cbf29ce294e35607634
+ ]
+
+```
+请求说明
+
+```
+request [
+     student_id : 1694699,
+     course_id : 5
+     limit : 8,
+     order : 1, // 1＝>id desc 2=>id asc
+
+]
+
+```
+
+
+返回格式
+```
+[
+    'status'   => '', //错误代码
+    'info'  => '', //错误信息
+    'result'  => [{
+          "resource"=>[
+          "id": "94174",
+"student_id": "1694699",
+"course_id": "450",
+"ass_time": "1445940772",
+"invalid_time": "1460649600",
+"regdate": "1445940772",
+"modifydate": "1445940772",
+"isincview": "0",
+"appoint_type": "1",
+"task_model": null,
+"examtime": null,
+"type": "0",
+"messagenumber": "0",
+"isdel": "0",
+"isprobation": "1",
+"admin_id": "0",
+"admin_name": "",
+"subject_id": "130",
+"project_id": "14",
+"expires_time": "0",
+"source": "0",
+"is_big": "1348",
+"colse_question": "0",
+"customtime": "1,2,3,4,5,6,7",
+"other": "",
+"month": "0",
+"big_project_id": null,
+"kk_sign": "1",
+"yq_date": "0"
+             ]
+          },{
+....
+          }
+          ],
+         "num"=>5
+         ]
+```
+
+* Visibility: **public**
+
+
+
+
+### delete
+
+    mixed Home\Controller\CourseAssignController::delete($id)
+
+派课删除
+
+请求格式
+```
+  Delete  /course/Home/CourseAssign/1694699
+ header [
+   Accept: application/json
+   App-Id-Key: gd_course_assign
+   App-Timestamp: 1
+   App-Nonce: 1
+   App-Signature: b561244fca99a87783fb3cbf29ce294e35607634
+ ]
+
+```
+请求说明
+
+```
+request [
+     id : 99
+
+]
+
+```
+
+
+返回格式
+```
+[
+    'status'   => '', //错误代码
+    'info'  => '', //错误信息
+    'result'  => [
+          '删除成功'
           ]
          ]
 ```
 
 * Visibility: **public**
 
+
+#### Arguments
+* $id **mixed**
 
 
 
