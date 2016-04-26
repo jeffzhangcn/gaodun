@@ -120,6 +120,7 @@ request [
      invalid_time : 6    截止日期
      isprobation : 0试听 1正式
      source : 网校     来源
+     admin_id : 1   后台派课管理员id 如果前台调用传0
      admin_name : admin   后台派课管理员名字 如果不是则不传
 
 ]
