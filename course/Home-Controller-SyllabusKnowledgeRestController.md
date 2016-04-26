@@ -1,12 +1,12 @@
-Home\Controller\ResourceRestController
+Home\Controller\SyllabusKnowledgeRestController
 ===============
 
-ResourceRestController
+SyllabusKnowledgeRestController
 
 
 
 
-* Class name: ResourceRestController
+* Class name: SyllabusKnowledgeRestController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
@@ -57,13 +57,13 @@ Methods
 
 ### get
 
-    mixed Home\Controller\ResourceRestController::get($name)
+    mixed Home\Controller\SyllabusKnowledgeRestController::get($name)
 
-获取资源详情
+获取大纲详情
 
 请求格式
 ```
-  GET  /course/Home/ResourceRest/11
+  GET  /course/Home/SyllabusKnowledgeRest/11
  header [
    Accept: application/json
    App-Id-Key: gd_course_epiphany
@@ -78,37 +78,22 @@ Methods
     'err_no'   => '', //错误代码
     'err_msg'  => '', //错误信息
     'resut'  => {
-       "id": "35",
-       "course_id": "10",
-       "courseware_id": "18",
-       "name": "Theoverallfunctionandpurposeoftaxationinamoderneconomy",
-       "partpath3": "<scriptsrc=\"http: //union.bokecc.com/player?vid=369DDABC424DA272&siteid=29639E609A1142B0&autoStart=false&width=720&height=405&playerid=2025478528BA86BE&playertype=1\"type=\"text/javascript\"></script>",
-       "partpath": "<scriptsrc=\"http: //p.bokecc.com/player?vid=369DDABC424DA272&siteid=29639E609A1142B0&autoStart=false&width=100%&height=100%&playerid=2025478528BA86BE&playertype=1\"type=\"text/javascript\"></script>",
-       "partpath_new": null,
-       "series_id": "0",
-       "type": "1",
-       "exercise_id": null,
-       "sortid": "0",
-       "timekey": "0",
-       "desc": "",
-       "listentest": "1",
-       "isanswer": "0",
-       "itemoption": "",
-       "is_complete": "1",
-       "is_enable": "0",
-       "status": "0",
-       "info": "",
-       "upload_username": null,
-       "check_username": null,
-       "upload_admin_id": null,
-       "check_admin_id": null,
-       "regdate": null,
-       "checktime": null,
-       "modifydate": null,
+       "id": "2562",
+       "kid": "0",
+       "project_id": "5",
+       "subject_id": "28",
+       "title": "账务处理程序",
+       "sid": "",
+       "pid": "0",
+       "regdate": "1457524776",
+       "modifydate": "1457524776",
        "isdel": "0",
-       "duration": "1",
-       "gl_live_id": null,
-       "kid": null
+       "difficulty": "",
+       "score": "",
+       "question_num": "0",
+       "testrate": "",
+       "level": "0",
+       "question_type": null
        }
      ]
 ```
