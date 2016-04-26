@@ -12,6 +12,32 @@ CourseRestController
 
 
 
+Constants
+----------
+
+
+### DB_ERROR
+
+    const DB_ERROR = 10001
+
+
+
+
+
+### PARAM_ERROR
+
+    const PARAM_ERROR = 10002
+
+
+
+
+
+### ERROR
+
+    const ERROR = 10003
+
+
+
 
 
 Properties
@@ -78,6 +104,7 @@ Methods
     'err_no'   => '', //错误代码
     'err_msg'  => '', //错误信息
     'resut'  => [
+         {
           "id": "123",
           "name": "中级职称《中级会计实务》面授实景课",
           "crmname": "BJ006026",
@@ -161,6 +188,7 @@ Methods
           "accounting_id": "0",
           "care_answer_time": "0"
              ]
+         }
      ]
 ```
 
