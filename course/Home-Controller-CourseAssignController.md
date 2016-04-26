@@ -158,7 +158,7 @@ request [
 
 请求格式
 ```
-  Get  /course/Home/CourseAssign
+ Get  /course/Home/CourseAssign
  header [
    Accept: application/json
    App-Id-Key: gd_course_assign
@@ -188,8 +188,8 @@ request [
     'status'   => '', //错误代码
     'info'  => '', //错误信息
     'result'  => [{
-          "resource"=>[
-          "id": "94174",
+         "resource"=>[
+         "id": "94174",
 "student_id": "1694699",
 "course_id": "450",
 "ass_time": "1445940772",
@@ -240,7 +240,7 @@ request [
 
 请求格式
 ```
-  Delete  /course/Home/CourseAssign/1694699
+ Delete  /course/Home/CourseAssign/1694699
  header [
    Accept: application/json
    App-Id-Key: gd_course_assign
