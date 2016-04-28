@@ -18,6 +18,17 @@ Properties
 ----------
 
 
+### $CodePriex
+
+    public mixed $CodePriex
+
+
+
+
+
+* Visibility: **public**
+
+
 ### $allowMethod
 
     protected string $allowMethod = array('get', 'post', 'put', 'delete')
@@ -55,6 +66,19 @@ Methods
 -------
 
 
+### __construct
+
+    mixed Home\Controller\CommentRestController::__construct()
+
+
+
+
+
+* Visibility: **public**
+
+
+
+
 ### getIndex
 
     mixed Home\Controller\CommentRestController::getIndex()
@@ -69,7 +93,7 @@ Methods
      student_id = 111 //学生id
      page       = 1   //页数
      limit      = 10; //每页数量
-     order      = 'id desc' //排序条件
+     order      = 0   // 0:id desc  1:id asc
 
  ]
  header [
@@ -122,14 +146,14 @@ Methods
 
 ### post
 
-    mixed Home\Controller\CommentRestController::post($id)
+    mixed Home\Controller\CommentRestController::post()
 
 添加评论接口
 
 请求格式
 ```
- POST  /comment/Home/CommentRest/1111
- query [
+ POST  /comment/Home/CommentRest/
+ post data [
      course_id  = 1   //课程Id
      courseware_id
      courseware_part_id
@@ -157,6 +181,86 @@ Methods
     result   => [
         id = 1
     ]
+]
+```
+
+* Visibility: **public**
+
+
+
+
+### put
+
+    mixed Home\Controller\CommentRestController::put($id)
+
+修改评论接口
+
+请求格式
+```
+ PUT  /comment/Home/CommentRest/1111
+ post data [
+     course_id  = 1   //课程Id
+     courseware_id
+     courseware_part_id
+     student_id
+     content      //内容
+     project_id
+     subject_id
+
+ ]
+
+ header [
+   Accept: application/json
+   App-Id-Key: gd_demo_abcdef
+   App-Timestamp: 212121
+   App-Nonce: eewewew
+   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+ ]
+
+```
+返回格式
+```
+[
+    status   => 0,//错误代码
+    info     => '',//错误信息
+    result   => 1
+]
+```
+
+* Visibility: **public**
+
+
+#### Arguments
+* $id **mixed**
+
+
+
+### delete
+
+    mixed Home\Controller\CommentRestController::delete($id)
+
+删除评论接口
+
+请求格式
+```
+ DELETE  /comment/Home/CommentRest/1111
+ post data []
+
+ header [
+   Accept: application/json
+   App-Id-Key: gd_demo_abcdef
+   App-Timestamp: 212121
+   App-Nonce: eewewew
+   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+ ]
+
+```
+返回格式
+```
+[
+    status   => 0,//错误代码
+    info     => '',//错误信息
+    result   => 1
 ]
 ```
 
