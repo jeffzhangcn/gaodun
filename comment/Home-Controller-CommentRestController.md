@@ -91,6 +91,15 @@ Methods
  query [
      course_id  = 1   //课程Id
      student_id = 111 //学生id
+     courseware_id = 0
+     courseware_part_id = 0
+     isreply = 0
+     project_id = 0
+     subject_id = 0
+     question_id = 0,
+     app_id = 0
+
+
      page       = 1   //页数
      limit      = 10; //每页数量
      order      = 0   // 0:id desc  1:id asc
@@ -129,6 +138,8 @@ Methods
              'subject_id'=>'0',
              'admin_id'=>'0',
              'isrecommend'=>'0'，
+             'question_id' = 0,
+             'app_id' = 0
                      ...
          ]
          "page" => "1", //当前页
@@ -161,6 +172,8 @@ Methods
      content      //内容
      project_id
      subject_id
+     app_id //接口来源
+     question_id //题目ID
 
  ]
 
