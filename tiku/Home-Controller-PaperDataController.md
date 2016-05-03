@@ -15,7 +15,7 @@ Home\Controller\PaperDataController
 
 
 Properties
----------
+----------
 
 
 ### $description
