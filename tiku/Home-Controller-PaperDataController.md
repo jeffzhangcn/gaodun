@@ -46,8 +46,8 @@ Methods
 返回格式
 ```
      [
-         'err_no'   => '', //错误代码
-         'err_msg'  => '', //错误信息
+         'status'   => '', //提示码
+         'info'  => '', //提示信息
 
      ]
 ```
@@ -67,6 +67,30 @@ Methods
 ```
   POST  /tiku/paperData
 ```
+请求参数
+```
+ string type_flag    point 根据知识点创建，paper根据试卷id创建
+ int student_id      学生ID
+ string source       来源
+ ---------by 【paper】--------------
+ int paper_id        试卷ID（母卷）
+ ---------by 【point】--------------
+ string etype        试卷类型1智能，2知识点，3真题，4组卷
+ string projectId    项目id
+ string subjectId    科目id
+ string icids        知识点集合
+ string num          选题总数
+ string type         0新题目，1已做题目
+ string items_type   0随机，1单选，2多选，3判断题，4简答题，5综合
+ string rank         难易度
+ string mark         标识存储过程的执行（与效率有关）
+ string pid          试卷id
+ string from         来源  1favorite，2error
+ string source       APP来源
+ string sessionId    sessionId
+ string liveType     0正常生成题目， 1实时解析
+```
+
 返回格式
 ```php
      [
@@ -114,42 +138,25 @@ Methods
                              "favorite": "是否收藏",
                              "knowledge_point_tag": "[知识点标签]",
                              "notenum": "笔记数量"
+                             "sonitem": [
+                                   {
+                                        "ID": "题目顺序",
+                                       "ExamID": "题目ID",
+                                       "userAnswer": "用户答案",
+                                       "scoreses": "分数",
+                                       "userScore": "用户分值",
+                                       "istrue": "是否正确",
+                                       "type": "题目类型",
+                                       "sorts": "顺序",
+                                       "link_ExamID": "关联题目",
+                                       "partnum": "4",
+                                       "yanswer": "",
+                                       "answer": "B,D",
+                                       "notenum": "0"
+                                  },
+                             ],
                              },
                          ]
-                      },
-                     "综合题题型":"注意层级"
-                     "ID": "题目顺序",
-                     "ExamID": "题目ID",
-                     "userAnswer": "用户答案",
-                     "scoreses": "分值",
-                     "userScore": "用户分数",
-                     "istrue": "是否正确",
-                     "type": "题目类型-综合",
-                     "sorts": "顺序",
-                     "link_ExamID": "",
-                     "partnum": "0",
-                     "yanswer": "答案",
-                     "option": "题目选项",
-                     "answerAnalysis": "题目解析",
-                     "favorite": "是否收藏",
-                     "knowledge_point_tag": "[知识点标签]",
-                     "sonitem": [
-                         {
-                         "ID": "题目顺序",
-                         "ExamID": "题目ID",
-                         "userAnswer": "用户答案",
-                         "scoreses": "分数",
-                         "userScore": "用户分值",
-                         "istrue": "是否正确",
-                         "type": "题目类型",
-                         "sorts": "顺序",
-                         "link_ExamID": "关联题目",
-                         "partnum": "4",
-                         "yanswer": "",
-                         "answer": "B,D",
-                         "notenum": "0"
-                         },
-                     ],
                      },
                   ]
              }
@@ -167,29 +174,6 @@ Methods
      '生成试卷失败' => 11013004,
 ]
 ```
-请求参数
-```
- string $type_flag    point 根据知识点创建，paper根据试卷id创建
- int $student_id      学生ID
- string $source       来源
- ---------by 【paper】--------------
- int $paper_id        试卷ID（母卷）
- ---------by 【point】--------------
- string $etype        试卷类型1智能，2知识点，3真题，4组卷
- string $projectId    项目id
- string $subjectId    科目id
- string $icids        知识点集合
- string $num          选题总数
- string $type         0新题目，1已做题目
- string $items_type   0随机，1单选，2多选，3判断题，4简答题，5综合
- string $rank         难易度
- string $mark         标识存储过程的执行（与效率有关）
- string $pid          试卷id
- string $from         来源  1favorite，2error
- string $source       APP来源
- string $sessionId    sessionId
- string $liveType     0正常生成题目， 1实时解析
-```
 
 * Visibility: **public**
 
@@ -198,7 +182,7 @@ Methods
 
 ### get
 
-    array Home\Controller\PaperDataController::get(string $name)
+    array Home\Controller\PaperDataController::get()
 
 获取一张用户试卷
 
@@ -206,22 +190,96 @@ Methods
 ```
   GET  /tiku/paperData/1
 ```
+请求参数
+```
+ int student_id 学生ID
+
+```
 返回格式
 ```
      [
-         'err_no'   => '', //错误代码
-         'err_msg'  => '', //错误信息
+         'status'   => '', //返回码
+         'info'  => '', //提示信息
          'resut'  => [
+              {
+                 "paper": {
+                     "runtime": "考试时间",
+                     "id": "用户试卷ID",
+                     "pdid": "用户试卷ID",
+                     "regdate": "生成时间",
+                     "type": "试卷类型",
+                     "itemcount": "题目总数",
+                     "paper_id": "试卷ID",
+                     "title": "题目标题",
+                     "subject_id": "项目ID",
+                     "project_id": "科目ID",
+                     "student_id": "用户ID",
+                     "modifydate": "修改时间",
+                     "score": "得分"
+                     "paper_data": [
+                         {
+                             "id": "ID",
+                             "type":"题目类型",
+                             "len": "题目数量",
+                             "lens": "题目数量",
+                             "examtype": "试题类型",
+                             "isture": "正确题目数量",
+                             "pdata": [
+                             {
+                                 "ID": '1',
+                                 "ExamID": "题目ID",
+                                 "userAnswer": "用户答案",
+                                 "scoreses": "分数",
+                                 "userScore": "用户分数",
+                                 "istrue": "是否正确",
+                                 "type": "题目类型",
+                                 "sorts": "排序",
+                                 "link_ExamID": "",
+                                 "partnum": "选项数量",
+                                 "yanswer": "答案",
+                                 "title": "题目题干",
+                                 "option": "题目选项",
+                                 "answerAnalysis": "题目解析",
+                                 "favorite": "是否收藏",
+                                 "knowledge_point_tag": "[知识点标签]",
+                                 "notenum": "笔记数量"
+                                 "sonitem": [
+                                   {
+                                        "ID": "题目顺序",
+                                       "ExamID": "题目ID",
+                                       "userAnswer": "用户答案",
+                                       "scoreses": "分数",
+                                       "userScore": "用户分值",
+                                       "istrue": "是否正确",
+                                       "type": "题目类型",
+                                       "sorts": "顺序",
+                                       "link_ExamID": "关联题目",
+                                       "partnum": "4",
+                                       "yanswer": "",
+                                       "answer": "B,D",
+                                       "notenum": "0"
+                                  },
+                             ],
+                         },
+                         ],
 
-            ]
+                      }
+                  ],
+              }
+         }
+         ]
      ]
+```
+返回码说明
+```
+ [
+     '请求成功' => '11000000',
+     '无此用户试卷' => '11013005',
+ ]
 ```
 
 * Visibility: **public**
 
-
-#### Arguments
-* $name **string** - &lt;p&gt;用户试卷ID&lt;/p&gt;
 
 
 
@@ -233,17 +291,42 @@ Methods
 
 请求格式
 ```
-  PUT  /tiku/paperData
+  PUT  /tiku/paperData/2949602
+```
+请求参数
+```
+ int student_id 学生ID
+ json data 交卷信息,格式化之后：
+                       [
+                        {
+                         "ualist": "337182||@1;;@91704||@1;;@", // 题目ID||@用户答案 ;;@分割
+                         "rt": "31", // 用时（秒）
+                         "pdid": "2949621", // 用户试卷ID
+                         "submit_type": "1", // 1是交卷  2是保存
+                         "regdate": "1461722845" //交卷时间
+                        }
+                       ]
 ```
 返回格式
 ```
      [
-         'err_no'   => '', //错误代码
-         'err_msg'  => '', //错误信息
+         'status'   => '', //提示码
+         'info'  => '', //提示信息
          'resut'  => [
+             "重复提交时返回值":'用户卷子ID'
 
             ]
      ]
+```
+返回码说明
+```
+[
+     '请求成功' => '11000000',
+     '无此用户试卷': '11013005',
+     '参数错误' : '11013006',
+     '请稍后再试' : '11013007',
+     '重复交卷' : '11013008',
+]
 ```
 
 * Visibility: **public**
@@ -267,8 +350,8 @@ Methods
 返回格式
 ```
      [
-         'err_no'   => '', //错误代码
-         'err_msg'  => '', //错误信息
+         'status'   => '', //提示码
+         'info'  => '', //提示信息
          'resut'  => [
 
             ]
@@ -277,48 +360,5 @@ Methods
 
 * Visibility: **public**
 
-
-
-
-### getOnePaperData
-
-    mixed Home\Controller\PaperDataController::getOnePaperData()
-
-更新用户试卷
-
-请求格式
-```
-  GET/POST  /tiku/paperData/getOnePaperData
-```
-返回格式
-```
-     [
-         'err_no'   => '', //错误代码
-         'err_msg'  => '', //错误信息
-         'resut'  => [
-
-            ]
-     ]
-```
-
-* Visibility: **public**
-
-
-
-
-### addNumbers
-
-    mixed Home\Controller\PaperDataController::addNumbers($x, $y)
-
-
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $x **mixed**
-* $y **mixed**
 
 
