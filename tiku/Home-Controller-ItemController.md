@@ -108,22 +108,22 @@ Methods
          'resut'  => [
                  "请求内容分两种":"request_item/relation_item(请求题目/关联题目)",
                  "request_item": {
-"title": "题目题干",
-"option": "选项",
-"partnum": "",
-"icid": "知识点",
-"type": "题目类型",
-"analysis": "解析",
-"pid": "上级题目号(综合题子题中有值)",
-"rightnum": "正确数",
-"wrongnum": "错误数",
-"finishnum": "完成数",
-"favoritenum": "收藏数",
-"isvideo": "是否有视频",
-"videoa": "视频连接",
-"flag": "",
-"item_id": "题目ID号"
-},
+                      "title": "题目题干",
+                      "option": "选项",
+                      "partnum": "",
+                      "icid": "知识点",
+                      "type": "题目类型",
+                      "analysis": "解析",
+                      "pid": "上级题目号(综合题子题中有值)",
+                      "rightnum": "正确数",
+                      "wrongnum": "错误数",
+                      "finishnum": "完成数",
+                      "favoritenum": "收藏数",
+                      "isvideo": "是否有视频",
+                      "videoa": "视频连接",
+                      "flag": "",
+                      "item_id": "题目ID号"
+                  },
             ]
      ]
 ```
