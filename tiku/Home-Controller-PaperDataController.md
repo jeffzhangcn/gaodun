@@ -96,7 +96,7 @@ Methods
      [
           'status'   => '', //提示码
           'info'  => '', //提示信息
-          'resut'  => [
+          'result'  => [
               "paper": {
                  "runtime": "未使用的答题时间",
                  "id": "试卷数据ID",
@@ -118,6 +118,7 @@ Methods
                      "type": "类型",
                      "len": "题目数量",
                      "lens": "题目数量",
+                     "istrue":正确数0,
                      "examtype": "题目类型",
                          "pdata": [
                              {
@@ -131,7 +132,7 @@ Methods
                              "sorts": "排序",
                              "link_ExamID": "",
                              "partnum": "选项数量",
-                             "yanswer": "答案",
+                             "yanswer": "答案",//交卷之后提供正确答案
                              "title": "题目题干",
                              "option": "题目选项",
                              "answerAnalysis": "题目解析",
@@ -150,8 +151,7 @@ Methods
                                        "sorts": "顺序",
                                        "link_ExamID": "关联题目",
                                        "partnum": "4",
-                                       "yanswer": "",
-                                       "answer": "B,D",
+                                       "yanswer": "答案",//交卷之后提供正确答案,
                                        "notenum": "0"
                                   },
                              ],
@@ -200,7 +200,7 @@ Methods
      [
          'status'   => '', //返回码
          'info'  => '', //提示信息
-         'resut'  => [
+         'result'  => [
               {
                  "paper": {
                      "runtime": "考试时间",
@@ -311,7 +311,7 @@ Methods
      [
          'status'   => '', //提示码
          'info'  => '', //提示信息
-         'resut'  => [
+         'result'  => [
              "重复提交时返回值":'用户卷子ID'
 
             ]
@@ -351,7 +351,7 @@ Methods
      [
          'status'   => '', //提示码
          'info'  => '', //提示信息
-         'resut'  => [
+         'result'  => [
 
             ]
      ]
