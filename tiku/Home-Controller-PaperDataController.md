@@ -18,17 +18,6 @@ Properties
 ----------
 
 
-### $description
-
-    protected array<mixed,callable> $description = null
-
-
-
-
-
-* Visibility: **protected**
-
-
 ### $_requestArray
 
     private mixed $_requestArray = array()
@@ -90,7 +79,7 @@ Methods
 
 ### getIndex
 
-    mixed Home\Controller\PaperDataController::getIndex()
+    \Home\Controller\json Home\Controller\PaperDataController::getIndex()
 
 获取用户试卷列表
 
@@ -114,7 +103,7 @@ Methods
 
 ### post
 
-    array Home\Controller\PaperDataController::post()
+    \Home\Controller\json Home\Controller\PaperDataController::post()
 
 插入用户试卷
 
@@ -127,6 +116,7 @@ Methods
  string type_flag    point 根据知识点创建，paper根据试卷id创建
  int student_id      学生ID
  string source       来源
+ string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum) : 收藏、知识点标签、笔记数量
  ---------by 【paper】--------------
  int paper_id        试卷ID（母卷）
  ---------by 【point】--------------
@@ -147,56 +137,54 @@ Methods
 ```
 
 返回格式
-```php
+```
      [
-          'status'   => '', //提示码
-          'info'  => '', //提示信息
-          'result'  => [
-              "paper": {
-                 "runtime": "未使用的答题时间",
-                 "id": "试卷数据ID",
-                 "pdid": "试卷数据ID",
-                 "regdate": "生成时间",
-                 "type": "生成类型",
-                 "itemcount": "题目总数",
-                 "paper_id": "试卷ID",
-                 "title": "试卷标题",
-                 "subject_id": "科目ID",
-                 "project_id": "项目ID",
-                 "student_id": "1878488",
-                 "modifydate": "1461655112",
-                 "score": "0"
-                 "paper_data":
-                 [
-                     {
-                     "id": "题目顺序",
-                     "type": "类型",
-                     "len": "题目数量",
-                     "lens": "题目数量",
-                     "istrue":正确数0,
-                     "examtype": "题目类型",
-                         "pdata": [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'result'  => [
+              {
+                 "paper": {
+                     "runtime": "考试时间",
+                     "pdid": "用户试卷ID",
+                     "regdate": "生成时间",
+                     "type": "试卷类型",
+                     "itemcount": "题目总数",
+                     "paper_id": "试卷ID",
+                     "title": "题目标题",
+                     "subject_id": "项目ID",
+                     "project_id": "科目ID",
+                     "student_id": "用户ID",
+                     "modifydate": "修改时间",
+                     "score": "得分"
+                     "paper_data": [
+                         {
+                             "id": "ID",
+                             "type":"大题类型",// 试卷才有 ，其他为0
+                             "len": "题目数量",
+                             "lens": "累计题目数量",
+                             "examtype": "大题名称", // 试卷才有
+                             "istrue": "正确题目数量", // 交卷之后统计
+                             "pdata": [
                              {
-                             "ID": '1',
-                              "ExamID": "题目ID",
-                             "userAnswer": "用户答案",
-                             "scoreses": "分数",
-                             "userScore": "用户分数",
-                             "istrue": "是否正确",
-                             "type": "题目类型",
-                             "sorts": "排序",
-                             "link_ExamID": "",
-                             "partnum": "选项数量",
-                             "yanswer": "答案",//交卷之后提供正确答案
-                             "title": "题目题干",
-                             "option": "题目选项",
-                             "answerAnalysis": "题目解析",
-                             "favorite": "是否收藏",
-                             "knowledge_point_tag": "[知识点标签]",
-                             "notenum": "笔记数量"
-                             "sonitem": [
+                                 "ID": '1',
+                                 "ExamID": "题目ID",
+                                 "userAnswer": "用户答案",
+                                 "scoreses": "分数",
+                                 "userScore": "用户分数",
+                                 "istrue": "是否正确",
+                                 "type": "题目类型",
+                                 "sorts": "排序",
+                                 "link_ExamID": "",
+                                 "partnum": "选项数量",
+                                 "yanswer": "答案",//交卷之后提供正确答案
+                                 "title": "题目题干",
+                                 "option": "题目选项",
+                                 "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "sonitem": [
                                    {
-                                        "ID": "题目顺序",
+                                       "ID": "题目顺序",
                                        "ExamID": "题目ID",
                                        "userAnswer": "用户答案",
                                        "scoreses": "分数",
@@ -206,18 +194,25 @@ Methods
                                        "sorts": "顺序",
                                        "link_ExamID": "关联题目",
                                        "partnum": "4",
-                                       "yanswer": "答案",//交卷之后提供正确答案,
-                                       "notenum": "0"
+                                       "yanswer": "", //交卷之后提供正确答案
+                                       "title": "题目题干",
+                                       "option": "题目选项",
+                                       "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
                                   },
                              ],
-                             },
-                         ]
-                     },
-                  ]
-             }
-            ]
+                         },
+                         ],
+
+                      }
+                  ],
+              }
+         }
+         ]
      ]
 ```
+
 错误码说明
 ```
 [
@@ -237,29 +232,30 @@ Methods
 
 ### get
 
-    array Home\Controller\PaperDataController::get()
+    \Home\Controller\json Home\Controller\PaperDataController::get()
 
 获取一张用户试卷
 
 请求格式
 ```
-  GET  /tiku/paperData/1
+  GET  /tiku/paperData/2949621
 ```
+
 请求参数
 ```
  int student_id 学生ID
-
+ string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum) : 收藏、知识点标签、笔记数量
 ```
+
 返回格式
 ```
      [
-         'status'   => '', //返回码
-         'info'  => '', //提示信息
+         'status'   => '返回码',
+         'info'  => '提示信息',
          'result'  => [
               {
                  "paper": {
                      "runtime": "考试时间",
-                     "id": "用户试卷ID",
                      "pdid": "用户试卷ID",
                      "regdate": "生成时间",
                      "type": "试卷类型",
@@ -274,11 +270,11 @@ Methods
                      "paper_data": [
                          {
                              "id": "ID",
-                             "type":"题目类型",
+                             "type":"大题类型",// 试卷才有 ，其他为0
                              "len": "题目数量",
-                             "lens": "题目数量",
-                             "examtype": "试题类型",
-                             "istrue": "正确题目数量",
+                             "lens": "累计题目数量",
+                             "examtype": "大题名称",// 试卷才有
+                             "istrue": "正确题目数量", // 交卷之后统计
                              "pdata": [
                              {
                                  "ID": '1',
@@ -294,13 +290,12 @@ Methods
                                  "yanswer": "答案",//交卷之后提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
-                                 "answerAnalysis": "题目解析",
-                                 "favorite": "是否收藏",
-                                 "knowledge_point_tag": "[知识点标签]",
-                                 "notenum": "笔记数量"
+                                 "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
                                  "sonitem": [
                                    {
-                                        "ID": "题目顺序",
+                                       "ID": "题目顺序",
                                        "ExamID": "题目ID",
                                        "userAnswer": "用户答案",
                                        "scoreses": "分数",
@@ -311,7 +306,11 @@ Methods
                                        "link_ExamID": "关联题目",
                                        "partnum": "4",
                                        "yanswer": "", //交卷之后提供正确答案
-                                       "notenum": "0"
+                                       "title": "题目题干",
+                                       "option": "题目选项",
+                                       "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
                                   },
                              ],
                          },
@@ -324,6 +323,7 @@ Methods
          ]
      ]
 ```
+
 返回码说明
 ```
  [
@@ -339,14 +339,15 @@ Methods
 
 ### put
 
-    mixed Home\Controller\PaperDataController::put($name)
+    \Home\Controller\json Home\Controller\PaperDataController::put($name)
 
 更新用户试卷
 
 请求格式
 ```
-  PUT  /tiku/paperData/2949602
+  PUT  /tiku/paperData/2949621
 ```
+
 请求参数
 ```
  int student_id 学生ID
@@ -359,10 +360,11 @@ Methods
                          "pdid":"2949621",// 用户试卷ID
                          "submit_type":"1",// 1是交卷  2是保存 3是一题题交卷
                          "regdate":"1461722845"//交卷时间
-                         "is_submit":"0",//当submit_type为3时，is_force_submit为1时交卷
+                         "is_submit":"0",//当submit_type为3时，is_submit为1时交卷
                        }
                      ]
 ```
+
 返回格式
 ```
      [
@@ -383,6 +385,7 @@ Methods
          ]
      ]
 ```
+
 返回码说明
 ```
 [
@@ -404,23 +407,107 @@ Methods
 
 ### delete
 
-    mixed Home\Controller\PaperDataController::delete()
+    \Home\Controller\json Home\Controller\PaperDataController::delete()
 
-删除用户试卷
+重新生成用户试卷(重做)
 
 请求格式
 ```
-  DELETE  /tiku/paperData
+  DELETE  /tiku/paperData/2949621
 ```
+
+请求参数
+```
+ int student_id 学生ID
+ string source 来源
+ int is_repeat_exam 重做 1 //todo
+ string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum) : 收藏、知识点标签、笔记数量
+```
+
 返回格式
 ```
      [
-         'status'   => '提示码',
+         'status'   => '返回码',
          'info'  => '提示信息',
          'result'  => [
+              {
+                 "paper": {
+                     "runtime": "考试时间",
+                     "pdid": "用户试卷ID",
+                     "regdate": "生成时间",
+                     "type": "试卷类型",
+                     "itemcount": "题目总数",
+                     "paper_id": "试卷ID",
+                     "title": "题目标题",
+                     "subject_id": "项目ID",
+                     "project_id": "科目ID",
+                     "student_id": "用户ID",
+                     "modifydate": "修改时间",
+                     "score": "得分"
+                     "paper_data": [
+                         {
+                             "id": "ID",
+                             "type":"大题类型",// 试卷才有 ，其他为0
+                             "len": "题目数量",
+                             "lens": "累计题目数量",
+                             "examtype": "大题名称",// 试卷才有
+                             "istrue": "正确题目数量", // 交卷之后统计
+                             "pdata": [
+                             {
+                                 "ID": '1',
+                                 "ExamID": "题目ID",
+                                 "userAnswer": "用户答案",
+                                 "scoreses": "分数",
+                                 "userScore": "用户分数",
+                                 "istrue": "是否正确",
+                                 "type": "题目类型",
+                                 "sorts": "排序",
+                                 "link_ExamID": "",
+                                 "partnum": "选项数量",
+                                 "yanswer": "答案",//交卷之后提供正确答案
+                                 "title": "题目题干",
+                                 "option": "题目选项",
+                                 "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "sonitem": [
+                                   {
+                                       "ID": "题目顺序",
+                                       "ExamID": "题目ID",
+                                       "userAnswer": "用户答案",
+                                       "scoreses": "分数",
+                                       "userScore": "用户分值",
+                                       "istrue": "是否正确",
+                                       "type": "题目类型",
+                                       "sorts": "顺序",
+                                       "link_ExamID": "关联题目",
+                                       "partnum": "4",
+                                       "yanswer": "", //交卷之后提供正确答案
+                                       "title": "题目题干",
+                                       "option": "题目选项",
+                                       "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
+                                  },
+                             ],
+                         },
+                         ],
 
-            ]
+                      }
+                  ],
+              }
+         }
+         ]
      ]
+```
+
+返回码说明
+```
+ [
+     '请求成功' => '00000000',
+     '所请求的试卷模块的参数错误' => '11013010',
+     '无此用户试卷' => '1101300',
+ ]
 ```
 
 * Visibility: **public**
@@ -430,7 +517,7 @@ Methods
 
 ### submitPaperOnlyOneItem
 
-    mixed Home\Controller\PaperDataController::submitPaperOnlyOneItem()
+    \Home\Controller\json Home\Controller\PaperDataController::submitPaperOnlyOneItem()
 
 交卷一题一题交卷判断，并且返回答案等等
 
@@ -438,6 +525,7 @@ Methods
 ```
   POST  /tiku/paperData/submitPaperOnlyOneItem
 ```
+
 返回格式
 ```
      [
