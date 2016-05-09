@@ -8,7 +8,7 @@ Home\Controller\PaperDataController
 
 * Class name: PaperDataController
 * Namespace: Home\Controller
-* Parent class: Home\Controller\CommonController
+* Parent class: [Home\Controller\CommonController](Home-Controller-CommonController.md)
 
 
 
@@ -21,6 +21,171 @@ Properties
 ### $description
 
     protected array<mixed,callable> $description = null
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_actionName
+
+    protected mixed $_actionName = null
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_callBack
+
+    protected mixed $_callBack = null
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_status
+
+    protected mixed $_status
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_retMsg
+
+    protected mixed $_retMsg = ''
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_data
+
+    protected mixed $_data = array()
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_token
+
+    protected mixed $_token = ''
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_isHandleToken
+
+    protected mixed $_isHandleToken = ''
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_studentID
+
+    protected mixed $_studentID = ''
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_source
+
+    protected mixed $_source = ''
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_sessionID
+
+    protected mixed $_sessionID = ''
+
+
+
+
+
+* Visibility: **protected**
+
+
+### $_requestArray
+
+    private mixed $_requestArray = array()
+
+
+
+
+
+* Visibility: **private**
+
+
+### $allowMethod
+
+    protected string $allowMethod = array('get', 'post', 'put', 'delete')
+
+allowMethod
+
+
+
+* Visibility: **protected**
+
+
+### $allowType
+
+    protected string $allowType = array('html', 'xml', 'json')
+
+allowType
+
+
+
+* Visibility: **protected**
+
+
+### $defaultType
+
+    protected string $defaultType = 'json'
+
+defaultType
+
+
+
+* Visibility: **protected**
+
+
+### $_isDec
+
+    protected mixed $_isDec = true
 
 
 
@@ -295,14 +460,16 @@ Methods
 请求参数
 ```
  int student_id 学生ID
+ string field 需要题目的属性字段 当submit_type为3时有用，允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','answer'
  json data 交卷信息,格式化之后：
                      [
                       {
                          "ualist":{"337182":"1","91704":"1","89870":"A"},题目ID为键，用户答案值
                          "rt":"31",// 用时（秒）
                          "pdid":"2949621",// 用户试卷ID
-                         "submit_type":"1",// 1是交卷  2是保存
+                         "submit_type":"1",// 1是交卷  2是保存 3是一题题交卷
                          "regdate":"1461722845"//交卷时间
+                         "is_submit":"0",//当submit_type为3时，is_force_submit为1时交卷
                        }
                      ]
 ```
@@ -312,9 +479,18 @@ Methods
          'status'   => '', //提示码
          'info'  => '', //提示信息
          'result'  => [
-             "重复提交时返回值":'用户卷子ID'
-
+             'hasSubmitPaper'=>['用户卷子ID'] //重复提交时返回值,不一定存在
+             'hasSubmitItemInfo'=>[ //当submit_type为3时，存在
+                 [
+                     "88956" =>[
+                         "title": "会计法律制度是调整（&nbsp;&nbsp;&nbsp;&nbsp;）的各种法律、法规、规章和规范性文件的总称。",
+                         "option": "<p>A. 经济关系&nbsp;&nbsp;&nbsp;</p><p>B. 会计关系&nbsp;</p><p>C. 会计机构、会计人员在办理会计事务过程中发生的经济关系&nbsp;</p><p>D. 国家在监管会计工作中发生的经济关系</p>",
+                         "answer": "B",
+                         "item_id": 88956
+                        ]
+                 ]
             ]
+         ]
      ]
 ```
 返回码说明
@@ -349,8 +525,8 @@ Methods
 返回格式
 ```
      [
-         'status'   => '', //提示码
-         'info'  => '', //提示信息
+         'status'   => '提示码',
+         'info'  => '提示信息',
          'result'  => [
 
             ]
@@ -359,5 +535,238 @@ Methods
 
 * Visibility: **public**
 
+
+
+
+### submitPaperOnlyOneItem
+
+    mixed Home\Controller\PaperDataController::submitPaperOnlyOneItem()
+
+交卷一题一题交卷判断，并且返回答案等等
+
+请求格式
+```
+  POST  /tiku/paperData/submitPaperOnlyOneItem
+```
+返回格式
+```
+     [
+         'status'   => '提示码',
+         'info'  => '提示信息',
+         'result'  => [
+
+            ]
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
+### _initialize
+
+    mixed Home\Controller\BaseController::_initialize()
+
+_initialize
+
+
+
+* Visibility: **public**
+* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
+
+
+
+
+### _handleParameters
+
+    mixed Home\Controller\CommonController::_handleParameters()
+
+处理参数
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
+
+
+
+
+### _getParam
+
+    mixed Home\Controller\CommonController::_getParam($name, $default)
+
+
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
+
+
+#### Arguments
+* $name **mixed**
+* $default **mixed**
+
+
+
+### delDirAndFile
+
+    mixed Home\Controller\CommonController::delDirAndFile($dirName, $root)
+
+
+
+
+
+* Visibility: **public**
+* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
+
+
+#### Arguments
+* $dirName **mixed**
+* $root **mixed**
+
+
+
+### verifyParam
+
+    mixed Home\Controller\CommonController::verifyParam()
+
+
+
+
+
+* Visibility: **public**
+* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
+
+
+
+
+### __call
+
+    mixed Home\Controller\BaseController::__call($method, $args)
+
+
+
+
+
+* Visibility: **public**
+* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
+
+
+#### Arguments
+* $method **mixed**
+* $args **mixed**
+
+
+
+### display
+
+    void Home\Controller\BaseController::display(string $templateFile, string $charset, string $contentType, string $content, string $prefix)
+
+模板显示 调用内置的模板引擎显示方法，
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
+
+
+#### Arguments
+* $templateFile **string** - &lt;p&gt;指定要调用的模板文件
+默认为空 由系统自动定位模板文件&lt;/p&gt;
+* $charset **string** - &lt;p&gt;输出编码&lt;/p&gt;
+* $contentType **string** - &lt;p&gt;输出类型&lt;/p&gt;
+* $content **string** - &lt;p&gt;输出内容&lt;/p&gt;
+* $prefix **string** - &lt;p&gt;模板缓存前缀&lt;/p&gt;
+
+
+
+### _responseSuccess
+
+    mixed Home\Controller\BaseController::_responseSuccess($result)
+
+请求成功响应
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
+
+
+#### Arguments
+* $result **mixed**
+
+
+
+### _response
+
+    mixed Home\Controller\BaseController::_response($data, $type, $code)
+
+响应
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
+
+
+#### Arguments
+* $data **mixed**
+* $type **mixed**
+* $code **mixed**
+
+
+
+### appException
+
+    mixed Home\Controller\BaseController::appException(mixed $e)
+
+appException
+
+
+
+* Visibility: **public**
+* This method is **static**.
+* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
+
+
+#### Arguments
+* $e **mixed**
+
+
+
+### halt
+
+    mixed Home\Controller\BaseController::halt($error)
+
+
+
+
+
+* Visibility: **public**
+* This method is **static**.
+* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
+
+
+#### Arguments
+* $error **mixed**
+
+
+
+### _empty
+
+    mixed Home\Controller\BaseController::_empty(String $name)
+
+
+
+
+
+* Visibility: **public**
+* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
+
+
+#### Arguments
+* $name **String**
 
 
