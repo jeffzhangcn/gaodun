@@ -116,7 +116,7 @@ Methods
  string type_flag    point 根据知识点创建，paper根据试卷id创建
  int student_id      学生ID
  string source       来源
- string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,analysis) : 收藏、知识点标签、笔记数量
+ string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
  ---------by 【paper】--------------
  int paper_id        试卷ID（母卷）
  ---------by 【point】--------------
@@ -425,7 +425,7 @@ Methods
  int student_id 学生ID
  string source 来源
  int is_repeat_exam 重做 1 //todo
- string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,analysis) : 收藏、知识点标签、笔记数量
+ string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
 ```
 
 返回格式
