@@ -154,7 +154,7 @@ Methods
 ```
 请求参数
 ```
-  string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag'
+  string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
   int is_need_all // 是否需要子题目,或者父题目信息
 ```
 返回格式
@@ -180,6 +180,7 @@ Methods
                       "videoa": "视频连接",
                       "flag": "",
                       "item_id": "题目ID号"
+                      "rank": "题目难度" // 1 2 3 => 难 中 易
                   },
             ]
      ]
