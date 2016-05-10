@@ -116,7 +116,7 @@ Methods
  string type_flag    point 根据知识点创建，paper根据试卷id创建
  int student_id      学生ID
  string source       来源
- string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum) : 收藏、知识点标签、笔记数量
+ string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,analysis) : 收藏、知识点标签、笔记数量
  ---------by 【paper】--------------
  int paper_id        试卷ID（母卷）
  ---------by 【point】--------------
@@ -176,9 +176,10 @@ Methods
                                  "sorts": "排序",
                                  "link_ExamID": "",
                                  "partnum": "选项数量",
-                                 "yanswer": "答案",//交卷之后提供正确答案
+                                 "yanswer": "答案",//交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
+                                 "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
@@ -197,6 +198,7 @@ Methods
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
+                                       "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
@@ -244,7 +246,7 @@ Methods
 请求参数
 ```
  int student_id 学生ID
- string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum) : 收藏、知识点标签、笔记数量
+ string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
 ```
 
 返回格式
@@ -287,9 +289,10 @@ Methods
                                  "sorts": "排序",
                                  "link_ExamID": "",
                                  "partnum": "选项数量",
-                                 "yanswer": "答案",//交卷之后提供正确答案
+                                 "yanswer": "答案",//交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
+                                 "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
@@ -308,6 +311,7 @@ Methods
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
+                                       "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
@@ -421,7 +425,7 @@ Methods
  int student_id 学生ID
  string source 来源
  int is_repeat_exam 重做 1 //todo
- string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum) : 收藏、知识点标签、笔记数量
+ string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,analysis) : 收藏、知识点标签、笔记数量
 ```
 
 返回格式
@@ -464,9 +468,10 @@ Methods
                                  "sorts": "排序",
                                  "link_ExamID": "",
                                  "partnum": "选项数量",
-                                 "yanswer": "答案",//交卷之后提供正确答案
+                                 "yanswer": "答案",// 交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
+                                 "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
                                  "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
@@ -485,6 +490,7 @@ Methods
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
+                                       "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
                                        "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
