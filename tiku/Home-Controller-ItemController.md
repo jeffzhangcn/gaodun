@@ -79,7 +79,7 @@ Methods
 
 ### getIndex
 
-    mixed Home\Controller\ItemController::getIndex()
+    \Home\Controller\json Home\Controller\ItemController::getIndex()
 
 获取题目列表
 
@@ -87,14 +87,59 @@ Methods
 ```
   GET  /tiku/item
 ```
-返回格式
-```php
-     [
-          'status'   => '提示码',
-          'info'  => '提示信息',
-          'resut'  => [
+请求参数
+```
+  string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
+  int is_need_all // 是否需要子题目,或者父题目信息即relation_item数组内容:0(不需要) 1(需要)
+  string combine // 条件查询组合，可用组合[inIds](待续)
+     说明：
+         inIds:['in'=>'id','isdel']
+  json condition //根据查询组合，给出对于组合参数
+     说明：
+         inIds:{"id":"17102,16617","isdel":"0"}
+  string is_need_page //是否需要分页，0需要，1不需要 (默认不需要)
+  int page //页数
+  int offset //偏移量
+  string order // 排序 (待续)
+  string group //分组 (待续)
+```
 
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'resut'  => [
+             {
+                 "请求内容分两种":"request_item/relation_item(请求题目/关联题目)",
+                 "request_item": {
+                      "title": "题目题干",
+                      "option": "选项",
+                      "partnum": "",
+                      "icid": "知识点",
+                      "type": "题目类型",
+                      "analysis": "解析",
+                      "pid": "上级题目号(综合题子题中有值)",
+                      "rightnum": "正确数",
+                      "wrongnum": "错误数",
+                      "finishnum": "完成数",
+                      "favoritenum": "收藏数",
+                      "isvideo": "是否有视频",
+                      "videoa": "视频连接",
+                      "flag": "",
+                      "item_id": "题目ID号"
+                      "rank": "题目难度" // 1 2 3 => 难 中 易
+                  },
+             }
+            ]
      ]
+```
+
+提示码说明
+```
+[
+     '请求成功' => 00000000,
+]
 ```
 
 * Visibility: **public**
@@ -104,7 +149,7 @@ Methods
 
 ### post
 
-    array Home\Controller\ItemController::post()
+    \Home\Controller\json Home\Controller\ItemController::post()
 
 插入题目
 
@@ -112,8 +157,10 @@ Methods
 ```
   POST  /tiku/item
 ```
+
 请求参数
 ```
+
 ```
 
 返回格式
@@ -125,15 +172,11 @@ Methods
 
      ]
 ```
-错误码说明
+
+提示码说明
 ```
 [
      '请求成功' => 00000000,
-     '参数错误'=> 11000002,
-     '数据错误' => 11013001,
-     '试卷无权限' => 11013002,
-     '生成试卷失败' => 11013003,
-     '生成试卷失败' => 11013004,
 ]
 ```
 
@@ -144,7 +187,7 @@ Methods
 
 ### get
 
-    array Home\Controller\ItemController::get(string $name)
+    \Home\Controller\json Home\Controller\ItemController::get(string $name)
 
 获取一道题目
 
@@ -152,11 +195,13 @@ Methods
 ```
   GET  /tiku/item/21105
 ```
+
 请求参数
 ```
   string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
-  int is_need_all // 是否需要子题目,或者父题目信息
+  int is_need_all // 是否需要子题目,或者父题目信息即relation_item数组内容:0(不需要) 1(需要)
 ```
+
 返回格式
 ```
      [
@@ -185,7 +230,8 @@ Methods
             ]
      ]
 ```
-返回码说明
+
+提示码说明
 ```
  [
      '请求成功' => '00000000'
@@ -204,7 +250,7 @@ Methods
 
 ### put
 
-    mixed Home\Controller\ItemController::put($name)
+    \Home\Controller\json Home\Controller\ItemController::put($name)
 
 更新题目
 
@@ -212,15 +258,17 @@ Methods
 ```
   PUT  /tiku/item/2949602
 ```
+
 请求参数
 ```
 
 ```
 返回格式
+
 ```
      [
-         'status'   => '', //提示码
-         'info'  => '', //提示信息
+         'status'   => '提示码',
+         'info'  => '提示信息',
          'resut'  => [
 
             ]
@@ -237,19 +285,21 @@ Methods
 
 ### delete
 
-    mixed Home\Controller\ItemController::delete()
+    \Home\Controller\json Home\Controller\ItemController::delete()
 
 删除题目
 
 请求格式
+
 ```
   DELETE  /tiku/item
 ```
+
 返回格式
 ```
      [
-         'status'   => '', //提示码
-         'info'  => '', //提示信息
+         'status'   => '提示码',
+         'info'  => '提示信息',
          'resut'  => [
 
             ]
@@ -307,6 +357,20 @@ _initialize
 
 
 
+### _getListCommonParam
+
+    mixed Home\Controller\CommonController::_getListCommonParam()
+
+获取列表共有参数
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
+
+
+
+
 ### delDirAndFile
 
     mixed Home\Controller\CommonController::delDirAndFile($dirName, $root)
@@ -322,20 +386,6 @@ _initialize
 #### Arguments
 * $dirName **mixed**
 * $root **mixed**
-
-
-
-### verifyParam
-
-    mixed Home\Controller\CommonController::verifyParam()
-
-
-
-
-
-* Visibility: **public**
-* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
-
 
 
 

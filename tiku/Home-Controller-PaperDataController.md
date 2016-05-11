@@ -90,8 +90,8 @@ Methods
 返回格式
 ```
      [
-         'status'   => '', //提示码
-         'info'  => '', //提示信息
+         'status'   => '提示码',
+         'info'  => '提示信息',
 
      ]
 ```
@@ -215,7 +215,7 @@ Methods
      ]
 ```
 
-错误码说明
+提示码说明
 ```
 [
      '请求成功' => 00000000,
@@ -328,7 +328,7 @@ Methods
      ]
 ```
 
-返回码说明
+提示码说明
 ```
  [
      '请求成功' => '00000000',
@@ -390,7 +390,7 @@ Methods
      ]
 ```
 
-返回码说明
+提示码说明
 ```
 [
      '请求成功' => '00000000',
@@ -507,7 +507,7 @@ Methods
      ]
 ```
 
-返回码说明
+提示码说明
 ```
  [
      '请求成功' => '00000000',
@@ -594,6 +594,20 @@ _initialize
 
 
 
+### _getListCommonParam
+
+    mixed Home\Controller\CommonController::_getListCommonParam()
+
+获取列表共有参数
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
+
+
+
+
 ### delDirAndFile
 
     mixed Home\Controller\CommonController::delDirAndFile($dirName, $root)
@@ -609,20 +623,6 @@ _initialize
 #### Arguments
 * $dirName **mixed**
 * $root **mixed**
-
-
-
-### verifyParam
-
-    mixed Home\Controller\CommonController::verifyParam()
-
-
-
-
-
-* Visibility: **public**
-* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
-
 
 
 
