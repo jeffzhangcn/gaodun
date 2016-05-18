@@ -1,4 +1,4 @@
-Home\Controller\ItemController
+Home\Controller\UserItemController
 ===============
 
 
@@ -6,7 +6,7 @@ Home\Controller\ItemController
 
 
 
-* Class name: ItemController
+* Class name: UserItemController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\CommonController](Home-Controller-CommonController.md)
 
@@ -77,186 +77,11 @@ Methods
 -------
 
 
-### getIndex
-
-    \Home\Controller\json Home\Controller\ItemController::getIndex()
-
-获取题目列表
-
-请求格式
-```
-  GET  /tiku/item
-```
-请求参数
-```
-  string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
-                 授权应用可以获取:'answer'
-  int is_need_all // 是否需要子题目,或者父题目信息即relation_item数组内容:0(不需要) 1(需要)
-  string combine // 条件查询组合，可用组合[inIds](待续)
-     说明：
-         inIds:['in'=>'id','isdel']
-  json condition //根据查询组合，给出对于组合参数
-     说明：
-         inIds:{"id":"17102,16617","isdel":"0"}
-  string is_need_page //是否需要分页，0需要，1不需要 (默认不需要)
-  int page //页数
-  int offset //偏移量
-  string order // 排序 (待续)
-  string group //分组 (待续)
-```
-
-返回格式
-```
-     [
-         'status'   => '返回码',
-         'info'  => '提示信息',
-         'resut'  => [
-             {
-                 "请求内容分两种":"request_item/relation_item(请求题目/关联题目)",
-                 "request_item": {
-                      "title": "题目题干",
-                      "option": "选项",
-                      "partnum": "",
-                      "icid": "知识点",
-                      "type": "题目类型",
-                      "analysis": "解析",
-                      "pid": "上级题目号(综合题子题中有值)",
-                      "rightnum": "正确数",
-                      "wrongnum": "错误数",
-                      "finishnum": "完成数",
-                      "favoritenum": "收藏数",
-                      "isvideo": "是否有视频",
-                      "videoa": "视频连接",
-                      "flag": "",
-                      "item_id": "题目ID号"
-                      "rank": "题目难度" // 1 2 3 => 难 中 易
-                      "answer":"答案"
-                  },
-             }
-            ]
-     ]
-```
-
-返回码说明
-```
-[
-     '请求成功' => 00000000,
-]
-```
-
-* Visibility: **public**
-
-
-
-
 ### post
 
-    \Home\Controller\json Home\Controller\ItemController::post()
+    \Home\Controller\json Home\Controller\UserItemController::post()
 
-插入题目
-
-请求格式
-```
-  POST  /tiku/item
-```
-
-请求参数
-```
-
-```
-
-返回格式
-```php
-     [
-          'status'   => '返回码',
-          'info'  => '提示信息',
-          'resut'  => [
-
-     ]
-```
-
-返回码说明
-```
-[
-     '请求成功' => 00000000,
-]
-```
-
-* Visibility: **public**
-
-
-
-
-### get
-
-    \Home\Controller\json Home\Controller\ItemController::get(string $name)
-
-获取一道题目
-
-请求格式
-```
-  GET  /tiku/item/21105
-```
-
-请求参数
-```
-  string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
-  授权应用可以获取:'answer'
-  int is_need_all // 是否需要子题目,或者父题目信息即relation_item数组内容:0(不需要) 1(需要)
-```
-
-返回格式
-```
-     [
-         'status'   => '返回码',
-         'info'  => '提示信息',
-         'resut'  => [
-                 "请求内容分两种":"request_item/relation_item(请求题目/关联题目)",
-                 "request_item": {
-                      "title": "题目题干",
-                      "option": "选项",
-                      "partnum": "",
-                      "icid": "知识点",
-                      "type": "题目类型",
-                      "analysis": "解析",
-                      "pid": "上级题目号(综合题子题中有值)",
-                      "rightnum": "正确数",
-                      "wrongnum": "错误数",
-                      "finishnum": "完成数",
-                      "favoritenum": "收藏数",
-                      "isvideo": "是否有视频",
-                      "videoa": "视频连接",
-                      "flag": "",
-                      "item_id": "题目ID号"
-                      "rank": "题目难度" // 1 2 3 => 难 中 易
-                      "answer":"答案"
-                  },
-            ]
-     ]
-```
-
-返回码说明
-```
- [
-     '请求成功' => '00000000'
-     '错误的题目ID' => '11013101',
-
- ]
-```
-
-* Visibility: **public**
-
-
-#### Arguments
-* $name **string** - &lt;p&gt;题目ID&lt;/p&gt;
-
-
-
-### put
-
-    \Home\Controller\json Home\Controller\ItemController::put($name)
-
-更新题目
+判断用户答题是否正确
 
 请求格式
 ```
@@ -265,8 +90,13 @@ Methods
 
 请求参数
 ```
-
+ int student_id 学生ID
+ int project_id 项目ID
+ int subject_id 科目ID
+ string field 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','answer'
+ json ualist {"337182":"1","91704":"1","89870":"A"},题目ID为键，用户答案值,
 ```
+
 返回格式
 
 ```
@@ -274,38 +104,9 @@ Methods
          'status'   => '提示码',
          'info'  => '提示信息',
          'resut'  => [
-
-            ]
-     ]
-```
-
-* Visibility: **public**
-
-
-#### Arguments
-* $name **mixed**
-
-
-
-### delete
-
-    \Home\Controller\json Home\Controller\ItemController::delete()
-
-删除题目
-
-请求格式
-
-```
-  DELETE  /tiku/item
-```
-
-返回格式
-```
-     [
-         'status'   => '提示码',
-         'info'  => '提示信息',
-         'resut'  => [
-
+                  "89870": 1, // 题目id：是否正确 (0:未做，1:正确，2:错误，3:半对，4:填空不判断)
+                  "91704": 2,
+                  "337182": 1
             ]
      ]
 ```

@@ -594,6 +594,38 @@ _initialize
 
 
 
+### _getFromParam
+
+    mixed Home\Controller\CommonController::_getFromParam($name, $default)
+
+
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
+
+
+#### Arguments
+* $name **mixed**
+* $default **mixed**
+
+
+
+### getAllParam
+
+    mixed Home\Controller\CommonController::getAllParam()
+
+
+
+
+
+* Visibility: **protected**
+* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
+
+
+
+
 ### _getListCommonParam
 
     mixed Home\Controller\CommonController::_getListCommonParam()
