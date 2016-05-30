@@ -131,7 +131,6 @@ Methods
  string mark         标识存储过程的执行（与效率有关）
  string pid          试卷id
  string from         来源  1favorite，2error
- string source       APP来源
  string sessionId    sessionId
  string liveType     0正常生成题目， 1实时解析
 ```
@@ -247,6 +246,7 @@ Methods
 ```
  int student_id 学生ID
  string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
+ string source       来源
 ```
 
 返回格式
@@ -356,6 +356,7 @@ Methods
 ```
  int student_id 学生ID
  string field 需要题目的属性字段 当submit_type为3时有用，允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','answer'
+ string source       来源
  json data 交卷信息,格式化之后：
                      [
                       {
@@ -425,6 +426,7 @@ Methods
  int student_id 学生ID
  string source 来源
  int is_repeat_exam 重做 1 //todo
+ string source       来源
  string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
 ```
 
@@ -594,9 +596,9 @@ _initialize
 
 
 
-### _getFromParam
+### _getFormParam
 
-    mixed Home\Controller\CommonController::_getFromParam($name, $default)
+    mixed Home\Controller\CommonController::_getFormParam($name, $default)
 
 
 

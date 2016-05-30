@@ -93,6 +93,7 @@ Methods
  int student_id 学生ID
  int project_id 项目ID
  int subject_id 科目ID
+ string source       来源
  string field 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','answer'
  json ualist {"337182":"1","91704":"1","89870":"A"},题目ID为键，用户答案值,
 ```
@@ -162,9 +163,9 @@ _initialize
 
 
 
-### _getFromParam
+### _getFormParam
 
-    mixed Home\Controller\CommonController::_getFromParam($name, $default)
+    mixed Home\Controller\CommonController::_getFormParam($name, $default)
 
 
 

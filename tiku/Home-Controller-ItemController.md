@@ -92,6 +92,7 @@ Methods
   string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
                  授权应用可以获取:'answer'
   int is_need_all // 是否需要子题目,或者父题目信息即relation_item数组内容:0(不需要) 1(需要)
+  string source // 来源
   string combine // 条件查询组合，可用组合[inIds](待续)
      说明：
          inIds:['in'=>'id','isdel']
@@ -202,6 +203,7 @@ Methods
 ```
   string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
   授权应用可以获取:'answer'
+  string source       来源
   int is_need_all // 是否需要子题目,或者父题目信息即relation_item数组内容:0(不需要) 1(需要)
 ```
 
@@ -217,7 +219,7 @@ Methods
                       "option": "选项",
                       "partnum": "",
                       "icid": "知识点",
-                      "type": "题目类型",
+                      "type": "题目类型", 1:单选、2：多选、3：判断、4：填空、5：综合、6：简答、7：不定项
                       "analysis": "解析",
                       "pid": "上级题目号(综合题子题中有值)",
                       "rightnum": "正确数",
@@ -361,9 +363,9 @@ _initialize
 
 
 
-### _getFromParam
+### _getFormParam
 
-    mixed Home\Controller\CommonController::_getFromParam($name, $default)
+    mixed Home\Controller\CommonController::_getFormParam($name, $default)
 
 
 
