@@ -85,7 +85,7 @@ Methods
 
 请求格式
 ```
-  PUT  /tiku/item/2949602
+  PUT  /tiku/userItem
 ```
 
 请求参数
