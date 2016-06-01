@@ -94,10 +94,13 @@ Methods
  string combine // 条件查询组合，可用组合[sps](待续)
      说明：
          sps:['student_id','project_id','subject_id'] // 不支持分页，is_need_page为0
+
  json condition //根据查询组合，给出对于组合参数
      说明：
          sps:{"student_id":1,"project_id":1,"subject_id":1}
+
  string is_need_page //是否需要分页，0需要，1不需要 (默认不需要)
+
  int page //页数
  int offset //偏移量
  string order // 排序 (待续)
