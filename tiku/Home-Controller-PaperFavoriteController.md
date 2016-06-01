@@ -88,7 +88,6 @@ Methods
   GET  /tiku/paperFavorite
 ```
 
-```
 请求参数
 ```
  string combine // 条件查询组合，可用组合[sps](待续)
