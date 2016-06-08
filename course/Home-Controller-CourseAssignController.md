@@ -12,47 +12,10 @@ CourseAssignController
 
 
 
-Constants
-----------
-
-
-### DB_ERROR
-
-    const DB_ERROR = 10001
-
-
-
-
-
-### PARAM_ERROR
-
-    const PARAM_ERROR = 10002
-
-
-
-
-
-### ERROR
-
-    const ERROR = 10003
-
-
-
 
 
 Properties
 ----------
-
-
-### $_type
-
-    protected mixed $_type = array('', ' id desc ', ' id asc ')
-
-
-
-
-
-* Visibility: **protected**
 
 
 ### $allowMethod
@@ -176,7 +139,7 @@ request [
      course_id : 5
      limit : 8,
      order : 1, // 1＝>id desc 2=>id asc
-
+     act   : getAll | getStudent | getCourse  getAll=>课程和学生id查询, getStudent=>学生id, getCourse=>课程id
 ]
 
 ```
@@ -188,7 +151,7 @@ request [
     'status'   => '', //错误代码
     'info'  => '', //错误信息
     'result'  => [{
-         "resource"=>[
+         "assign"=>[
          "id": "94174",
 "student_id": "1694699",
 "course_id": "450",
@@ -234,13 +197,13 @@ request [
 
 ### delete
 
-    mixed Home\Controller\CourseAssignController::delete($id)
+    mixed Home\Controller\CourseAssignController::delete($assignId)
 
 派课删除
 
 请求格式
 ```
- Delete  /course/Home/CourseAssign/1694699
+ Delete  /course/Home/CourseAssign/1  派课表对应 id
  header [
    Accept: application/json
    App-Id-Key: gd_course_assign
@@ -248,15 +211,6 @@ request [
    App-Nonce: 1
    App-Signature: b561244fca99a87783fb3cbf29ce294e35607634
  ]
-
-```
-请求说明
-
-```
-request [
-     id : 99
-
-]
 
 ```
 
@@ -276,7 +230,7 @@ request [
 
 
 #### Arguments
-* $id **mixed**
+* $assignId **mixed**
 
 
 

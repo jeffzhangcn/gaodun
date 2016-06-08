@@ -12,32 +12,6 @@ CourseRestController
 
 
 
-Constants
-----------
-
-
-### DB_ERROR
-
-    const DB_ERROR = 10001
-
-
-
-
-
-### PARAM_ERROR
-
-    const PARAM_ERROR = 10002
-
-
-
-
-
-### ERROR
-
-    const ERROR = 10003
-
-
-
 
 
 Properties
@@ -79,6 +53,66 @@ defaultType
 
 Methods
 -------
+
+
+### getIndex
+
+    mixed Home\Controller\CourseRestController::getIndex()
+
+获取课程列表
+
+请求格式
+```
+ GET  /course/Home/CourseRest/
+ query[
+     page  = 1   //页数
+     order = 1; //排序条件: 默认:sortid asc,id desc 人气排序 1:studentsnum desc,id desc 更新时间:2:id desc
+     limit = 9; //每页数量
+     filed = 1  //字段 默认 * 1:id,name,price,offerprice,thumb,rating,studentsnum,teacher_id,type_id,istasks,similarcourse,isbig
+     project_id = 1;
+     subject_id = 1;
+     isissue = 1
+     isapp = 0;
+ ]
+ header [
+   Accept: application/json
+   App-Id-Key: gd_demo_abcdef
+   App-Timestamp: 212121
+   App-Nonce: eewewew
+   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+ ]
+```
+返回格式
+```
+[
+     status => 0,
+     'info' => '',
+     'result'=>[
+         "result" => [
+             "id" => "611",
+             "name" => "P4任务制2.0网课",
+             "price" => "2.00",
+             "offerprice" => "1.99",
+             "thumb" => "Course/2015/03/05/54f7ec612ed06.jpg",
+             "rating" => "100",
+             "studentsnum" => "405",
+             "teacher_id" => "9",
+             "type_id" => "11",
+             "istasks" => "1",
+             "similarcourse" => "",
+             "isbig" => "0"
+          ],
+         "page" => 1, //当前页
+         "total" => "85", //总数
+         "pageNums" => 10 //页数
+      ]
+
+]
+```
+
+* Visibility: **public**
+
+
 
 
 ### get

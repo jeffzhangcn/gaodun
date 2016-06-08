@@ -8,6 +8,8 @@ API Index
         * [WareResourceRestController](Home-Controller-WareResourceRestController.md)
         * [SyllabusWareRestController](Home-Controller-SyllabusWareRestController.md)
         * [CourseAssignController](Home-Controller-CourseAssignController.md)
+        * [SeriesByCourseController](Home-Controller-SeriesByCourseController.md)
+        * [TeacherController](Home-Controller-TeacherController.md)
         * [SyllabusKnowledgeRestController](Home-Controller-SyllabusKnowledgeRestController.md)
         * [WareRestController](Home-Controller-WareRestController.md)
         * [CourseSyllabusRestController](Home-Controller-CourseSyllabusRestController.md)
