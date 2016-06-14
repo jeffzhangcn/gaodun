@@ -17,7 +17,7 @@
 
 ## 系统架构
 
- 
+ ![系统架构](https://github.com/liugj/gaodun/blob/master/e/e-arch.png)
    
 ## 主要流程
 
