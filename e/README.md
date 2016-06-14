@@ -16,6 +16,8 @@
 * 对http服务调用采用guzzlehttp组件，同时对该组件进行封装，和改造适合高顿自己模式
 
 ## 系统架构
+
+ 
    
 ## 主要流程
 
@@ -91,7 +93,9 @@
          └── js
          
      ```
+
 #### 后端代码结构
+
      > 路径 gaodun.com/e.gaodun.com
 
      > 结构
@@ -123,8 +127,20 @@
 
 ## 数据库设计
 
-> 使用epiphany 数据库
+>> 使用epiphany 数据库
+
+>> 读取用户头像部分跨库实现，后续待用户中心接口提供后再迁移
+
 
 ## 调用接口
+* [课程服务接口](https://github.com/liugj/gaodun/blob/master/course/ApiIndex.md)
+* [答疑接口] (https://github.com/liugj/gaodun/blob/master/care/ApiIndex.md)
+* [题库接口] (https://github.com/liugj/gaodun/blob/master/tiku/ApiIndex.md)
+* [笔记接口] (https://github.com/liugj/gaodun/blob/master/note/ApiIndex.md)
+* [评论接口] (https://github.com/liugj/gaodun/blob/master/comment/ApiIndex.md)
 
-   
+## 问题与不足
+* 模板尚未压缩
+* 模板中js和html没有进一步分离
+* 共享资源采用软连接，运维相对复杂
+* 配置文件没有代码分离   
