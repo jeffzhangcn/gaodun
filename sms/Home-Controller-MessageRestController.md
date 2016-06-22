@@ -106,10 +106,6 @@ _initialize
    ]
  header [
    Accept: application/json
-   App-Id-Key: gd_demo_abcdef
-   App-Timestamp: 212121
-   App-Nonce: eewewew
-   App-Signature: babc722817e366cf62f883e2b61532505c674920a
  ]
 ```
 返回格式
