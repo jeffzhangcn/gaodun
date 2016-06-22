@@ -18,31 +18,9 @@ Properties
 ----------
 
 
-### $logic
-
-    protected mixed $logic
-
-
-
-
-
-* Visibility: **protected**
-
-
-### $prex
-
-    protected mixed $prex
-
-
-
-
-
-* Visibility: **protected**
-
-
 ### $allowMethod
 
-    protected string $allowMethod = array('get', 'post', 'put')
+    protected string $allowMethod = array('get', 'post', 'put', 'delete')
 
 allowMethod
 
@@ -77,6 +55,59 @@ Methods
 -------
 
 
+### post
+
+    mixed Home\Controller\MessageRestController::post()
+
+发送短信
+
+请求格式
+```
+  POST /sms/Home/MessageRest
+   [
+      phone => '18720085054', //多个手机号用,分隔
+      app_id=> 'gd_course' //发送来源,
+      msg => 发送的内容,
+      channel = > 0  发送渠道 默认为亿美
+      type  => '1',
+      ip=>127.0.0.1  //客户端ip
+      agent => '' // 客户端UA HTTP_USER_AGENT
+   ]
+ header [
+   Accept: application/json
+   App-Id-Key: gd_demo_abcdef
+   App-Timestamp: 212121
+   App-Nonce: eewewew
+   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+ ]
+```
+返回格式
+```
+     [
+         'status'   => '', //错误代码
+         'info'  => '', //错误信息
+         'result'  => 1, // å
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
+### getIndex
+
+    mixed Home\Controller\MessageRestController::getIndex()
+
+
+
+
+
+* Visibility: **public**
+
+
+
+
 ### _initialize
 
     mixed Home\Controller\BaseRestController::_initialize()
@@ -87,37 +118,6 @@ _initialize
 
 * Visibility: **public**
 * This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
-
-
-
-
-### post
-
-    mixed Home\Controller\MessageRestController::post()
-
-发送短信
-
-请求格式
-```
-  POST /Home/MessageRest
-   [
-      phone => '18720085054',
-      type  => '1',
-   ]
- header [
-   Accept: application/json
- ]
-```
-返回格式
-```
-     [
-         'status'   => '', //错误代码
-         'info'  => '', //错误信息
-         'result'  => 1, // 评论ID
-     ]
-```
-
-* Visibility: **public**
 
 
 
@@ -159,41 +159,5 @@ _initialize
 * $contentType **string** - &lt;p&gt;输出类型&lt;/p&gt;
 * $content **string** - &lt;p&gt;输出内容&lt;/p&gt;
 * $prefix **string** - &lt;p&gt;模板缓存前缀&lt;/p&gt;
-
-
-
-### appException
-
-    mixed Home\Controller\BaseRestController::appException(mixed $e)
-
-appException
-
-
-
-* Visibility: **public**
-* This method is **static**.
-* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
-
-
-#### Arguments
-* $e **mixed**
-
-
-
-### halt
-
-    mixed Home\Controller\BaseRestController::halt($error)
-
-
-
-
-
-* Visibility: **public**
-* This method is **static**.
-* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
-
-
-#### Arguments
-* $error **mixed**
 
 

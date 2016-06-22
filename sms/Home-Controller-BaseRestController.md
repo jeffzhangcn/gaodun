@@ -20,7 +20,7 @@ Properties
 
 ### $allowMethod
 
-    protected string $allowMethod = array('get', 'post', 'put')
+    protected string $allowMethod = array('get', 'post', 'put', 'delete')
 
 allowMethod
 
@@ -103,39 +103,5 @@ _initialize
 * $contentType **string** - &lt;p&gt;输出类型&lt;/p&gt;
 * $content **string** - &lt;p&gt;输出内容&lt;/p&gt;
 * $prefix **string** - &lt;p&gt;模板缓存前缀&lt;/p&gt;
-
-
-
-### appException
-
-    mixed Home\Controller\BaseRestController::appException(mixed $e)
-
-appException
-
-
-
-* Visibility: **public**
-* This method is **static**.
-
-
-#### Arguments
-* $e **mixed**
-
-
-
-### halt
-
-    mixed Home\Controller\BaseRestController::halt($error)
-
-
-
-
-
-* Visibility: **public**
-* This method is **static**.
-
-
-#### Arguments
-* $error **mixed**
 
 
