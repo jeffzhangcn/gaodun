@@ -1,4 +1,4 @@
-Home\Controller\SessionRestController
+Home\Controller\SessionHandlerRestController
 ===============
 
 
@@ -6,7 +6,7 @@ Home\Controller\SessionRestController
 
 
 
-* Class name: SessionRestController
+* Class name: SessionHandlerRestController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
@@ -57,13 +57,13 @@ Methods
 
 ### get
 
-    mixed Home\Controller\SessionRestController::get($name)
+    mixed Home\Controller\SessionHandlerRestController::get($name)
 
-根据SessionId获取Session内容
+根据SessionHandlerId获取SessionHandler内容
 
 请求格式
 ```
-  GET  /passport/SessionRest/11
+  GET  /passport/SessionHandlerRest/11
  header [
    Accept: application/json
    App-Id-Key: gd_passport_epiphany
@@ -93,13 +93,13 @@ Methods
 
 ### delete
 
-    mixed Home\Controller\SessionRestController::delete($name)
+    mixed Home\Controller\SessionHandlerRestController::delete($name)
 
-根据Sessionid删除session
+根据SessionHandlerid删除session
 
 请求格式
 ```
- DELETE  /passport/SessionRest/11
+ DELETE  /passport/SessionHandlerRest/11
  header [
    Accept: application/json
    App-Id-Key: gd_passport_epiphany
@@ -129,13 +129,13 @@ Methods
 
 ### put
 
-    mixed Home\Controller\SessionRestController::put($name)
+    mixed Home\Controller\SessionHandlerRestController::put($name)
 
-根据SessionId获取修改session
+根据SessionHandlerId获取修改session
 
 请求格式
 ```
-  PUT  /passport/SessionRest/11
+  PUT  /passport/SessionHandlerRest/11
  header [
    Accept: application/json
    App-Id-Key: gd_passport_epiphany

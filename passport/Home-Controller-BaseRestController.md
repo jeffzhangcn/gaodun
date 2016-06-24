@@ -70,9 +70,9 @@ _initialize
 
 ### __call
 
-    mixed Home\Controller\BaseRestController::__call($method, $args)
+    mixed Home\Controller\BaseRestController::__call(mixed $method, mixed $args)
 
-
+__call
 
 
 

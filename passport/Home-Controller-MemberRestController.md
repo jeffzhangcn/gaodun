@@ -1,4 +1,4 @@
-Home\Controller\SessionRestController
+Home\Controller\MemberRestController
 ===============
 
 
@@ -6,7 +6,7 @@ Home\Controller\SessionRestController
 
 
 
-* Class name: SessionRestController
+* Class name: MemberRestController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
@@ -55,15 +55,16 @@ Methods
 -------
 
 
-### get
+### getIndex
 
-    mixed Home\Controller\SessionRestController::get($name)
+    mixed Home\Controller\MemberRestController::getIndex()
 
-根据SessionId获取Session内容
+根据student_id 获取头像和基本信息
 
 请求格式
 ```
-  GET  /passport/SessionRest/11
+  GET  /passport/MemberRest/?act=xxx&student_id=xxx
+  getMulti 批量获取
  header [
    Accept: application/json
    App-Id-Key: gd_passport_epiphany
@@ -78,88 +79,16 @@ Methods
     'err_no'   => '', //错误代码
     'err_msg'  => '', //错误信息
     'resut'  => [
-         {
-         }
+      1749446 =>
+         array (
+            'profile' => '/share/v/Uploads/avatar/default.jpg',
+            'nickname' => 'liugj',
+         ),
      ]
 ```
 
 * Visibility: **public**
 
-
-#### Arguments
-* $name **mixed**
-
-
-
-### delete
-
-    mixed Home\Controller\SessionRestController::delete($name)
-
-根据Sessionid删除session
-
-请求格式
-```
- DELETE  /passport/SessionRest/11
- header [
-   Accept: application/json
-   App-Id-Key: gd_passport_epiphany
-   App-Timestamp: 212121
-   App-Nonce: eewewew
-   App-Signature: babc722817e366cf62f883e2b61532505c674920a
- ]
-```
-返回格式
-```
-[
-    'err_no'   => '', //错误代码
-    'err_msg'  => '', //错误信息
-    'resut'  => [
-         {
-         }
-     ]
-```
-
-* Visibility: **public**
-
-
-#### Arguments
-* $name **mixed**
-
-
-
-### put
-
-    mixed Home\Controller\SessionRestController::put($name)
-
-根据SessionId获取修改session
-
-请求格式
-```
-  PUT  /passport/SessionRest/11
- header [
-   Accept: application/json
-   App-Id-Key: gd_passport_epiphany
-   App-Timestamp: 212121
-   App-Nonce: eewewew
-   App-Signature: babc722817e366cf62f883e2b61532505c674920a
- ]
-```
-返回格式
-```
-[
-    'err_no'   => '', //错误代码
-    'err_msg'  => '', //错误信息
-    'resut'  => [
-         {
-         }
-     ]
-```
-
-* Visibility: **public**
-
-
-#### Arguments
-* $name **mixed**
 
 
 
