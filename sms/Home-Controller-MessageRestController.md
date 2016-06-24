@@ -18,31 +18,9 @@ Properties
 ----------
 
 
-### $logic
-
-    protected mixed $logic
-
-
-
-
-
-* Visibility: **protected**
-
-
-### $prex
-
-    protected mixed $prex
-
-
-
-
-
-* Visibility: **protected**
-
-
 ### $allowMethod
 
-    protected string $allowMethod = array('get', 'post', 'put')
+    protected string $allowMethod = array('get', 'post', 'put', 'delete')
 
 allowMethod
 
@@ -77,20 +55,6 @@ Methods
 -------
 
 
-### _initialize
-
-    mixed Home\Controller\BaseRestController::_initialize()
-
-_initialize
-
-
-
-* Visibility: **public**
-* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
-
-
-
-
 ### post
 
     mixed Home\Controller\MessageRestController::post()
@@ -99,10 +63,19 @@ _initialize
 
 请求格式
 ```
-  POST /Home/MessageRest
+  POST /sms/Home/MessageRest
    [
-      phone => '18720085054',
-      type  => '1',
+      phone => '18720085054', //多个手机号用,分隔
+      app_id=> 'gd_course' //发送来源,
+      msg => 发送的内容,
+      channel_id => 3  发送渠道 默认3亿美 1阿里大鱼 2希奥 4益客 5发送猫
+      type  => '0',//用于阿里大鱼发送,来选择不同模板与签名1为注册验证 2为身份验证   阿里大鱼需要传递签名以及
+                   //短信模板ID，传入的模板必须是在阿里大鱼“管理中心-短信模板管理”中的可用模板。
+                   //注册验证模板:验证码${code}，您正在注册成为${product}用户，感谢您的支持！
+                   //身份验证模板:验证码${code}，您正在进行${product}身份验证，打死不要告诉别人哦！
+                   //msg 参数为json数据:传参时需传入{"code":"1234","product":"高顿网校"};
+      ip=>127.0.0.1  //客户端ip
+      agent => '' // 客户端UA HTTP_USER_AGENT
    ]
  header [
    Accept: application/json
@@ -117,11 +90,38 @@ _initialize
      [
          'status'   => '', //错误代码
          'info'  => '', //错误信息
-         'result'  => 1, // 评论ID
+         'result'  => 1, // å
      ]
 ```
 
 * Visibility: **public**
+
+
+
+
+### getIndex
+
+    mixed Home\Controller\MessageRestController::getIndex()
+
+
+
+
+
+* Visibility: **public**
+
+
+
+
+### _initialize
+
+    mixed Home\Controller\BaseRestController::_initialize()
+
+_initialize
+
+
+
+* Visibility: **public**
+* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
 
 
@@ -163,41 +163,5 @@ _initialize
 * $contentType **string** - &lt;p&gt;输出类型&lt;/p&gt;
 * $content **string** - &lt;p&gt;输出内容&lt;/p&gt;
 * $prefix **string** - &lt;p&gt;模板缓存前缀&lt;/p&gt;
-
-
-
-### appException
-
-    mixed Home\Controller\BaseRestController::appException(mixed $e)
-
-appException
-
-
-
-* Visibility: **public**
-* This method is **static**.
-* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
-
-
-#### Arguments
-* $e **mixed**
-
-
-
-### halt
-
-    mixed Home\Controller\BaseRestController::halt($error)
-
-
-
-
-
-* Visibility: **public**
-* This method is **static**.
-* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
-
-
-#### Arguments
-* $error **mixed**
 
 
