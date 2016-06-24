@@ -68,7 +68,7 @@ Methods
       phone => '18720085054', //多个手机号用,分隔
       app_id=> 'gd_course' //发送来源,
       msg => 发送的内容,
-      channel = > 0  发送渠道 默认3亿美 1阿里大鱼 2希奥 4益客 5发送猫
+      channel_id = > 0  发送渠道 默认3亿美 1阿里大鱼 2希奥 4益客 5发送猫
       type  => '1',
       ip=>127.0.0.1  //客户端ip
       agent => '' // 客户端UA HTTP_USER_AGENT
