@@ -63,13 +63,13 @@ Methods
 
 请求格式
 ```
-  POST /sms/Home/MessageRest
+  POST http://test.sms.base.gaodun.com/Home/MessageRest
    [
       phone => '18720085054', //多个手机号用,分隔
       app_id=> 'gd_course' //发送来源,
       msg => 发送的内容,
       channel_id => 3  发送渠道 默认3亿美 1阿里大鱼 2希奥 4益客 5发送猫
-      type  => '0',//用于阿里大鱼发送,来选择不同模板与签名1为注册验证 2为身份验证   阿里大鱼需要传递签名以及
+      type  => '0',//用于阿里大鱼发送,来选择不同模板与签名1为注册验证2为身份验证阿里大鱼需要传递签名以及
                    //短信模板ID，传入的模板必须是在阿里大鱼“管理中心-短信模板管理”中的可用模板。
                    //注册验证模板:验证码${code}，您正在注册成为${product}用户，感谢您的支持！
                    //身份验证模板:验证码${code}，您正在进行${product}身份验证，打死不要告诉别人哦！
@@ -79,7 +79,7 @@ Methods
    ]
  header [
    Accept: application/json
-   App-Id-Key: gd_demo_abcdef
+   App-Id-Key: gd_send_sms
    App-Timestamp: 212121
    App-Nonce: eewewew
    App-Signature: babc722817e366cf62f883e2b61532505c674920a
