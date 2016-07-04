@@ -99,11 +99,9 @@ Methods
 -------
 
 
-### getIndex
+### getIndex 请求提问列表
 
     mixed Home\Controller\QuestionRestController::getIndex()
-
-请求提问列表
 
 请求格式
 ```
@@ -134,77 +132,75 @@ Methods
      App-Nonce: jksfjkjf
      App-Signature: babc722817e366cf62f883e2b61532505c674920a
     ]
-```
+
 返回格式
-```
-[
-   status    => 0,//错误代码
-      info       => '',//错误信息
-   result   => [
-      questions => [
-            0=>[
-          'id' => '2',
-          'from_ask_id' => '0',
-          'admin_id' => '0',
-          'get_id' => '0',
-          'course_id' => '180',
-          'course_ware_id' => '2406',
-          'courseware_part_id' => '9865',
-          'class_id' => '0',
-          'student_id' => '2643',
-          'content' => 'Mail capabilities required? ',
-          'more_content' => NULL,
-          'status' => '0',
-          'regdate' => '1368353871',
-          'modifydate' => '0',
-          'is_display' => '0',
-          'click_count' => '0',
-          'inform_num' => '0',
-          'isdel' => '1',
-          'type' => '1',
-          'feedback_type' => '0',
-          'video_time' => '0',
-          'isreply' => '0',
-          'project_id' => '1',
-          'subject_id' => '61',
-          'file_url' => '',
-          'timage_url' => '',
-          'accept' => '0',
-          'is_view' => '0',
-          'ask_more_num' => '0',
-          'source' => '0',
-          'icid' => '0',
-          'answer_time' => '0',
-          'assign_time' => '0',
-          'accept_time' => '0',
-          'source_type' => NULL,
-          'sort' => NULL,
-          'is_top' => '0',
-          'custom_flag' => '0',
-          'item_id' => '0',
-          'big_course_id' => NULL,
-          'type_id' => NULL,
-            ]
-           1=>[...]
-           ...
-           ]
-         total=>102,//总数量
-         page=>1,//页码
-          ps=>10,每页数量
-       ]
-]
-```
 
-* Visibility: **public**
+	[
+	   status    => 0,//错误代码
+	      info       => '',//错误信息
+	   result   => [
+	      questions => [
+	            0=>[
+	          'id' => '2',
+	          'from_ask_id' => '0',
+	          'admin_id' => '0',
+	          'get_id' => '0',
+	          'course_id' => '180',
+	          'course_ware_id' => '2406',
+	          'courseware_part_id' => '9865',
+	          'class_id' => '0',
+	          'student_id' => '2643',
+	          'content' => 'Mail capabilities required? ',
+	          'more_content' => NULL,
+	          'status' => '0',
+	          'regdate' => '1368353871',
+	          'modifydate' => '0',
+	          'is_display' => '0',
+	          'click_count' => '0',
+	          'inform_num' => '0',
+	          'isdel' => '1',
+	          'type' => '1',
+	          'feedback_type' => '0',
+	          'video_time' => '0',
+	          'isreply' => '0',
+	          'project_id' => '1',
+	          'subject_id' => '61',
+	          'file_url' => '',
+	          'timage_url' => '',
+	          'accept' => '0',
+	          'is_view' => '0',
+	          'ask_more_num' => '0',
+	          'source' => '0',
+	          'icid' => '0',
+	          'answer_time' => '0',
+	          'assign_time' => '0',
+	          'accept_time' => '0',
+	          'source_type' => NULL,
+	          'sort' => NULL,
+	          'is_top' => '0',
+	          'custom_flag' => '0',
+	          'item_id' => '0',
+	          'big_course_id' => NULL,
+	          'type_id' => NULL,
+	            ]
+	           1=>[...]
+	           ...
+	           ]
+	         total=>102,//总数量
+	         page=>1,//页码
+	          ps=>10,每页数量
+	       ]
+	]
+	```
 
 
 
 
-### addAsk
+
+### addAsk 添加新问题
 
     mixed Home\Controller\QuestionRestController::addAsk()
 
-*  添加新问题
 ```
  POST  /care/home/ask
  form-param [
@@ -226,7 +222,7 @@ Methods
      position :来源为ft_college记录来源位置(选填)
      custom_flag : (选填)与source_type对应记录id,source_type为bbs时为bbs表的tid,ft_college时为财税表的id
 
-]
+		]
  header [
    Accept: application/json
    App-Id-Key: gd_care_partner
@@ -234,17 +230,17 @@ Methods
    App-Nonce: jksfjkjf
    App-Signature: babc722817e366cf62f883e2b61532505c674920a
  ]
-```
+
 返回格式
-```
-[
-   status    => 0,//错误代码
-   info       => '',//错误信息
-   result   => (int)id //新添加的主键id
+
+	[
+	   status    => 0,//错误代码
+	   info       => '',//错误信息
+	   result   => (int)id //新添加的主键id
+   ］
 
 ```
 
-* Visibility: **public**
 
 
 
@@ -267,148 +263,147 @@ Methods
    App-Nonce: jksfjkjf
    App-Signature: babc722817e366cf62f883e2b61532505c674920a
  ]
-```
+
 返回格式
-```
-[
-   status    => 0,//错误代码(160000为model验证错误)
-   info       => '',//错误信息
-   result   => [
-'id' => string '262968' (length=6)
-'from_ask_id' => string '0' (length=1)
-'admin_id' => string '1' (length=1)
-'get_id' => string '1' (length=1)
-'course_id' => string '42' (length=2)
-'course_ware_id' => string '15715' (length=5)
-'courseware_part_id' => string '80192' (length=5)
-'class_id' => string '0' (length=1)
-'student_id' => string '1694789' (length=7)
-'content' => string 'addask11111' (length=11)
-'more_content' => null
-'status' => string '1' (length=1)
-'regdate' => string '1467020233' (length=10)
-'modifydate' => string '1467022081' (length=10)
-'is_display' => string '0' (length=1)
-'click_count' => string '5' (length=1)
-'inform_num' => string '0' (length=1)
-'isdel' => string '0' (length=1)
-'type' => string '1' (length=1)
-'video_time' => string '0' (length=1)
-'project_id' => string '2' (length=1)
-'subject_id' => string '114' (length=3)
-'file_url' => string '' (length=0)
-'timage_url' => null
-'accept' => string '0' (length=1)
-'is_view' => string '0' (length=1)
-'ask_more_num' => string '1' (length=1)
-'source' => string '0' (length=1)
-'icid' => string '0' (length=1)
-'last_answer_time' => string '0' (length=1)
-'last_ask_time' => string '0' (length=1)
-'accept_time' => string '0' (length=1)
-'source_type' => null
-'sort' => string '0' (length=1)
-'is_top' => string '0' (length=1)
-'custom_flag' => string '0' (length=1)
-'item_id' => string '0' (length=1)
-'big_course_id' => null
-'type_id' => string '0' (length=1)
-'position' => null
-'current_zhui_num' => string '0' (length=1)
-'last_duration' => string '0' (length=1)
-'other_anwer' =>[ (其他回答,若无其他回答此值为空数组)
-0 =>
-array (size=17)
-'id' => string '65379' (length=5)
-'pid' => string '0' (length=1)
-'ask_id' => string '262968' (length=6)
-'student_id' => string '247004' (length=6)
-'content' => string 'connie<br />' (length=12)
-'status' => string '3' (length=1)
-'regdate' => string '1467022081' (length=10)
-'isdel' => string '0' (length=1)
-'isteach' => string '0' (length=1)
-'file_url' => string '' (length=0)
-'accept' => string '0' (length=1)
-'answer_id' => string '0' (length=1)
-'up_num' => string '0' (length=1)
-'custom_id' => null
-'recommendation' => null
-'modifydate' => string '0' (length=1)
-'is_display' => string '0' (length=1)
-]
 
-'answer' => [ (最佳回答及最佳回答的追问,追问回答列表)
-'id' => string '65376' (length=5)
-'pid' => string '0' (length=1)
-'ask_id' => string '262968' (length=6)
-'student_id' => string '1' (length=1)
-'content' => string '<p>老师的回答1</p>' (length=23)
-'status' => string '2' (length=1)
-'regdate' => string '1467020407' (length=10)
-'isdel' => string '0' (length=1)
-'isteach' => string '1' (length=1)
-'file_url' => null
-'accept' => string '1' (length=1)
-'answer_id' => string '0' (length=1)
-'up_num' => string '0' (length=1)
-'custom_id' => null
-'recommendation' => null
-'modifydate' => string '1467020407' (length=10)
-'is_display' => string '1' (length=1)
-'trace_list' =>[ (最佳回答的追问,追问回答列表,isteach=0表示追问,为1表示老师回答,已经按时间排序,顺序为追问,回答追问,追问,回答追问.....,如无追问此值为空数组[])
-0 =>
-array (size=17)
-'id' => string '65377' (length=5)
-'pid' => string '65376' (length=5)
-'ask_id' => string '262968' (length=6)
-'student_id' => string '1694789' (length=7)
-'content' => string '追问咯1' (length=10)
-'status' => string '0' (length=1)
-'regdate' => string '1467020465' (length=10)
-'isdel' => string '0' (length=1)
-'isteach' => string '0' (length=1)
-'file_url' => null
-'accept' => string '0' (length=1)
-'answer_id' => string '0' (length=1)
-'up_num' => string '0' (length=1)
-'custom_id' => null
-'recommendation' => null
-'modifydate' => string '0' (length=1)
-'is_display' => string '0' (length=1)
-1 =>
-array (size=17)
-'id' => string '65378' (length=5)
-'pid' => string '65376' (length=5)
-'ask_id' => string '262968' (length=6)
-'student_id' => string '1' (length=1)
-'content' => string '<p>回答追问1</p>' (length=20)
-'status' => string '2' (length=1)
-'regdate' => string '1467021815' (length=10)
-'isdel' => string '0' (length=1)
-'isteach' => string '1' (length=1)
-'file_url' => null
-'accept' => string '0' (length=1)
-'answer_id' => string '0' (length=1)
-'up_num' => string '0' (length=1)
-'custom_id' => null
-'recommendation' => null
-'modifydate' => string '1467021815' (length=10)
-'is_display' => string '1' (length=1)
-
-]
-```
-
-* Visibility: **public**
+	[
+	   status    => 0,//错误代码(160000为model验证错误)
+	   info       => '',//错误信息
+	   result   => [
+			'id' => string '262968' (length=6)
+			'from_ask_id' => string '0' (length=1)
+			'admin_id' => string '1' (length=1)
+			'get_id' => string '1' (length=1)
+			'course_id' => string '42' (length=2)
+			'course_ware_id' => string '15715' (length=5)
+			'courseware_part_id' => string '80192' (length=5)
+			'class_id' => string '0' (length=1)
+			'student_id' => string '1694789' (length=7)
+			'content' => string 'addask11111' (length=11)
+			'more_content' => null
+			'status' => string '1' (length=1)
+			'regdate' => string '1467020233' (length=10)
+			'modifydate' => string '1467022081' (length=10)
+			'is_display' => string '0' (length=1)
+			'click_count' => string '5' (length=1)
+			'inform_num' => string '0' (length=1)
+			'isdel' => string '0' (length=1)
+			'type' => string '1' (length=1)
+			'video_time' => string '0' (length=1)
+			'project_id' => string '2' (length=1)
+			'subject_id' => string '114' (length=3)
+			'file_url' => string '' (length=0)
+			'timage_url' => null
+			'accept' => string '0' (length=1)
+			'is_view' => string '0' (length=1)
+			'ask_more_num' => string '1' (length=1)
+			'source' => string '0' (length=1)
+			'icid' => string '0' (length=1)
+			'last_answer_time' => string '0' (length=1)
+			'last_ask_time' => string '0' (length=1)
+			'accept_time' => string '0' (length=1)
+			'source_type' => null
+			'sort' => string '0' (length=1)
+			'is_top' => string '0' (length=1)
+			'custom_flag' => string '0' (length=1)
+			'item_id' => string '0' (length=1)
+			'big_course_id' => null
+			'type_id' => string '0' (length=1)
+			'position' => null
+			'current_zhui_num' => string '0' (length=1)
+			'last_duration' => string '0' (length=1)
+			'other_anwer' =>[ (其他回答,若无其他回答此值为空数组)
+					0 =>
+					array (size=17)
+					'id' => string '65379' (length=5)
+					'pid' => string '0' (length=1)
+					'ask_id' => string '262968' (length=6)
+					'student_id' => string '247004' (length=6)
+					'content' => string 'connie<br />' (length=12)
+					'status' => string '3' (length=1)
+					'regdate' => string '1467022081' (length=10)
+					'isdel' => string '0' (length=1)
+					'isteach' => string '0' (length=1)
+					'file_url' => string '' (length=0)
+					'accept' => string '0' (length=1)
+					'answer_id' => string '0' (length=1)
+					'up_num' => string '0' (length=1)
+					'custom_id' => null
+					'recommendation' => null
+					'modifydate' => string '0' (length=1)
+					'is_display' => string '0' (length=1)
+					]
+	
+			'answer' => [ (最佳回答及最佳回答的追问,追问回答列表)
+			'id' => string '65376' (length=5)
+			'pid' => string '0' (length=1)
+			'ask_id' => string '262968' (length=6)
+			'student_id' => string '1' (length=1)
+			'content' => string '<p>老师的回答1</p>' (length=23)
+			'status' => string '2' (length=1)
+			'regdate' => string '1467020407' (length=10)
+			'isdel' => string '0' (length=1)
+			'isteach' => string '1' (length=1)
+			'file_url' => null
+			'accept' => string '1' (length=1)
+			'answer_id' => string '0' (length=1)
+			'up_num' => string '0' (length=1)
+			'custom_id' => null
+			'recommendation' => null
+			'modifydate' => string '1467020407' (length=10)
+			'is_display' => string '1' (length=1)
+			'trace_list' =>[ (最佳回答的追问,追问回答列表,isteach=0表示追问,为1表示老师回答,已经按时间排序,顺序为追问,回答追问,追问,回答追问.....,如无追问此值为空数组[])
+				0 =>
+				array (size=17)
+				'id' => string '65377' (length=5)
+				'pid' => string '65376' (length=5)
+				'ask_id' => string '262968' (length=6)
+				'student_id' => string '1694789' (length=7)
+				'content' => string '追问咯1' (length=10)
+				'status' => string '0' (length=1)
+				'regdate' => string '1467020465' (length=10)
+				'isdel' => string '0' (length=1)
+				'isteach' => string '0' (length=1)
+				'file_url' => null
+				'accept' => string '0' (length=1)
+				'answer_id' => string '0' (length=1)
+				'up_num' => string '0' (length=1)
+				'custom_id' => null
+				'recommendation' => null
+				'modifydate' => string '0' (length=1)
+				'is_display' => string '0' (length=1)
+				1 =>
+				array (size=17)
+				'id' => string '65378' (length=5)
+				'pid' => string '65376' (length=5)
+				'ask_id' => string '262968' (length=6)
+				'student_id' => string '1' (length=1)
+				'content' => string '<p>回答追问1</p>' (length=20)
+				'status' => string '2' (length=1)
+				'regdate' => string '1467021815' (length=10)
+				'isdel' => string '0' (length=1)
+				'isteach' => string '1' (length=1)
+				'file_url' => null
+				'accept' => string '0' (length=1)
+				'answer_id' => string '0' (length=1)
+				'up_num' => string '0' (length=1)
+				'custom_id' => null
+				'recommendation' => null
+				'modifydate' => string '1467021815' (length=10)
+				'is_display' => string '1' (length=1)
+				
+			]
+			```
 
 
 
 
-### traceAsk
+
+### traceAsk 追问
 
     mixed Home\Controller\QuestionRestController::traceAsk()
 
-追问
+
 ```
  GET  /care/home/trace
  form-param [
@@ -423,27 +418,27 @@ array (size=17)
    App-Nonce: jksfjkjf
    App-Signature: babc722817e366cf62f883e2b61532505c674920a
  ]
-```
+
 
 返回格式
-```
+
 [
    status    => 0,//错误代码(160000为model验证错误)
    info       => '',//错误信息
    result   => (int)id //追问的id
-
+］
 ```
 
-* Visibility: **public**
 
 
 
 
-### answer
+
+### answer 学生回复问题
 
     mixed Home\Controller\QuestionRestController::answer()
 
-学生回复问题
+
 ```
  POST  /care/home/answer
  form-param [
@@ -461,17 +456,16 @@ array (size=17)
    App-Nonce: jksfjkjf
    App-Signature: babc722817e366cf62f883e2b61532505c674920a
  ]
-```
+
 返回格式
-```
-[
+	[
    status    => 0,//错误代码
    info       => '',//错误信息
    result   => (int)id //新添加的主键id
+   ］
 
 ```
 
-* Visibility: **public**
 
 
 
@@ -512,34 +506,5 @@ _initialize
 
 
 
-* Visibility: **public**
-* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
-
-
-#### Arguments
-* $method **mixed**
-* $args **mixed**
-
-
-
-### display
-
-    void Home\Controller\BaseRestController::display(string $templateFile, string $charset, string $contentType, string $content, string $prefix)
-
-模板显示 调用内置的模板引擎显示方法，
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
-
-
-#### Arguments
-* $templateFile **string** - &lt;p&gt;指定要调用的模板文件
-默认为空 由系统自动定位模板文件&lt;/p&gt;
-* $charset **string** - &lt;p&gt;输出编码&lt;/p&gt;
-* $contentType **string** - &lt;p&gt;输出类型&lt;/p&gt;
-* $content **string** - &lt;p&gt;输出内容&lt;/p&gt;
-* $prefix **string** - &lt;p&gt;模板缓存前缀&lt;/p&gt;
 
 
