@@ -90,6 +90,63 @@ Methods
 
 
 
+### getIndex
+
+    mixed Home\Controller\WareRestController::getIndex()
+
+获取课件列表
+
+请求格式
+```
+  GET  /course/Home/WareRest
+ header [
+   Accept: application/json
+   App-Id-Key: gd_course_epiphany
+   App-Timestamp:  1460697000
+   App-Nonce: 3Rg5UE3OxO
+   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+ ]
+```
+返回格式
+```
+[
+    'err_no'   => '', //错误代码
+    'err_msg'  => '', //错误信息
+    'result'  => {
+         "id": "523",
+         "course_id_bak": "27",
+         "series_id_bak": "0",
+         "name": "Pilot paper-1",
+         "summary": "",
+         "ppt": "",
+         "ppturl": "",
+         "ppt2": "",
+         "ppt2url": "",
+         "paper": "0",
+         "uploadtime": "1336220051",
+         "keypoint_ids": "",
+         "sortid_bak": "1",
+         "task_id": null,
+         "status": "0",
+         "type": "0",
+         "difficulty": "1",
+         "major": "1",
+         "duration": "1",
+         "listentest": "0",
+         "modifydate": "0",
+         "study_time": "0",
+         "coursemodule_id_bak": "0",
+         "project_id": "0",
+         "subject_id": "0"
+       }
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
 ### _initialize
 
     mixed Home\Controller\BaseRestController::_initialize()

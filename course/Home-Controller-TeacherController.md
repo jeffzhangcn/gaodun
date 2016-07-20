@@ -1,7 +1,7 @@
 Home\Controller\TeacherController
 ===============
 
-
+TeacherController
 
 
 
@@ -57,11 +57,57 @@ Methods
 
 ### get
 
-    mixed Home\Controller\TeacherController::get($id)
+    mixed Home\Controller\TeacherController::get(mixed $id)
+
+老师信息
+
+请求格式
+
+```
+ GET  /course/Home/Teacher/1
+ header [
+   Accept: application/json
+   App-Id-Key: gd_teacher
+   App-Timestamp: 1
+   App-Nonce: 1
+   App-Signature: b561244fca99a87783fb3cbf29ce294e35607634
+ ]
+
+```
 
 
 
+返回格式
 
+```
+ "status": 0,
+ "info": "",
+ "result": [
+  '5':{
+      "id": "5",
+      "user_email": "zhoufei@gaodun.com",
+      "name": "周老师",
+      "sex": "2",
+      "brithday": "0",
+      "address": "",
+      "phone": "",
+      "school": "",
+      "qq": "",
+      "project_id": "9",
+      "subject_id": "",
+      "desc": "10年证券行业资产管理业务经验，5年证券从业资格培训经验，《证券市场基础知识--“知识源”》主编，授课基本功底扎实，授课细致，重难点娓娓道来，授课一次性通过率达95%以上。",
+      "photo": "Teacher/2013/09/03/4f8dac2bd3465.jpg",
+      "video": "",
+      "sortid": "42",
+      "group_id": "1",
+      "iscomment": "1",
+      "member_id": "30",
+      "isdel": "0",
+      "titles": ""
+  }
+]
+
+```
 
 * Visibility: **public**
 

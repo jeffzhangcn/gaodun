@@ -1,4 +1,4 @@
-Home\Controller\MessageRestController
+Home\Controller\SessionRestController
 ===============
 
 
@@ -6,7 +6,7 @@ Home\Controller\MessageRestController
 
 
 
-* Class name: MessageRestController
+* Class name: SessionRestController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
@@ -55,28 +55,18 @@ Methods
 -------
 
 
-### post
+### get
 
-    mixed Home\Controller\MessageRestController::post()
+    mixed Home\Controller\SessionRestController::get($name)
 
-发送短信
+根据SessionId获取Session内容
 
 请求格式
 ```
-  POST http://test.sms.base.gaodun.com/Home/MessageRest
-   [
-      phone => '18720085054', //多个手机号用,分隔
-      app_id=> 'gd_course' //发送来源,
-      type=>'0';// 0 默认为实时短信例如收验证码,1为通知消息
-      msg=>'您的验证码为123456.'; //发送内容
-      code=>'123456' //验证码
-      channel_id => 3  发送渠道 默认3亿美 1阿里大鱼 2希奥 4益客 5发送猫
-      ip=>127.0.0.1  //客户端ip
-      agent => '' // 客户端UA HTTP_USER_AGENT
-   ]
+  GET  /passport/SessionRest/11
  header [
    Accept: application/json
-   App-Id-Key: gd_send_sms
+   App-Id-Key: gd_passport_epiphany
    App-Timestamp: 212121
    App-Nonce: eewewew
    App-Signature: babc722817e366cf62f883e2b61532505c674920a
@@ -84,28 +74,92 @@ Methods
 ```
 返回格式
 ```
-     [
-         'status'   => '', //错误代码
-         'info'  => '', //错误信息
-         'result'  => 1, // å
+[
+    'err_no'   => '', //错误代码
+    'err_msg'  => '', //错误信息
+    'resut'  => [
+         {
+         }
      ]
 ```
 
 * Visibility: **public**
 
 
-
-
-### getIndex
-
-    mixed Home\Controller\MessageRestController::getIndex()
+#### Arguments
+* $name **mixed**
 
 
 
+### delete
 
+    mixed Home\Controller\SessionRestController::delete($name)
+
+根据Sessionid删除session
+
+请求格式
+```
+ DELETE  /passport/SessionRest/11
+ header [
+   Accept: application/json
+   App-Id-Key: gd_passport_epiphany
+   App-Timestamp: 212121
+   App-Nonce: eewewew
+   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+ ]
+```
+返回格式
+```
+[
+    'err_no'   => '', //错误代码
+    'err_msg'  => '', //错误信息
+    'resut'  => [
+         {
+         }
+     ]
+```
 
 * Visibility: **public**
 
+
+#### Arguments
+* $name **mixed**
+
+
+
+### put
+
+    mixed Home\Controller\SessionRestController::put($name)
+
+根据SessionId获取修改session
+
+请求格式
+```
+  PUT  /passport/SessionRest/11
+ header [
+   Accept: application/json
+   App-Id-Key: gd_passport_epiphany
+   App-Timestamp: 212121
+   App-Nonce: eewewew
+   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+ ]
+```
+返回格式
+```
+[
+    'err_no'   => '', //错误代码
+    'err_msg'  => '', //错误信息
+    'resut'  => [
+         {
+         }
+     ]
+```
+
+* Visibility: **public**
+
+
+#### Arguments
+* $name **mixed**
 
 
 
@@ -125,9 +179,9 @@ _initialize
 
 ### __call
 
-    mixed Home\Controller\BaseRestController::__call($method, $args)
+    mixed Home\Controller\BaseRestController::__call(mixed $method, mixed $args)
 
-
+__call
 
 
 
@@ -160,3 +214,5 @@ _initialize
 * $contentType **string** - &lt;p&gt;输出类型&lt;/p&gt;
 * $content **string** - &lt;p&gt;输出内容&lt;/p&gt;
 * $prefix **string** - &lt;p&gt;模板缓存前缀&lt;/p&gt;
+
+

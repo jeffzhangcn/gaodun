@@ -1,4 +1,4 @@
-Home\Controller\BaseRestController
+Home\Controller\MemberRestController
 ===============
 
 
@@ -6,9 +6,9 @@ Home\Controller\BaseRestController
 
 
 
-* Class name: BaseRestController
+* Class name: MemberRestController
 * Namespace: Home\Controller
-* Parent class: Think\Controller\RestController
+* Parent class: [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
 
 
@@ -55,6 +55,43 @@ Methods
 -------
 
 
+### getIndex
+
+    mixed Home\Controller\MemberRestController::getIndex()
+
+根据student_id 获取头像和基本信息
+
+请求格式
+```
+  GET  /passport/MemberRest/?act=xxx&student_id=xxx
+  getMulti 批量获取
+ header [
+   Accept: application/json
+   App-Id-Key: gd_passport_epiphany
+   App-Timestamp: 212121
+   App-Nonce: eewewew
+   App-Signature: babc722817e366cf62f883e2b61532505c674920a
+ ]
+```
+返回格式
+```
+[
+    'err_no'   => '', //错误代码
+    'err_msg'  => '', //错误信息
+    'resut'  => [
+      1749446 =>
+         array (
+            'profile' => '/share/v/Uploads/avatar/default.jpg',
+            'nickname' => 'liugj',
+         ),
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
 ### _initialize
 
     mixed Home\Controller\BaseRestController::_initialize()
@@ -64,19 +101,21 @@ _initialize
 
 
 * Visibility: **public**
+* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
 
 
 
 ### __call
 
-    mixed Home\Controller\BaseRestController::__call($method, $args)
+    mixed Home\Controller\BaseRestController::__call(mixed $method, mixed $args)
 
-
+__call
 
 
 
 * Visibility: **public**
+* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
 
 #### Arguments
@@ -94,6 +133,7 @@ _initialize
 
 
 * Visibility: **protected**
+* This method is defined by [Home\Controller\BaseRestController](Home-Controller-BaseRestController.md)
 
 
 #### Arguments

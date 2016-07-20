@@ -63,7 +63,7 @@ Methods
 
 请求格式
 ```
-  GET  /course/Home/CourseSyllabusRest/?course_id=11&level=2&syllabus_id=xx
+  GET  /course/Home/CourseSyllabusRest/?course_id=11&level=2&syllabus_id=xx&act=getWareByCourseId
  header [
    Accept: application/json
    App-Id-Key: gd_demo_abcdef
@@ -77,7 +77,7 @@ Methods
 [
     'err_no'   => '', //错误代码
     'err_msg'  => '', //错误信息
-    'resut'  => [
+    'result'  => [
        syllabus:[
          {
           "id": "1290",
