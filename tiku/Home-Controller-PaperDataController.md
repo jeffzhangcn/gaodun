@@ -1,76 +1,19 @@
 Home\Controller\PaperDataController
 ===============
 
-
+用户试卷
 
 
 
 
 * Class name: PaperDataController
 * Namespace: Home\Controller
-* Parent class: [Home\Controller\CommonController](Home-Controller-CommonController.md)
+* Parent class: Home\Controller\CommonController
 
 
 
 
 
-Properties
-----------
-
-
-### $_requestArray
-
-    private mixed $_requestArray = array()
-
-
-
-
-
-* Visibility: **private**
-
-
-### $allowMethod
-
-    protected string $allowMethod = array('get', 'post', 'put', 'delete')
-
-allowMethod
-
-
-
-* Visibility: **protected**
-
-
-### $allowType
-
-    protected string $allowType = array('html', 'xml', 'json')
-
-allowType
-
-
-
-* Visibility: **protected**
-
-
-### $defaultType
-
-    protected string $defaultType = 'json'
-
-defaultType
-
-
-
-* Visibility: **protected**
-
-
-### $_isDec
-
-    protected mixed $_isDec = true
-
-
-
-
-
-* Visibility: **protected**
 
 
 Methods
@@ -111,12 +54,14 @@ Methods
 ```
   POST  /tiku/paperData
 ```
+
 请求参数
 ```
  string type_flag    point 根据知识点创建，paper根据试卷id创建
  int student_id      学生ID
  string source       来源
- string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
+ string other_attribute 其他属性(默认无) 用英文逗号分割
+        (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
  ---------by 【paper】--------------
  int paper_id        试卷ID（母卷）
  ---------by 【point】--------------
@@ -178,10 +123,14 @@ Methods
                                  "yanswer": "答案",//交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
-                                 "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "answerAnalysis":"题目解析",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "favorite": "是否收藏",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "knowledge_point_tag": "[知识点标签]",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "notenum": "笔记数量",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
                                  "sonitem": [
                                    {
                                        "ID": "题目顺序",
@@ -194,13 +143,18 @@ Methods
                                        "sorts": "顺序",
                                        "link_ExamID": "关联题目",
                                        "partnum": "4",
-                                       "yanswer": "", //交卷之后提供正确答案
+                                       "yanswer": "",
+                                         //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
-                                       "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "answerAnalysis":"题目解析",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "favorite": "是否收藏",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "knowledge_point_tag": "[知识点标签]",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "notenum": "0"
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
                                   },
                              ],
                          },
@@ -245,7 +199,8 @@ Methods
 请求参数
 ```
  int student_id 学生ID
- string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
+ string other_attribute 其他属性(默认无)，用英文逗号分割
+         (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
  string source       来源
 ```
 
@@ -289,13 +244,18 @@ Methods
                                  "sorts": "排序",
                                  "link_ExamID": "",
                                  "partnum": "选项数量",
-                                 "yanswer": "答案",//交卷之后、已经做过提供正确答案
+                                 "yanswer": "答案",
+                                     //交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
-                                 "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "answerAnalysis":"题目解析",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "favorite": "是否收藏",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "knowledge_point_tag": "[知识点标签]",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "notenum": "笔记数量",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
                                  "sonitem": [
                                    {
                                        "ID": "题目顺序",
@@ -311,10 +271,14 @@ Methods
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
-                                       "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "answerAnalysis":"题目解析",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "favorite": "是否收藏",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "knowledge_point_tag": "[知识点标签]",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "notenum": "0"
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
                                   },
                              ],
                          },
@@ -355,7 +319,9 @@ Methods
 请求参数
 ```
  int student_id 学生ID
- string field 需要题目的属性字段 当submit_type为3时有用，允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','answer'
+ string field 需要题目的属性字段 当submit_type为3时有用，允许的参数为：
+     'title','option','partnum','icid','type','analysis','pid','rightnum',
+     'wrongnum','finishnum','favoritenum','isvideo','videoa','flag','answer'
  string source       来源
  json data 交卷信息,格式化之后：
                      [
@@ -380,8 +346,8 @@ Methods
              'hasSubmitItemInfo'=>[ //当submit_type为3时，存在
                  [
                      "88956" =>[
-                         "title": "会计法律制度是调整（&nbsp;&nbsp;&nbsp;&nbsp;）的各种法律、法规、规章和规范性文件的总称。",
-                         "option": "<p>A. 经济关系&nbsp;&nbsp;&nbsp;</p><p>B. 会计关系&nbsp;</p><p>C. 会计机构、会计人员在办理会计事务过程中发生的经济关系&nbsp;</p><p>D. 国家在监管会计工作中发生的经济关系</p>",
+                         "title": "会计法律制度是调整的各种法律、法规、...",
+                         "option": "A. 经济关系B. 会计关系C. 会计机构D. 国家在监管会计",
                          "answer": "B",
                          "item_id": 88956
                         ]
@@ -427,7 +393,8 @@ Methods
  string source 来源
  int is_repeat_exam 重做 1 //todo
  string source       来源
- string other_attribute 其他属性(默认无)，用英文逗号分割(favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
+ string other_attribute 其他属性(默认无)，用英文逗号分割
+        (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
 ```
 
 返回格式
@@ -473,10 +440,14 @@ Methods
                                  "yanswer": "答案",// 交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
-                                 "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
-                                 "notenum": "笔记数量" // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "answerAnalysis":"题目解析",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "favorite": "是否收藏",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "knowledge_point_tag": "[知识点标签]",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "notenum": "笔记数量",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
                                  "sonitem": [
                                    {
                                        "ID": "题目顺序",
@@ -492,10 +463,14 @@ Methods
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
-                                       "answerAnalysis":"题目解析", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "favorite": "是否收藏", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "knowledge_point_tag": "[知识点标签]", // 根据请求参数other_attribute确定自己是否需要该属性
-                                       "notenum": "0" // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "answerAnalysis":"题目解析",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "favorite": "是否收藏",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "knowledge_point_tag": "[知识点标签]",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "notenum": "0"
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
                                   },
                              ],
                          },
@@ -523,15 +498,15 @@ Methods
 
 
 
-### submitPaperOnlyOneItem
+### testReport
 
-    \Home\Controller\json Home\Controller\PaperDataController::submitPaperOnlyOneItem()
+    \Home\Controller\json Home\Controller\PaperDataController::testReport()
 
-交卷一题一题交卷判断，并且返回答案等等
+用户测试报告
 
 请求格式
 ```
-  POST  /tiku/paperData/submitPaperOnlyOneItem
+  get  /tiku/paperData/testReport
 ```
 
 返回格式
@@ -540,251 +515,88 @@ Methods
          'status'   => '提示码',
          'info'  => '提示信息',
          'result'  => [
-
+             "id": "2951540", // 用户试卷ID
+             "student_id": "8", // 学生ID
+             "paper_id": "3891", // 试卷ID
+             "runtime": "3", //用时（秒）
+             "score": "50", // 得分
+             "paper_data": [
+                 {
+                     "id": 0, // 序号
+                     "type": "1", // "大题类型"，试卷才有 ，其他为0。1单选、2多选、3判断题、4填空题，5综合题、7不定向
+                     "len": 2, // 题目数量
+                     "lens": 2, // 累计题目数量
+                     "examtype": "单选题", // 题目
+                     "pdata": [
+                                 "ID": '1',
+                                 "ExamID": "题目ID",
+                                 "userAnswer": "用户答案",
+                                 "scoreses": "分数",
+                                 "userScore": "用户分数",
+                                 "istrue": "是否正确",
+                                 "type": "题目类型",
+                                 "sorts": "排序",
+                                 "link_ExamID": "",
+                                 "partnum": "选项数量",
+                                 "yanswer": "答案",// 交卷之后、已经做过提供正确答案
+                                 "title": "题目题干",
+                                 "option": "题目选项",
+                                 "sonitem": [
+                                   {
+                                       "ID": "题目顺序",
+                                       "ExamID": "题目ID",
+                                       "userAnswer": "用户答案",
+                                       "scoreses": "分数",
+                                       "userScore": "用户分值",
+                                       "istrue": "是否正确",
+                                       "type": "题目类型",
+                                       "sorts": "顺序",
+                                       "link_ExamID": "关联题目",
+                                       "partnum": "4",
+                                       "yanswer": "", //交卷之后提供正确答案
+                                       "title": "题目题干",
+                                       "option": "题目选项",
+                                  },
+                     ],
+                     "istrue": 1,// 大题答对题目数量
+                     "usertypesocre": 50, // 个人大题得分
+                     "typesocre": 100, // 大题总分
+                     "typepercentum": 50 // 得分比
+                 }
+             ],
+             "regdate": "1468976427", // 考试开始时间
+             "status": "1", // 试卷状态：1交卷
+             "subject_id": "26",// 项目ID
+             "project_id": "4", // 科目ID
+             "type": "3", // 试卷类型
+             "itemcount": "2", // 题目数量
+             "modifydate": "1468976434", // 交卷时间
+             "report": {
+                 "avgnum": 25, // 平均分
+                 "jb": 100, //击败率
+                 "pnum": 1, // 排名
+                 "title": "一级：任务制网课（持证无忧计划）-SS8：Financial Reporting and Analysis：The Income Statement, Balance Sheet, and Cash ", // 试卷名称
+                 "source": "高顿网校", // 来源
+                 "score": "100", // 试卷总分
+                 "passscore": "60", // 及格分
+                 "highest": "50", // 最高分
+                 "doPopleNum": "2", // 答题人总数
+                 "takes": "120", // 考试推荐时长
+                 "userScore": "50" // 个人得分
+             }
             ]
      ]
 ```
 
-* Visibility: **public**
-
-
-
-
-### _initialize
-
-    mixed Home\Controller\BaseController::_initialize()
-
-_initialize
-
-
+返回码说明
+```
+ [
+     '请求成功' => '00000000',
+     '无此用户试卷' => '1101300',
+ ]
+```
 
 * Visibility: **public**
-* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
 
-
-
-
-### _handleParameters
-
-    mixed Home\Controller\CommonController::_handleParameters()
-
-处理参数
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
-
-
-
-
-### _getParam
-
-    mixed Home\Controller\CommonController::_getParam($name, $default)
-
-
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
-
-
-#### Arguments
-* $name **mixed**
-* $default **mixed**
-
-
-
-### _getFormParam
-
-    mixed Home\Controller\CommonController::_getFormParam($name, $default)
-
-
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
-
-
-#### Arguments
-* $name **mixed**
-* $default **mixed**
-
-
-
-### getAllParam
-
-    mixed Home\Controller\CommonController::getAllParam()
-
-
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
-
-
-
-
-### _getListCommonParam
-
-    mixed Home\Controller\CommonController::_getListCommonParam()
-
-获取列表共有参数
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
-
-
-
-
-### delDirAndFile
-
-    mixed Home\Controller\CommonController::delDirAndFile($dirName, $root)
-
-
-
-
-
-* Visibility: **public**
-* This method is defined by [Home\Controller\CommonController](Home-Controller-CommonController.md)
-
-
-#### Arguments
-* $dirName **mixed**
-* $root **mixed**
-
-
-
-### __call
-
-    mixed Home\Controller\BaseController::__call($method, $args)
-
-
-
-
-
-* Visibility: **public**
-* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
-
-
-#### Arguments
-* $method **mixed**
-* $args **mixed**
-
-
-
-### display
-
-    void Home\Controller\BaseController::display(string $templateFile, string $charset, string $contentType, string $content, string $prefix)
-
-模板显示 调用内置的模板引擎显示方法，
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
-
-
-#### Arguments
-* $templateFile **string** - &lt;p&gt;指定要调用的模板文件
-默认为空 由系统自动定位模板文件&lt;/p&gt;
-* $charset **string** - &lt;p&gt;输出编码&lt;/p&gt;
-* $contentType **string** - &lt;p&gt;输出类型&lt;/p&gt;
-* $content **string** - &lt;p&gt;输出内容&lt;/p&gt;
-* $prefix **string** - &lt;p&gt;模板缓存前缀&lt;/p&gt;
-
-
-
-### _responseSuccess
-
-    mixed Home\Controller\BaseController::_responseSuccess($result)
-
-请求成功响应
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
-
-
-#### Arguments
-* $result **mixed**
-
-
-
-### _response
-
-    mixed Home\Controller\BaseController::_response($data, $type, $code)
-
-响应
-
-
-
-* Visibility: **protected**
-* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
-
-
-#### Arguments
-* $data **mixed**
-* $type **mixed**
-* $code **mixed**
-
-
-
-### appException
-
-    mixed Home\Controller\BaseController::appException(mixed $e)
-
-appException
-
-
-
-* Visibility: **public**
-* This method is **static**.
-* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
-
-
-#### Arguments
-* $e **mixed**
-
-
-
-### halt
-
-    mixed Home\Controller\BaseController::halt($error)
-
-
-
-
-
-* Visibility: **public**
-* This method is **static**.
-* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
-
-
-#### Arguments
-* $error **mixed**
-
-
-
-### _empty
-
-    mixed Home\Controller\BaseController::_empty(String $name)
-
-
-
-
-
-* Visibility: **public**
-* This method is defined by [Home\Controller\BaseController](Home-Controller-BaseController.md)
-
-
-#### Arguments
-* $name **String**
 
 
