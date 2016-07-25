@@ -1,4 +1,4 @@
-Home\Controller\PaperController
+Home\Controller\PaperModulePathController
 ===============
 
 
@@ -6,7 +6,7 @@ Home\Controller\PaperController
 
 
 
-* Class name: PaperController
+* Class name: PaperModulePathController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\CommonController](Home-Controller-CommonController.md)
 
@@ -79,204 +79,52 @@ Methods
 
 ### getIndex
 
-    \Home\Controller\json Home\Controller\PaperController::getIndex()
+    \Home\Controller\json Home\Controller\PaperModulePathController::getIndex()
 
-获取试卷列表
+获取必须做模块列表
 
 请求格式
 ```
-GET /tiku/paper
+  GET  /tiku/paperModulePath
 ```
 
 请求参数
 ```
-string combine // 条件查询组合，可用组合[se](待续)
-       说明：
-       se:['subject_id','etype']
-json   condition  //根据查询组合，给出对于组合参数
-       说明：
-       {"subject_id":28,"etype":1} => se
-string field //获取字段：id,title,subject_id,etype,status,source,score,passscore,takes
-string student_id //学生ID，如果传学生ID，将返回该学生答试卷信息，默认-1
-string is_need_other_attribute //是否需要其他属性，试卷的最高分，答题人数，平均分
-string is_need_page //是否需要分页，y需要，n不需要 (默认不需要)
-string source 来源，如果是app的必传
-int page //页数
-int offset //偏移量
-string order // 排序 默认：sortid
-string group //分组 (待续)
+ int paper_id        试卷ID
+ string is_need_page 是否需要分页，'y'为需要,'n'为不需要
+ int page            第几页，默认为1
+ int offset          每页记录条数，默认为10，最大为25条
+ string order        例如：'id desc'
+ string source       APP来源,默认为'web'
+ string field        查询的字段名,默认为id,paper_id,answer,category_module,subject_id,project_id
+                     可以查询的有id,paper_id,answer,category_module,subject_id,project_id
 ```
 
 返回格式
 ```
-{
-    'status'   => '返回码',
-    'info'  => '提示信息',
-    'result': [
-        {
-            "id": "3434", // 试卷ID
-            "title": "会计基础真题试卷一（2015真题）", // 试卷标题
-            "subject_id": "28", // 科目ID
-            "etype": "1", // 试卷类型：1、真题 2、模拟组考 3、小测 4、模拟机考 5、收费试卷 6、密卷-用于收费试卷 7、学前测试 8、必做题 9、学前路径测试
-            "status": "0",// 试卷状态
-            "source": "高顿网校", // 来源
-            "score": "100", // 总分
-            "passscore": "60", // 及格分
-            "takes": "60", // 答题时间
-            "pdid": "2950369", // 学生生成试卷ID
-            "isexam": "0", // 学生答题状态：999：未开始，0：为答完，1：作答完成
-            "student_score": "0", // 学生得分
-            "student_regdate": "1463648074", // 学生试卷生成时间
-            "student_modifydate": "1463648074", // 学生交卷试卷
-            "num": "4", // 做卷子学员数
-            "average": 7, // 平均分
-            "highest_score": "20" // 最高分
-        }
-    ]
-}
-```
-
-* Visibility: **public**
-
-
-
-
-### post
-
-    \Home\Controller\json Home\Controller\PaperController::post()
-
-插入试卷
-
-请求格式
-```
-  POST  /tiku/paper
-```
-返回格式
-```php
      [
-          'status'   => '返回码',
-          'info'  => '提示信息',
-          'resut'  => []
+         'status'   => '提示码',
+         'info'  => '提示信息',
+         'result' => [
+             "id": "必须做模块ID ",
+             "paper_id": "试卷ID",
+             "answer": "答案", // 字符串，以逗号分隔
+             "category_module": "必须做模块ID", // 字符串，以逗号分隔
+             "subject_id": "科目ID",
+             "project_id": "项目ID"
+         ]
 
      ]
 ```
-提示码说明
+
+返回码说明
 ```
 [
      '请求成功' => 00000000,
-     '参数错误'=> 11000002,
-     '数据错误' => 11013001,
-     '试卷无权限' => 11013002,
-     '生成试卷失败' => 11013003,
-     '生成试卷失败' => 11013004,
+     '参数错误'=> 11000005,
+     '没有数据' => 11013501,
+     '没有更多数据' => 11013502,
 ]
-```
-请求参数
-```
- string $type_flag    point 根据知识点创建，paper根据试卷id创建
- int $student_id      学生ID
- string $source       来源
- ---------by 【paper】--------------
- int $paper_id        试卷ID（母卷）
- ---------by 【point】--------------
- string $etype        试卷类型1智能，2知识点，3真题，4组卷
- string $projectId    项目id
- string $subjectId    科目id
- string $icids        知识点集合
- string $num          选题总数
- string $type         0新题目，1已做题目
- string $items_type   0随机，1单选，2多选，3判断题，4简答题，5综合
- string $rank         难易度
- string $mark         标识存储过程的执行（与效率有关）
- string $pid          试卷id
- string $from         来源  1favorite，2error
- string $source       APP来源
- string $sessionId    sessionId
- string $liveType     0正常生成题目， 1实时解析
-```
-
-* Visibility: **public**
-
-
-
-
-### get
-
-    array Home\Controller\PaperController::get(string $name)
-
-获取一张试卷
-
-请求格式
-```
-  GET  /tiku/paper/1
-```
-返回格式
-```
-     [
-         'status'   => '返回码',
-         'info'  => '提示信息',
-         'resut'  => [
-
-            ]
-     ]
-```
-
-* Visibility: **public**
-
-
-#### Arguments
-* $name **string** - &lt;p&gt;用户试卷ID&lt;/p&gt;
-
-
-
-### put
-
-    \Home\Controller\json Home\Controller\PaperController::put($name)
-
-更新试卷
-
-请求格式
-```
-  PUT  /tiku/paper
-```
-返回格式
-```
-     [
-         'status'   => '返回码',
-         'info'  => '提示信息',
-         'resut'  => [
-
-            ]
-     ]
-```
-
-* Visibility: **public**
-
-
-#### Arguments
-* $name **mixed**
-
-
-
-### delete
-
-    \Home\Controller\json Home\Controller\PaperController::delete()
-
-删除试卷
-
-请求格式
-```
-  DELETE  /tiku/paper
-```
-返回格式
-```
-     [
-         'status'   => '返回码',
-         'info'  => '提示信息',
-         'resut'  => [
-
-            ]
-     ]
 ```
 
 * Visibility: **public**

@@ -94,8 +94,9 @@ string project_id //项目ID
 string subject_id //科目ID
 string picid //
 string type //类型：枚举【'all','one','another'】 all是全部,one是拿一层的与picid连用,another是根据传的picid知识点下的所有层知识点
-int allow_status //拿知识点状态为0，1，2，3，4，5,默认为0,2,3,4,5 =》说明：0免费启用、1禁用、2购买任意课程启用、3购买指定课程启用、4同时购买多门指定课程启用、5与上级权限一致
-int is_high_error //是否拿高频错题。默认false.|boolean
+string allow_status //拿知识点状态为0，1，2，3，4，5,默认为0,2,3,4,5 =》说明：0免费启用、1禁用、2购买任意课程启用、3购买指定课程启用、4同时购买多门指定课程启用、5与上级权限一致
+boolean is_high_error //是否拿高频错题。默认false.|boolean
+string source 来源，如果是app的必传
 ```
 
 返回格式

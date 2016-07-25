@@ -1,7 +1,7 @@
 Home\Controller\ItemController
 ===============
 
-
+题目
 
 
 
@@ -18,9 +18,9 @@ Properties
 ----------
 
 
-### $_requestArray
+### $requestArray
 
-    private mixed $_requestArray = array()
+    private mixed $requestArray = array()
 
 
 
@@ -89,9 +89,12 @@ Methods
 ```
 请求参数
 ```
-  string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
-                 授权应用可以获取:'answer'
-  int is_need_all // 是否需要子题目,或者父题目信息即relation_item数组内容:0(不需要) 1(需要)
+  string field // 获取参数 允许的参数为：
+     'title','option','partnum','icid','type','analysis','pid','rightnum',
+     'wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
+     授权应用可以获取:'answer'
+  int is_need_all // 是否需要子题目,或者父题目信息即
+     relation_item数组内容:0(不需要) 1(需要)
   string source // 来源
   string combine // 条件查询组合，可用组合[inIds](待续)
      说明：
@@ -99,7 +102,7 @@ Methods
   json condition //根据查询组合，给出对于组合参数
      说明：
          inIds:{"id":"17102,16617","isdel":"0"}
-  string is_need_page //是否需要分页，0需要，1不需要 (默认不需要)
+  string is_need_page //是否需要分页，y需要，n不需要 (默认不需要)
   int page //页数
   int offset //偏移量
   string order // 排序 (待续)
@@ -201,10 +204,13 @@ Methods
 
 请求参数
 ```
-  string field // 获取参数 允许的参数为：'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
+  string field // 获取参数 允许的参数为：
+     'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum',
+     'finishnum','favoritenum','isvideo','videoa','flag','rank'
   授权应用可以获取:'answer'
   string source       来源
-  int is_need_all // 是否需要子题目,或者父题目信息即relation_item数组内容:0(不需要) 1(需要)
+  int is_need_all // 是否需要子题目,或者父题目信息即
+     relation_item数组内容:0(不需要) 1(需要)
 ```
 
 返回格式
@@ -219,7 +225,9 @@ Methods
                       "option": "选项",
                       "partnum": "",
                       "icid": "知识点",
-                      "type": "题目类型", 1:单选、2：多选、3：判断、4：填空、5：综合、6：简答、7：不定项
+                      "type": "题目类型",
+                         //1:单选、2：多选、3：判断、4：填空、
+                         //5：综合、6：简答、7：不定项
                       "analysis": "解析",
                       "pid": "上级题目号(综合题子题中有值)",
                       "rightnum": "正确数",
@@ -331,9 +339,9 @@ _initialize
 
 
 
-### _handleParameters
+### handleParameters
 
-    mixed Home\Controller\CommonController::_handleParameters()
+    mixed Home\Controller\CommonController::handleParameters()
 
 处理参数
 
@@ -345,9 +353,9 @@ _initialize
 
 
 
-### _getParam
+### getParam
 
-    mixed Home\Controller\CommonController::_getParam($name, $default)
+    mixed Home\Controller\CommonController::getParam($name, $default)
 
 
 
@@ -363,9 +371,9 @@ _initialize
 
 
 
-### _getFormParam
+### getFormParam
 
-    mixed Home\Controller\CommonController::_getFormParam($name, $default)
+    mixed Home\Controller\CommonController::getFormParam($name, $default)
 
 
 
@@ -395,9 +403,9 @@ _initialize
 
 
 
-### _getListCommonParam
+### getListCommonParam
 
-    mixed Home\Controller\CommonController::_getListCommonParam()
+    mixed Home\Controller\CommonController::getListCommonParam()
 
 获取列表共有参数
 
@@ -467,9 +475,9 @@ _initialize
 
 
 
-### _responseSuccess
+### responseSuccess
 
-    mixed Home\Controller\BaseController::_responseSuccess($result)
+    mixed Home\Controller\BaseController::responseSuccess($result)
 
 请求成功响应
 
@@ -484,9 +492,9 @@ _initialize
 
 
 
-### _response
+### response
 
-    mixed Home\Controller\BaseController::_response($data, $type, $code)
+    mixed Home\Controller\BaseController::response($data, $type, $code)
 
 响应
 

@@ -99,6 +99,7 @@ json   condition  //根据查询组合，给出对于组合参数
 string source 来源，如果是app的必传
 string whereshow 显示在哪 [1,2] // 1是pc，2是app，默认1
 string order 排序 desc和asc 默认desc
+string source 来源，如果是app的必传
 ```
 
 返回格式
@@ -119,6 +120,13 @@ string order 排序 desc和asc 默认desc
          ]
 
      ]
+```
+
+* 提示码说明
+```
+[
+     '请求成功' => 00000000,
+]
 ```
 
 * Visibility: **public**
