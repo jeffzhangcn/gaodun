@@ -90,16 +90,16 @@ GET /tiku/paper
 
 请求参数
 ```
-string combine // 条件查询组合，可用组合[se](待续)
+string combine // 条件查询组合，可用组合[sii](待续)
        说明：
-       se:['subject_id','etype']
+       sii:['subject_id','icid','is_done']
 json   condition  //根据查询组合，给出对于组合参数
        说明：
-       {"subject_id":28,"etype":1} => se
-string field //获取字段：id,title,subject_id,etype,status,source,score,passscore,takes
-string student_id //学生ID，如果传学生ID，将返回该学生答试卷信息，默认-1
-string is_need_other_attribute //是否需要其他属性，试卷的最高分，答题人数，平均分
-string is_need_page //是否需要分页，y需要，n不需要 (默认不需要)
+       {"student_id":1695081,"icid":2760,"is_done":1} => sii
+string field //获取字段：id,student_id,project_id,subject_id,icid,itempid,item_id,item_type,userAnswer,userScore,done_num,right_num,error_num,item_sort,istrue,is_done,attribute
+string source 来源，如果是app的必传
+
+以下待续：
 int page //页数
 int offset //偏移量
 string order // 排序 默认：sortid
@@ -112,7 +112,25 @@ string group //分组 (待续)
     'status'   => '返回码',
     'info'  => '提示信息',
     'result': [
-
+         {
+             "id": "id",
+             "student_id": "学生ID",
+             "project_id": "项目ID",
+             "subject_id": "科目ID",
+             "icid": "知识点ID",
+             "itempid": "题目父ID",
+             "item_id": "题目ID",
+             "item_type": "题目类型",
+             "useranswer": "用户答案",
+             "userscore": "得分",
+             "done_num": "答题次数",
+             "right_num": "正确次数",
+             "error_num": "错误次数",
+             "item_sort": "题目排序",
+             "istrue": "是否正确", 0未做，1正确，2错误，4不判断
+             "is_done": "是否做过",
+             "attribute": "经典题为1"
+         },
     ]
 }
 ```
