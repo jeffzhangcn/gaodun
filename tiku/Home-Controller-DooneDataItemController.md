@@ -278,7 +278,7 @@ string group //分组 (待续)
 ```
 json icids  知识点ID [2760,2769]
 string student_id  学生ID
-int icids_is_subjectId  icids参数是否为科目ID，默认0，如果是有一下参数
+int icids_is_subjectId  icids参数是否为科目ID，默认0，如果是有传project_id参数
 int project_id  科目ID
 string allow_status //拿知识点状态为0，1，2，3，4，5,默认为0,2,3,4,5 =》说明：0免费启用、1禁用、2购买任意课程启用、3购买指定课程启用、4同时购买多门指定课程启用、5与上级权限一致
 boolean is_high_error //是否拿高频错题。默认false.|boolean
