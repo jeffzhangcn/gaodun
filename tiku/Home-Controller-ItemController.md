@@ -95,13 +95,15 @@ Methods
      授权应用可以获取:'answer'
   int is_need_all // 是否需要子题目,或者父题目信息即
      relation_item数组内容:0(不需要) 1(需要)
-  string source // 来源
-  string combine // 条件查询组合，可用组合[inIds](待续)
+  string source 来源，如果是app的必传
+  string combine // 条件查询组合，可用组合[inIds,inIdsAndT](待续)
      说明：
          inIds:['in'=>'id','isdel']
+         inIdsAndT:['in'=>'id','type','isdel']
   json condition //根据查询组合，给出对于组合参数
      说明：
          inIds:{"id":"17102,16617","isdel":"0"}
+         inIdsAndT:{"id":"375261,386386,414650,64454,64455,64456,64457,64458,64459,64460","type":1,"isdel":0}
   string is_need_page //是否需要分页，y需要，n不需要 (默认不需要)
   int page //页数
   int offset //偏移量
@@ -316,6 +318,48 @@ Methods
          'info'  => '提示信息',
          'resut'  => [
 
+            ]
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
+### getItemNumByGroup
+
+    \Home\Controller\json Home\Controller\ItemController::getItemNumByGroup()
+
+获取分组的题目数量
+
+请求格式
+```
+  GET  /tiku/item/getItemNumByGroup
+```
+
+```
+请求参数
+```
+  string combine // 条件查询组合，可用组合[inIds](待续)
+     说明：
+         inIds:['in'=>'id','isdel']
+  json condition //根据查询组合，给出对于组合参数
+     说明：
+         inIds:{"id":"17102,16617","isdel":"0"}
+  string group //分组 可选[type],默认type
+```
+
+返回格式
+```
+     [
+         'status'   => '提示码',
+         'info'  => '提示信息',
+         'resut'  => [
+                 {
+                    "num": "数量",
+                    "type": "分组值" // 分钟，如果分组为icid改字段为icid
+                 },
             ]
      ]
 ```

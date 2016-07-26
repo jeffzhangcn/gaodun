@@ -1,4 +1,4 @@
-Home\Controller\PaperModulePathStudentController
+Home\Controller\PaperWrongController
 ===============
 
 
@@ -6,7 +6,7 @@ Home\Controller\PaperModulePathStudentController
 
 
 
-* Class name: PaperModulePathStudentController
+* Class name: PaperWrongController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\CommonController](Home-Controller-CommonController.md)
 
@@ -77,96 +77,62 @@ Methods
 -------
 
 
-### get
+### getIndex
 
-    \Home\Controller\json Home\Controller\PaperModulePathStudentController::get($name)
+    \Home\Controller\json Home\Controller\PaperWrongController::getIndex()
 
-获取必须做模块
+获取用户试卷列表
 
 请求格式
 ```
-  GET  /tiku/paperModulePathStudent
+  GET  /tiku/paperData
 ```
-
-请求参数
-```
- int student_id      学生ID
- int subject_id      科目ID
- string source       APP来源,默认为'web'
- string field        查询的字段名,默认为id,student_id,project_id,subject_id,category_module_path
-                     可以查询的有id,student_id,project_id,subject_id,category_module_path
-```
-
 返回格式
 ```
      [
-         'status'   => '提示码',
+         'status'   => '返回码',
          'info'  => '提示信息',
-         'result' => [
-             "id": "索引ID ",
-             "student_id": "学生ID",
-             "project_id": "项目ID",
-             "subject_id": "科目ID",
-             "category_module_path": "模块ID", // 字符串，以逗号分隔
-         ]
-     ]
-```
 
-返回码说明
-```
-[
-     '请求成功' => 00000000,
-     '参数错误'=> 11000005,
-     '没有数据' => 11013403,
-]
+     ]
 ```
 
 * Visibility: **public**
 
-
-#### Arguments
-* $name **mixed**
 
 
 
 ### post
 
-    \Home\Controller\json Home\Controller\PaperModulePathStudentController::post()
+    \Home\Controller\json Home\Controller\PaperWrongController::post()
 
-添加学生必做模块
+插入用户试卷
 
 请求格式
 ```
-  GET  /tiku/paperModulePathStudent
+  POST  /tiku/paperData
 ```
-
-请求参数
-```
- int student_id      学生ID
- int project_id      项目ID
- int subject_id      科目ID
- string category_module_path  必须做的模块ID
- string source       APP来源,默认为'web'
-```
-
 返回格式
-```
+```php
      [
-         'status'   => '提示码',
-         'info'  => '提示信息',
-         'result' => [
-             "id": "新添加的ID",
-         ]
+          'status'   => '返回码',
+          'info'  => '提示信息',
+          'resut'  => []
+
      ]
 ```
-
-返回码说明
+提示码说明
 ```
 [
      '请求成功' => 00000000,
-     '参数错误'=> 11000005,
-     '插入模块数据发生错误' => 11013404,
+     '参数错误'=> 11000002,
+     '数据错误' => 11013001,
+     '试卷无权限' => 11013002,
+     '生成试卷失败' => 11013003,
+     '生成试卷失败' => 11013004,
 ]
+```
+请求参数
+```
 ```
 
 * Visibility: **public**
@@ -174,43 +140,55 @@ Methods
 
 
 
-### put
+### get
 
-    \Home\Controller\json Home\Controller\PaperModulePathStudentController::put($name)
+    array Home\Controller\PaperWrongController::get(string $name)
 
-修改学生必做模块
+获取一张用户试卷
 
 请求格式
 ```
-  GET  /tiku/paperModulePathStudent
+  GET  /tiku/paperData/1
+```
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'resut'  => [
+
+            ]
+     ]
 ```
 
-请求参数
+* Visibility: **public**
+
+
+#### Arguments
+* $name **string** - &lt;p&gt;用户试卷ID&lt;/p&gt;
+
+
+
+### put
+
+    \Home\Controller\json Home\Controller\PaperWrongController::put($name)
+
+更新用户试卷
+
+请求格式
 ```
- int student_id      学生ID
- int subject_id      科目ID
- string category_module_path  必须做的模块ID
- string source       APP来源,默认为'web'
+  PUT  /tiku/paperData
 ```
 
 返回格式
 ```
      [
-         'status'   => '提示码',
+         'status'   => '返回码',
          'info'  => '提示信息',
-         'result' => [
-             "flag": "1",
-         ]
-     ]
-```
+         'resut'  => [
 
-返回码说明
-```
-[
-     '请求成功' => 00000000,
-     '参数错误'=> 11000005,
-     '更新模块数据发生错误' => 11013405,
-]
+            ]
+     ]
 ```
 
 * Visibility: **public**
@@ -218,6 +196,93 @@ Methods
 
 #### Arguments
 * $name **mixed**
+
+
+
+### delete
+
+    \Home\Controller\json Home\Controller\PaperWrongController::delete()
+
+用户取消错题
+
+请求格式
+```
+  DELETE  /tiku/PaperWrong/id
+```
+
+请求参数
+```
+int student_id 学生ID 必填
+int item_id 题目ID 必填
+int type in 1,2,8 默认为2
+string source 来源，如果是app的必传
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+     ]
+```
+
+
+提示码说明
+```
+[
+     '请求成功' => 00000000,
+     '参数错误'=> 11000001,
+]
+```
+
+* Visibility: **public**
+
+
+
+
+### getPaperWrongItemIds
+
+    \Home\Controller\json Home\Controller\PaperWrongController::getPaperWrongItemIds()
+
+用户取消错题
+
+请求格式
+```
+  GET  /tiku/getPaperWrongItemIds
+```
+
+请求参数
+```
+string icids  知识点ID 2760,2769
+string student_id  学生ID
+int icids_is_subjectId  icids参数是否为科目ID，默认0，如果是有传project_id参数
+int project_id  科目ID
+string source 来源，如果是app的必传
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'resut'  => {
+              "item_ids": "64499,65032" // 错题题目id字符串
+          }
+     ]
+```
+
+
+提示码说明
+```
+[
+     '请求成功' => 00000000,
+     '此模块下没有试题'=> 11013501,
+     '此模块下无用户错题'=> 11013502
+]
+```
+
+* Visibility: **public**
+
 
 
 

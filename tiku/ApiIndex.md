@@ -20,4 +20,5 @@ API Index
         * [PaperController](Home-Controller-PaperController.md)
         * [BaseController](Home-Controller-BaseController.md)
         * [IndexController](Home-Controller-IndexController.md)
+        * [PaperWrongController](Home-Controller-PaperWrongController.md)
 
