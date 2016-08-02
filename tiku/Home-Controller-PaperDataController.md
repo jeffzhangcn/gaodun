@@ -90,10 +90,13 @@ Methods
 
 请求参数
 ```
- int project_id      项目ID
- int subject_id      科目ID
- int student_id      学生ID
- int type            自由组卷type为9,所有试卷为-1
+ string combine // 条件查询组合，可用组合[sps](待续)
+     说明：
+        sps:['student_id','project_id','subject_id']
+ json condition //根据查询组合，给出对于组合参数
+     说明：
+         sps:{"student_id":1,"project_id":1,"subject_id":1}
+ int type            自由组卷type为20,所有试卷为-1
  string is_need_page 是否需要分页，'y'为需要,强制分页
  int page            第几页，默认为1
  int offset          每页记录条数，默认为10，最大为25条
@@ -163,27 +166,29 @@ Methods
 
 请求参数
 ```
- string type_flag    point 根据知识点创建，paper根据试卷id创建
- int student_id      学生ID
- string source       来源
- string other_attribute 其他属性(默认无) 用英文逗号分割
-        (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
- ---------by 【paper】--------------
- int paper_id        试卷ID（母卷）
- ---------by 【point】--------------
- string etype        试卷类型1智能，2知识点，3真题，4组卷
- string projectId    项目id
- string subjectId    科目id
- string icids        知识点集合
- string num          选题总数
- string type         0新题目，1已做题目
- string items_type   0随机，1单选，2多选，3判断题，4简答题，5综合
- string rank         难易度
- string mark         标识存储过程的执行（与效率有关）
- string pid          试卷id
- string from         来源  1favorite，2error
- string sessionId    sessionId
- string liveType     0正常生成题目， 1实时解析
+string type_flag    point 根据知识点创建，paper根据试卷id创建
+int student_id      学生ID
+string source       来源
+string is_need_all  是否需要全部数据，y是需要，n不需要，只返回试卷paper_data_student_log 的 id 默认y
+string other_attribute 其他属性(默认无) 用英文逗号分割
+       (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
+---------by 【paper】--------------
+int paper_id        试卷ID（母卷）
+---------by 【point】--------------
+int item_num  题目数量，最大90
+int item_type  题目类型 eg:单选，多选等   0随机 1单选 2多选 3判断 4填空 5综合题 6简答题 7不定向
+int difficulty  难易度 0随机1难2中3易
+int from  针对练习，0随机1已做2错题3全新
+int takes_test  考试时长 默认90 最大90分钟
+int top_icid  顶级知识点ID
+string project_id  项目id
+string subject_id  科目id
+string icids  知识点集合 字符串
+string top_icid_is_subjectId  top_icid所传参数是否为科目ID
+string type_test  考试类型  1智能 old  2知识点 old  20自由组卷-考试模式
+string title_test  试卷名称
+int one_icid_item_num  每个知识点的拿题数量 0 为随机
+
 ```
 
 返回格式
@@ -229,6 +234,13 @@ Methods
                                  "yanswer": "答案",//交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
+                                 "select": [
+                                   {
+                                     "item_id": "题目ID",
+                                     "item_option": "选项的值",
+                                     "option": "选项序号(A,B,C,D)"
+                                    }
+                                  ],
                                  "answerAnalysis":"题目解析",
                                      // 根据请求参数other_attribute确定自己是否需要该属性
                                  "favorite": "是否收藏",
@@ -253,6 +265,13 @@ Methods
                                          //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
+                                       "select": [
+                                         {
+                                          "item_id": "题目ID",
+                                          "item_option": "选项的值",
+                                          "option": "选项序号(A,B,C,D)"
+                                         }
+                                         ],
                                        "answerAnalysis":"题目解析",
                                          // 根据请求参数other_attribute确定自己是否需要该属性
                                        "favorite": "是否收藏",
@@ -283,6 +302,9 @@ Methods
      '试卷无权限' => 11013002,
      '生成试卷失败' => 11013003,
      '生成试卷失败' => 11013004,
+
+     '所选知识点ID为空' => 11013014,
+     '自由组卷生成失败' => 11013015,
 ]
 ```
 
@@ -613,6 +635,12 @@ Methods
 请求格式
 ```
   get  /tiku/paperData/testReport
+```
+
+请求参数
+```
+int student_id  学生ID
+int pdid  用户试卷ID
 ```
 
 返回格式
