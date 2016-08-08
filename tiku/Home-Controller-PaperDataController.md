@@ -197,6 +197,8 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
          'status'   => '返回码',
          'info'  => '提示信息',
          'result'  => [
+         假如is_need_all为n的时候，只返回 "paper_data_log_id": "125"
+         以下为is_need_all为y的时候
               {
                  "paper": {
                      "runtime": "考试时间",
@@ -211,6 +213,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                      "student_id": "用户ID",
                      "modifydate": "修改时间",
                      "score": "得分"
+                     "paper_data_log_id" : "用户试卷单条做卷子记录"
                      "paper_data": [
                          {
                              "id": "ID",
@@ -271,7 +274,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                           "item_option": "选项的值",
                                           "option": "选项序号(A,B,C,D)"
                                          }
-                                         ],
+                                        ],
                                        "answerAnalysis":"题目解析",
                                          // 根据请求参数other_attribute确定自己是否需要该属性
                                        "favorite": "是否收藏",
@@ -298,11 +301,10 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
 [
      '请求成功' => 00000000,
      '参数错误'=> 11000002,
-     '数据错误' => 11013001,
+     '数据错误(试卷错误)' => 11013001,
      '试卷无权限' => 11013002,
      '生成试卷失败' => 11013003,
      '生成试卷失败' => 11013004,
-
      '所选知识点ID为空' => 11013014,
      '自由组卷生成失败' => 11013015,
 ]
@@ -327,6 +329,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
 请求参数
 ```
  int student_id 学生ID
+ int pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不是，默认n
  string other_attribute 其他属性(默认无)，用英文逗号分割
          (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
  string source       来源
@@ -352,6 +355,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                      "student_id": "用户ID",
                      "modifydate": "修改时间",
                      "score": "得分"
+                     "paper_data_log_id" : "用户试卷单条做卷子记录"
                      "paper_data": [
                          {
                              "id": "ID",
@@ -376,6 +380,13 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                      //交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
+                                       "select": [
+                                         {
+                                          "item_id": "题目ID",
+                                          "item_option": "选项的值",
+                                          "option": "选项序号(A,B,C,D)"
+                                         }
+                                        ],
                                  "answerAnalysis":"题目解析",
                                      // 根据请求参数other_attribute确定自己是否需要该属性
                                  "favorite": "是否收藏",
@@ -399,6 +410,13 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
+                                       "select": [
+                                         {
+                                          "item_id": "题目ID",
+                                          "item_option": "选项的值",
+                                          "option": "选项序号(A,B,C,D)"
+                                         }
+                                        ],
                                        "answerAnalysis":"题目解析",
                                          // 根据请求参数other_attribute确定自己是否需要该属性
                                        "favorite": "是否收藏",
