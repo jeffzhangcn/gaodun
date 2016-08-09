@@ -70,6 +70,7 @@ Methods
       type=>'0';// 0 默认为实时短信例如收验证码,1为通知消息
       msg=>'您的验证码为123456.'; //发送内容
       code=>'123456' //验证码
+                     //
       channel_id => 3  发送渠道 默认3亿美 1阿里大鱼 2希奥 4益客 5发送猫
       ip=>127.0.0.1  //客户端ip
       agent => '' // 客户端UA HTTP_USER_AGENT
@@ -160,3 +161,5 @@ _initialize
 * $contentType **string** - &lt;p&gt;输出类型&lt;/p&gt;
 * $content **string** - &lt;p&gt;输出内容&lt;/p&gt;
 * $prefix **string** - &lt;p&gt;模板缓存前缀&lt;/p&gt;
+
+
