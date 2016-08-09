@@ -223,6 +223,15 @@ Methods
      custom_flag : (选填)与source_type对应记录id,source_type为bbs时为bbs表的tid,ft_college时为财税表的id
 
 		]
+		
+ 参数相互限制说明：
+ source_type:
+   =v的时候，type传1
+   =app 的时候：type传1或2 ，source 传大于1的数
+   =bbs 的时候：type传3或4 ，cumstom_flag 传数字
+   =tiku的时候：type传2，传item_id 
+   =ft_college的时候：type传5
+   
  header [
    Accept: application/json
    App-Id-Key: gd_care_partner
