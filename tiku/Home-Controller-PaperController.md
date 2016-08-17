@@ -90,12 +90,14 @@ GET /tiku/paper
 
 请求参数
 ```
-string combine // 条件查询组合，可用组合[se](待续)
+string combine // 条件查询组合，可用组合[se,sey](待续)
        说明：
        se:['subject_id','etype']
+       sey:['subject_id','etype','year']
 json   condition  //根据查询组合，给出对于组合参数
        说明：
        {"subject_id":28,"etype":1} => se
+       {"subject_id":28,"etype":1,"year":2015} => sey
 string field //获取字段：id,title,subject_id,etype,status,source,score,passscore,takes
 string student_id //学生ID，如果传学生ID，将返回该学生答试卷信息，默认-1
 string is_need_other_attribute //是否需要其他属性，试卷的最高分，答题人数，平均分

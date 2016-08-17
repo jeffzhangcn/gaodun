@@ -224,7 +224,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                              "istrue": "正确题目数量", // 交卷之后统计
                              "pdata": [
                              {
-                                 "ID": '1',
                                  "ExamID": "题目ID",
                                  "userAnswer": "用户答案",
                                  "scoreses": "分数",
@@ -232,7 +231,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                  "istrue": "是否正确",
                                  "type": "题目类型",
                                  "sorts": "排序",
-                                 "link_ExamID": "",
                                  "partnum": "选项数量",
                                  "yanswer": "答案",//交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
@@ -254,7 +252,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                      // 根据请求参数other_attribute确定自己是否需要该属性
                                  "sonitem": [
                                    {
-                                       "ID": "题目顺序",
                                        "ExamID": "题目ID",
                                        "userAnswer": "用户答案",
                                        "scoreses": "分数",
@@ -262,7 +259,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                        "istrue": "是否正确",
                                        "type": "题目类型",
                                        "sorts": "顺序",
-                                       "link_ExamID": "关联题目",
                                        "partnum": "4",
                                        "yanswer": "",
                                          //交卷之后提供正确答案
@@ -345,6 +341,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                  "paper": {
                      "runtime": "考试时间",
                      "pdid": "用户试卷ID",
+                     "status": "试卷状态",
                      "regdate": "生成时间",
                      "type": "试卷类型",
                      "itemcount": "题目总数",
@@ -366,7 +363,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                              "istrue": "正确题目数量", // 交卷之后统计
                              "pdata": [
                              {
-                                 "ID": '1',
                                  "ExamID": "题目ID",
                                  "userAnswer": "用户答案",
                                  "scoreses": "分数",
@@ -374,7 +370,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                  "istrue": "是否正确",
                                  "type": "题目类型",
                                  "sorts": "排序",
-                                 "link_ExamID": "",
                                  "partnum": "选项数量",
                                  "yanswer": "答案",
                                      //交卷之后、已经做过提供正确答案
@@ -397,7 +392,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                      // 根据请求参数other_attribute确定自己是否需要该属性
                                  "sonitem": [
                                    {
-                                       "ID": "题目顺序",
                                        "ExamID": "题目ID",
                                        "userAnswer": "用户答案",
                                        "scoreses": "分数",
@@ -405,7 +399,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                        "istrue": "是否正确",
                                        "type": "题目类型",
                                        "sorts": "顺序",
-                                       "link_ExamID": "关联题目",
                                        "partnum": "4",
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
@@ -478,6 +471,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                          "submit_type":"1",// 1是交卷  2是保存 3是一题题交卷
                          "regdate":"1461722845"//交卷时间
                          "is_submit":"0",//当submit_type为3时，is_submit为1时交卷
+                         'pdid_is_pdlid':'n' // 用户答题试卷记录id
                        }
                      ]
 ```
@@ -539,6 +533,8 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
  string source 来源
  int is_repeat_exam 重做 1 //todo
  string source       来源
+ string is_need_all  是否需要全部数据，y是需要，n不需要，只返回试卷paper_data_student_log 的 id 默认y
+ int pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不是，默认n
  string other_attribute 其他属性(默认无)，用英文逗号分割
         (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
 ```
@@ -549,6 +545,8 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
          'status'   => '返回码',
          'info'  => '提示信息',
          'result'  => [
+         假如is_need_all为n的时候，只返回 "paper_data_log_id": "125"
+         以下为is_need_all为y的时候
               {
                  "paper": {
                      "runtime": "考试时间",
@@ -563,6 +561,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                      "student_id": "用户ID",
                      "modifydate": "修改时间",
                      "score": "得分"
+                     "paper_data_log_id" : "用户试卷单条做卷子记录"
                      "paper_data": [
                          {
                              "id": "ID",
@@ -573,7 +572,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                              "istrue": "正确题目数量", // 交卷之后统计
                              "pdata": [
                              {
-                                 "ID": '1',
                                  "ExamID": "题目ID",
                                  "userAnswer": "用户答案",
                                  "scoreses": "分数",
@@ -581,11 +579,17 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                  "istrue": "是否正确",
                                  "type": "题目类型",
                                  "sorts": "排序",
-                                 "link_ExamID": "",
                                  "partnum": "选项数量",
                                  "yanswer": "答案",// 交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
+                                 "select": [
+                                   {
+                                     "item_id": "题目ID",
+                                     "item_option": "选项的值",
+                                     "option": "选项序号(A,B,C,D)"
+                                    }
+                                  ],
                                  "answerAnalysis":"题目解析",
                                      // 根据请求参数other_attribute确定自己是否需要该属性
                                  "favorite": "是否收藏",
@@ -596,7 +600,6 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                      // 根据请求参数other_attribute确定自己是否需要该属性
                                  "sonitem": [
                                    {
-                                       "ID": "题目顺序",
                                        "ExamID": "题目ID",
                                        "userAnswer": "用户答案",
                                        "scoreses": "分数",
@@ -604,11 +607,17 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
                                        "istrue": "是否正确",
                                        "type": "题目类型",
                                        "sorts": "顺序",
-                                       "link_ExamID": "关联题目",
                                        "partnum": "4",
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
+                                        "select": [
+                                         {
+                                             "item_id": "题目ID",
+                                             "item_option": "选项的值",
+                                             "option": "选项序号(A,B,C,D)"
+                                         }
+                                             ],
                                        "answerAnalysis":"题目解析",
                                          // 根据请求参数other_attribute确定自己是否需要该属性
                                        "favorite": "是否收藏",
@@ -680,7 +689,6 @@ int pdid  用户试卷ID
                      "lens": 2, // 累计题目数量
                      "examtype": "单选题", // 题目
                      "pdata": [
-                                 "ID": '1',
                                  "ExamID": "题目ID",
                                  "userAnswer": "用户答案",
                                  "scoreses": "分数",
@@ -688,14 +696,12 @@ int pdid  用户试卷ID
                                  "istrue": "是否正确",
                                  "type": "题目类型",
                                  "sorts": "排序",
-                                 "link_ExamID": "",
                                  "partnum": "选项数量",
                                  "yanswer": "答案",// 交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
                                  "sonitem": [
                                    {
-                                       "ID": "题目顺序",
                                        "ExamID": "题目ID",
                                        "userAnswer": "用户答案",
                                        "scoreses": "分数",
@@ -703,7 +709,6 @@ int pdid  用户试卷ID
                                        "istrue": "是否正确",
                                        "type": "题目类型",
                                        "sorts": "顺序",
-                                       "link_ExamID": "关联题目",
                                        "partnum": "4",
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
@@ -727,7 +732,7 @@ int pdid  用户试卷ID
                  "avgnum": 25, // 平均分
                  "jb": 100, //击败率
                  "pnum": 1, // 排名
-                 "title": "一级：任务制网课（持证无忧计划）-SS8：Financial Reporting and Analysis：The Income Statement, Balance Sheet, and Cash ", // 试卷名称
+                 "title": "一级：任务制网课（持证无忧计划 ", // 试卷名称
                  "source": "高顿网校", // 来源
                  "score": "100", // 试卷总分
                  "passscore": "60", // 及格分
