@@ -325,7 +325,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
 请求参数
 ```
  int student_id 学生ID
- int pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不是，默认n
+ string pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不是，默认n
  string other_attribute 其他属性(默认无)，用英文逗号分割
          (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
  string source       来源
@@ -534,7 +534,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
  int is_repeat_exam 重做 1 //todo
  string source       来源
  string is_need_all  是否需要全部数据，y是需要，n不需要，只返回试卷paper_data_student_log 的 id 默认y
- int pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不是，默认n
+ string pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不是，默认n
  string other_attribute 其他属性(默认无)，用英文逗号分割
         (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
 ```
@@ -668,6 +668,8 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
 ```
 int student_id  学生ID
 int pdid  用户试卷ID
+string pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不是，默认n
+
 ```
 
 返回格式
@@ -700,6 +702,13 @@ int pdid  用户试卷ID
                                  "yanswer": "答案",// 交卷之后、已经做过提供正确答案
                                  "title": "题目题干",
                                  "option": "题目选项",
+                                 "select": [
+                                   {
+                                     "item_id": "题目ID",
+                                     "item_option": "选项的值",
+                                     "option": "选项序号(A,B,C,D)"
+                                    }
+                                  ],
                                  "sonitem": [
                                    {
                                        "ExamID": "题目ID",
@@ -713,6 +722,13 @@ int pdid  用户试卷ID
                                        "yanswer": "", //交卷之后提供正确答案
                                        "title": "题目题干",
                                        "option": "题目选项",
+                                       "select": [
+                                          {
+                                             "item_id": "题目ID",
+                                             "item_option": "选项的值",
+                                             "option": "选项序号(A,B,C,D)"
+                                         }
+                                         ],
                                   },
                      ],
                      "istrue": 1,// 大题答对题目数量
@@ -728,6 +744,7 @@ int pdid  用户试卷ID
              "type": "3", // 试卷类型
              "itemcount": "2", // 题目数量
              "modifydate": "1468976434", // 交卷时间
+             "paper_data_log_id": 352 // 用户答题试卷记录id
              "report": {
                  "avgnum": 25, // 平均分
                  "jb": 100, //击败率
