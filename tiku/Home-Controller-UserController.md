@@ -79,11 +79,41 @@ Methods
 
 ### abilityAssess
 
-    mixed Home\Controller\UserController::abilityAssess()
+    \Home\Controller\json Home\Controller\UserController::abilityAssess()
 
-能力评估
+获取用户试卷列表
 
+请求格式
+```
+  GET  /tiku/User/abilityAssess
+```
 
+请求参数
+```
+int project_id  项目id
+int subject_id  科目id
+int student_id  学生id
+string source  来源，如果是app的必传
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'result'=> {
+              "pdlist": [
+                  {
+                      "pdid": "用户试卷id",
+                      "title": "试卷名称",
+                      "itemcount": "答题总数",
+                      "modifydate": "交卷日期",
+                      "score": "分数"
+                  }
+              ]
+          }
+     ]
+```
 
 * Visibility: **public**
 
