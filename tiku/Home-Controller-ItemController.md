@@ -91,7 +91,7 @@ Methods
 ```
   string field // 获取参数 允许的参数为：
      'title','option','partnum','icid','type','analysis','pid','rightnum',
-     'wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank'
+     'wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank','select'
      授权应用可以获取:'answer'
   int is_need_all // 是否需要子题目,或者父题目信息即
      relation_item数组内容:0(不需要) 1(需要)
@@ -100,10 +100,12 @@ Methods
      说明：
          inIds:['in'=>'id','isdel']
          inIdsAndT:['in'=>'id','type','isdel']
+         inIcids:['in'=>'icid','isdel','pid']
   json condition //根据查询组合，给出对于组合参数
      说明：
          inIds:{"id":"17102,16617","isdel":"0"}
          inIdsAndT:{"id":"375261,386386,414650,64454,64455,64456,64457,64458,64459,64460","type":1,"isdel":0}
+         inIcids:{"icid":"5398","isdel":"0","pid":"0"}
   string is_need_page //是否需要分页，y需要，n不需要 (默认不需要)
   int page //页数
   int offset //偏移量
@@ -137,6 +139,11 @@ Methods
                       "item_id": "题目ID号"
                       "rank": "题目难度" // 1 2 3 => 难 中 易
                       "answer":"答案"
+                      'select': {
+                          "item_id": "题目ID",
+                          "item_option": "选项值",
+                          "option": "选项"
+                      },
                   },
              }
             ]
@@ -208,7 +215,7 @@ Methods
 ```
   string field // 获取参数 允许的参数为：
      'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum',
-     'finishnum','favoritenum','isvideo','videoa','flag','rank'
+     'finishnum','favoritenum','isvideo','videoa','flag','rank','select'
   授权应用可以获取:'answer'
   string source       来源
   int is_need_all // 是否需要子题目,或者父题目信息即
@@ -241,7 +248,12 @@ Methods
                       "flag": "",
                       "item_id": "题目ID号"
                       "rank": "题目难度" // 1 2 3 => 难 中 易
-                      "answer":"答案"
+                      "answer":"答案",
+                      'select': {
+                          "item_id": "题目ID",
+                          "item_option": "选项值",
+                          "option": "选项"
+                      },
                   },
             ]
      ]
@@ -362,6 +374,90 @@ Methods
                  },
             ]
      ]
+```
+
+* Visibility: **public**
+
+
+
+
+### getDoCount
+
+    \Home\Controller\json Home\Controller\ItemController::getDoCount()
+
+获取做题数量
+
+请求格式
+```
+  GET  /tiku/item/getDoCount
+```
+
+请求参数
+```
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'result': [
+             {
+                 "num": "数量"
+             }
+         ]
+
+     ]
+```
+
+* 提示码说明
+```
+[
+     '请求成功' => 00000000,
+     '统计题目数量发生错误' => 11013106,
+]
+```
+
+* Visibility: **public**
+
+
+
+
+### getRelatedItem
+
+    \Home\Controller\json Home\Controller\ItemController::getRelatedItem()
+
+获取相关试题id
+
+请求格式
+```
+  GET  /tiku/item/getRelatedItem
+```
+
+请求参数
+```
+int knowledge_id 知识点标签的id
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'result': [
+             {
+                 "item_ids": "题目id" // 为空就没有推荐
+             }
+         ]
+
+     ]
+```
+
+* 提示码说明
+```
+[
+     '请求成功' => 00000000,
+]
 ```
 
 * Visibility: **public**
