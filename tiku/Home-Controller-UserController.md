@@ -108,7 +108,7 @@ string source  来源，如果是app的必传
                       "title": "试卷名称",
                       "itemcount": "答题总数",
                       "modifydate": "交卷日期",
-                      "score": "分数"
+                      "score_rate": "得分率"
                   }
               ]
           }
