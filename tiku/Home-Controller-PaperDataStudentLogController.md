@@ -87,11 +87,50 @@ Methods
 ```
   GET  /tiku/PaperDataStudentLog
 ```
+
+请求参数
+```
+string combine // 条件查询组合，可用组合[inPdIds](待续)
+       说明：
+       inPdIds:['in' => 'paper_data_id']
+json   condition  //根据查询组合，给出对于组合参数
+       说明：
+       {"paper_data_id":"2947116,2948076"} => inPdIds
+string field //获取字段：id,type,paper_data_id,title,student_id,totalnum,answered,correct,wrongnum,score,regdate,modifydate,status,takes,times,isshare,isfree,why_can_do 默认全部
+string source       来源，如果是app的必传
+int student_id 学生id
+```
+
 返回格式
 ```
      [
          'status'   => '返回码',
          'info'  => '提示信息',
+          'result': [
+              {
+                  "id": "paper_data_log_id",
+                  "type": "卷子类型",// 1智能组卷，2按知识点组卷，3真题，4组卷，20自由组卷
+                  "paper_data_id": "用户试卷id",
+                  "paper_id": "试卷id",
+                  "title": "卷子名称",
+                  "student_id": "学生id",
+                  "totalnum": "题目数量(只算大题2)",
+                  "answered": "回答数",
+                  "correct": "正确数",
+                  "wrongnum": "错题数",
+                  "score": "分数",
+                  "regdate": "创建时间",
+                  "modifydate": "修改时间",
+                  "status": "卷子状态",
+                  "paper_data": null,
+                  "takes": "可做时间",
+                  "times": "第几次答",
+                  "isshare": "是否已分享",
+                  "isfree": "是否免费",
+                  "why_can_do": 是否可做"
+              },
+
+          ]
 
      ]
 ```
