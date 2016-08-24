@@ -85,9 +85,9 @@ Methods
 
 请求参数
 ```
-string combine 查询条件组，可选【sp】待续
+string combine 查询条件组，可选【sInp】待续
 json condition 条件数据
-   说明：sp:[student_id','in'=>'paper_data_log_id'] // paper_data_log_id 用户试卷记录ID
+   说明：sInp:[student_id','in'=>'paper_data_log_id'] // paper_data_log_id 用户试卷记录ID
 string source 来源，如果是app的必传
 ```
 
