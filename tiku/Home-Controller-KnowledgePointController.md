@@ -1,4 +1,4 @@
-Home\Controller\PaperWrongknowledgeController
+Home\Controller\KnowledgePointController
 ===============
 
 
@@ -6,7 +6,7 @@ Home\Controller\PaperWrongknowledgeController
 
 
 
-* Class name: PaperWrongknowledgeController
+* Class name: KnowledgePointController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\CommonController](Home-Controller-CommonController.md)
 
@@ -79,21 +79,22 @@ Methods
 
 ### getIndex
 
-    \Home\Controller\json Home\Controller\PaperWrongknowledgeController::getIndex()
+    \Home\Controller\json Home\Controller\KnowledgePointController::getIndex()
 
-获取用户试卷记录的薄弱知识点
+获取知识点信息
 
 请求参数
 ```
-string combine 查询条件组，可选【sp】待续
+string combine 查询条件组，可选【inIds】待续
 json condition 条件数据
-   说明：sp:[student_id','in'=>'paper_data_log_id'] // paper_data_log_id 用户试卷记录ID
+   说明：inIds:['in'=>'id']
 string source 来源，如果是app的必传
+string field 需要字段 默认：project_id,subject_id,title,difficulty,definition,testrate
 ```
 
 请求格式
 ```
-  GET  /tiku/PaperWrongknowledge
+  GET  /tiku/KnowledgePoint
 ```
 返回格式
 ```
@@ -102,12 +103,12 @@ string source 来源，如果是app的必传
          "info"  => '提示信息',
          "result": [
              {
-                 "paper_id": "试卷ID",
-                 "knowledge_id": "知识点ID",
-                 "paper_data_id": "用户试卷ID",
-                 "paper_data_log_id": "用户试卷记录ID",
-                 "student_id": "学生ID",
-                 "quantity": "此知识点这次做错次数"
+     "project_id": "项目ID",
+"subject_id": "科目ID",
+"title": "知识点名称",
+"difficulty": "难度",
+"definition": "定义",
+"testrate": "考率" //（1、必考，2、常考，3、不怎么考，4、不考）
              }
          ]
      ]
@@ -120,7 +121,7 @@ string source 来源，如果是app的必传
 
 ### post
 
-    \Home\Controller\json Home\Controller\PaperWrongknowledgeController::post()
+    \Home\Controller\json Home\Controller\KnowledgePointController::post()
 
 插入纠错
 
@@ -169,7 +170,7 @@ string source  来源。pc为web,必填
 
 ### get
 
-    array Home\Controller\PaperWrongknowledgeController::get(string $name)
+    array Home\Controller\KnowledgePointController::get(string $name)
 
 获取一张用户试卷
 
@@ -198,7 +199,7 @@ string source  来源。pc为web,必填
 
 ### put
 
-    \Home\Controller\json Home\Controller\PaperWrongknowledgeController::put($name)
+    \Home\Controller\json Home\Controller\KnowledgePointController::put($name)
 
 更新用户试卷
 
@@ -227,7 +228,7 @@ string source  来源。pc为web,必填
 
 ### delete
 
-    \Home\Controller\json Home\Controller\PaperWrongknowledgeController::delete()
+    \Home\Controller\json Home\Controller\KnowledgePointController::delete()
 
 删除用户试卷
 
