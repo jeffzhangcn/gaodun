@@ -20,12 +20,12 @@ maketar:
     - echo "ci_project_id|$CI_PROJECT_ID" >> "$ITEM_NAME.txt"
     - echo "ci_project_dir|$CI_PROJECT_DIR" >> "$ITEM_NAME.txt"
     - cp -f "$ITEM_NAME.txt" "$CI_PROJECT_DIR/DEPLOY"
-    - tar czf "$ITEM_NAME-$CI_BUILD_REF_NAME-$CI_BUILD_REF.tar.gz" "$ITEM_NAME" "$ITEM_NAME.txt"
+    - tar czf "$ITEM_NAME-${CI_BUILD_REF_NAME/\//_}-$CI_BUILD_REF.tar.gz" "$ITEM_NAME" "$ITEM_NAME.txt"
     - mv "$ITEM_NAME-$CI_BUILD_REF_NAME-$CI_BUILD_REF.tar.gz" /gaodun/tmp/gitlab_tar_file/
     - export itemfile=`dirname $CI_PROJECT_DIR`"/"$ITEM_NAME".txt"
     - export localfile="/gaodun/tmp/gitlab_tar_file/$ITEM_NAME-$CI_BUILD_REF_NAME-$CI_BUILD_REF.tar.gz"
     - /gaodun/dist/python2.7/bin/python2.7 /gaodun/dist/script/oss/oss_upload.py $localfile $itemfile
-    - rm -f "/gaodun/tmp/gitlab_tar_file/$ITEM_NAME-$CI_BUILD_REF_NAME-$CI_BUILD_REF.tar.gz"
+    - rm -f "/gaodun/tmp/gitlab_tar_file/$ITEM_NAME-${CI_BUILD_REF_NAME/\//_}-$CI_BUILD_REF.tar.gz"
     - rm -f "$ITEM_NAME.txt"
     
 after_script:
