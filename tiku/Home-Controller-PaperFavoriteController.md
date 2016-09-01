@@ -1,7 +1,7 @@
 Home\Controller\PaperFavoriteController
 ===============
 
-
+用户题目收藏
 
 
 
@@ -18,9 +18,9 @@ Properties
 ----------
 
 
-### $_requestArray
+### $requestArray
 
-    private mixed $_requestArray = array()
+    private mixed $requestArray = array()
 
 
 
@@ -92,14 +92,12 @@ Methods
 ```
  string combine // 条件查询组合，可用组合[sps](待续)
      说明：
-         sps:['student_id','project_id','subject_id'] // 不支持分页，is_need_page为0
-
+        sps:['student_id','project_id','subject_id'] // 不支持分页，is_need_page为0
  json condition //根据查询组合，给出对于组合参数
      说明：
          sps:{"student_id":1,"project_id":1,"subject_id":1}
-
+ int according_one_app //是否开启某个app查找 默认0，开启1
  string is_need_page //是否需要分页，0需要，1不需要 (默认不需要)
-
  int page //页数
  int offset //偏移量
  string order // 排序 (待续)
@@ -140,8 +138,8 @@ Methods
           'status'   => '提示码',
           'info'  => '提示信息'
      ]
-
 ```
+
 错误码说明
 ```
 [
@@ -149,8 +147,8 @@ Methods
      '批量收藏题目失败,无数据' => 11013102,
      '收藏失败'=> 11013103
 ]
-
 ```
+
 请求参数
 ```
  int item_id          题目ID
@@ -164,7 +162,6 @@ Methods
       [
          {"item_id":"99340","paper_id":2112,"type":"2","project_id":"5","subject_id":"29"}
       ]
-
 ```
 
 * Visibility: **public**
@@ -182,6 +179,7 @@ Methods
 ```
   GET  /tiku/paperFavorite/1
 ```
+
 返回格式
 ```
      [
@@ -211,6 +209,7 @@ Methods
 ```
   PUT  /tiku/paperFavorite
 ```
+
 返回格式
 ```
      [
@@ -293,9 +292,9 @@ _initialize
 
 
 
-### _handleParameters
+### handleParameters
 
-    mixed Home\Controller\CommonController::_handleParameters()
+    mixed Home\Controller\CommonController::handleParameters()
 
 处理参数
 
@@ -307,9 +306,9 @@ _initialize
 
 
 
-### _getParam
+### getParam
 
-    mixed Home\Controller\CommonController::_getParam($name, $default)
+    mixed Home\Controller\CommonController::getParam($name, $default)
 
 
 
@@ -325,9 +324,9 @@ _initialize
 
 
 
-### _getFormParam
+### getFormParam
 
-    mixed Home\Controller\CommonController::_getFormParam($name, $default)
+    mixed Home\Controller\CommonController::getFormParam($name, $default)
 
 
 
@@ -357,9 +356,9 @@ _initialize
 
 
 
-### _getListCommonParam
+### getListCommonParam
 
-    mixed Home\Controller\CommonController::_getListCommonParam()
+    mixed Home\Controller\CommonController::getListCommonParam()
 
 获取列表共有参数
 
@@ -429,9 +428,9 @@ _initialize
 
 
 
-### _responseSuccess
+### responseSuccess
 
-    mixed Home\Controller\BaseController::_responseSuccess($result)
+    mixed Home\Controller\BaseController::responseSuccess($result)
 
 请求成功响应
 
@@ -446,9 +445,9 @@ _initialize
 
 
 
-### _response
+### response
 
-    mixed Home\Controller\BaseController::_response($data, $type, $code)
+    mixed Home\Controller\BaseController::response($data, $type, $code)
 
 响应
 

@@ -213,13 +213,13 @@ string source 来源，如果是app的必传
 
 ### get
 
-    array Home\Controller\ItemCategoryController::get(string $name)
+    mixed Home\Controller\ItemCategoryController::get(string $name)
 
 获取一张用户试卷
 
 请求格式
 ```
-  GET  /tiku/paperData/1
+  GET  /tiku/ItemCategory/1
 ```
 返回格式
 ```
@@ -227,7 +227,30 @@ string source 来源，如果是app的必传
          'status'   => '返回码',
          'info'  => '提示信息',
          'resut'  => [
-
+              "icid": "id",
+              "name": "名称",
+              "summary": "描述",
+              "pid": "父id",
+              "exam_rate": "考试比例",
+              "path": "_0_3543_1228", // 路径，各父id的拼接
+              "level": "层级",
+              "sort": "排序",
+              "leaf": "是否叶子结点",
+              "project_id": "项目id",
+              "subject_id": "科目id",
+              "regdate": "创建时间",
+              "modifydate": "修改时间",
+              "status": "状态", // 0,1,2,3,4,5,6
+              "version": "版本",
+              "isdel": "是否删除",
+              "area": "区域",
+              "oldid": "135167",
+              "num": "拥有题目数量",
+              "video_path": 视频路径,
+              "ishigherror": "是否高频错误",
+              "openhigherror": "是否开启高频",
+              "appointcourse": "授权课程",
+              "msstatus": "高频状态"
             ]
      ]
 ```
@@ -289,6 +312,44 @@ string source 来源，如果是app的必传
             ]
      ]
 ```
+
+* Visibility: **public**
+
+
+
+
+### checkPower
+
+    \Home\Controller\json Home\Controller\ItemCategoryController::checkPower()
+
+检验知识点权限
+
+请求格式
+```
+  GET  /tiku/ItemCategory/checkPower
+```
+
+请求参数
+```
+string icid 知识点字符串，多个用,分开
+string student_id 学生id
+string is_all 知识点是否全部拼接 'y','n'，默认'y'
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+     ]
+```
+
+返回码说明
+```
+[
+     '请求成功' => 00000000,
+     '参数错误'=> 11013002 //需购买课程或者购买该权限才能启用
+]
 
 * Visibility: **public**
 

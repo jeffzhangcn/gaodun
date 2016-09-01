@@ -91,7 +91,7 @@ Methods
 ```
   string field // 获取参数 允许的参数为：
      'title','option','partnum','icid','type','analysis','pid','rightnum',
-     'wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank','select'
+     'wrongnum','finishnum','favoritenum','isvideo','videoa','flag','rank','select','translate'',fromsource'
      授权应用可以获取:'answer'
   int is_need_all // 是否需要子题目,或者父题目信息即
      relation_item数组内容:0(不需要) 1(需要)
@@ -135,6 +135,8 @@ Methods
                       "favoritenum": "收藏数",
                       "isvideo": "是否有视频",
                       "videoa": "视频连接",
+                      "translate":"解析翻译",
+                      "fromsource":"题目来源",
                       "flag": "",
                       "item_id": "题目ID号"
                       "rank": "题目难度" // 1 2 3 => 难 中 易
@@ -215,7 +217,7 @@ Methods
 ```
   string field // 获取参数 允许的参数为：
      'title','option','partnum','icid','type','analysis','pid','rightnum','wrongnum',
-     'finishnum','favoritenum','isvideo','videoa','flag','rank','select'
+     'finishnum','favoritenum','isvideo','videoa','flag','rank','select','translate'',fromsource'
   授权应用可以获取:'answer'
   string source       来源
   int is_need_all // 是否需要子题目,或者父题目信息即
@@ -245,6 +247,8 @@ Methods
                       "favoritenum": "收藏数",
                       "isvideo": "是否有视频",
                       "videoa": "视频连接",
+                      "translate":"解析翻译",
+                      "fromsource":"题目来源",
                       "flag": "",
                       "item_id": "题目ID号"
                       "rank": "题目难度" // 1 2 3 => 难 中 易
@@ -353,13 +357,15 @@ Methods
 ```
 请求参数
 ```
-  string combine // 条件查询组合，可用组合[inIds](待续)
+  string combine // 条件查询组合，可用组合[inIds,inIcidsF](待续)
      说明：
          inIds:['in'=>'id','isdel']
+         inIcidsF:['in'=>'icid','flag','isdel']
   json condition //根据查询组合，给出对于组合参数
      说明：
          inIds:{"id":"17102,16617","isdel":"0"}
-  string group //分组 可选[type],默认type
+         inIcidsF:{"icid":"17102,16617","flag":"3","isdel":"0"}
+  string group //分组 可选[type,icid],默认type
 ```
 
 返回格式
