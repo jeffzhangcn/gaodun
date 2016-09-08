@@ -317,7 +317,8 @@ type 当传值是classic 为经典题
 ```
 json icids  知识点ID [2760,2769]
 string student_id  学生ID
-int icids_is_subjectId  icids参数是否为科目ID，默认0，如果是有传project_id参数
+int icids_is_subjectId  icids参数是否为科目ID，默认0，如果是有传subject_id参数
+string is_all_icid 是否为全部icid 默认n 可选 y 和 n,a
 int project_id  科目ID
 string classic  如果要经典题就传对应的值
 string allow_status //拿知识点状态为0，1，2，3，4，5,默认为0,2,3,4,5 =》说明：0免费启用、1禁用、2购买任意课程启用、3购买指定课程启用、4同时购买多门指定课程启用、5与上级权限一致

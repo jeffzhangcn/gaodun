@@ -313,7 +313,7 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
 
 ### get
 
-    \Home\Controller\json Home\Controller\PaperDataController::get()
+    \Home\Controller\json Home\Controller\PaperDataController::get($name)
 
 获取一张用户试卷
 
@@ -441,6 +441,9 @@ int one_icid_item_num  每个知识点的拿题数量 0 为随机
 
 * Visibility: **public**
 
+
+#### Arguments
+* $name **mixed**
 
 
 

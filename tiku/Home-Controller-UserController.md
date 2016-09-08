@@ -93,6 +93,7 @@ Methods
 int project_id  项目id
 int subject_id  科目id
 int student_id  学生id
+int is_need_all_item 是否需要每张试卷的题目信息 y or n 默认n
 string source  来源，如果是app的必传
 ```
 
@@ -102,13 +103,26 @@ string source  来源，如果是app的必传
          'status'   => '返回码',
          'info'  => '提示信息',
          'result'=> {
+         "allItemInfo": [
+                  {
+                      "pdlid": "用户答题记录id",
+                      "itempid": "题目父ID",
+                      "item_id": "题目ID",
+                      "user_answer": "用户答案",
+                      "user_score": "用户得分",
+                      "score": "此2题分数",
+                      "item_type": "题目类型",
+                      "istrue": "是否正确" // 0未答，1正确 ，2错误，3半对，4主观题不判分
+                  }
+              ],
               "pdlist": [
                   {
                       "pdid": "用户试卷id",
                       "title": "试卷名称",
                       "itemcount": "答题总数",
                       "modifydate": "交卷日期",
-                      "score_rate": "得分率"
+                      "score_rate": "得分率",
+                      "pdlid": "用户答题记录id"
                   }
               ]
           }

@@ -1,7 +1,7 @@
 Home\Controller\UserItemController
 ===============
 
-
+用户相关题目
 
 
 
@@ -18,9 +18,9 @@ Properties
 ----------
 
 
-### $_requestArray
+### $requestArray
 
-    private mixed $_requestArray = array()
+    private mixed $requestArray = array()
 
 
 
@@ -98,15 +98,67 @@ Methods
 ```
 
 返回格式
-
 ```
      [
          'status'   => '提示码',
          'info'  => '提示信息',
          'resut'  => [
-                  "89870": 1, // 题目id：是否正确 (0:未做，1:正确，2:错误，3:半对，4:填空不判断)
+                  "89870": 1,
+                     // 题目id：是否正确 (0:未做，1:正确，2:错误，3:半对，4:填空不判断)
                   "91704": 2,
                   "337182": 1
+            ]
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
+### getIndex
+
+    \Home\Controller\json Home\Controller\UserItemController::getIndex()
+
+判断用户答题是否正确
+
+请求格式
+```
+  PUT  /tiku/userItem
+```
+
+请求参数
+```
+ int student_id 学生ID
+ int project_id 项目ID
+ int subject_id 科目ID
+ string items 题目id，用逗号分割
+ string source       来源
+ string need_attr 需要的其他属性 可选favorite,notenum,knowledge_point_tag
+```
+
+返回格式
+```
+     [
+         'status'   => '提示码',
+         'info'  => '提示信息',
+         'resut'  => [
+                  'favoriteList'=>[
+                     "38182" // 该项目科目下收藏的题目id
+                  ],
+                  "noteNumList": [
+                     "题目ID":"笔记数量"
+                  ],
+                  "knowledgePointList":{
+                     "370458": {
+                          {
+                              "fid": "题目id",
+                              "knowledge_id": "知识点id",
+                              "title": "名称",
+                              "definition": '定义'
+                          }
+                     ]
+                  }
             ]
      ]
 ```
@@ -130,9 +182,9 @@ _initialize
 
 
 
-### _handleParameters
+### handleParameters
 
-    mixed Home\Controller\CommonController::_handleParameters()
+    mixed Home\Controller\CommonController::handleParameters()
 
 处理参数
 
@@ -144,9 +196,9 @@ _initialize
 
 
 
-### _getParam
+### getParam
 
-    mixed Home\Controller\CommonController::_getParam($name, $default)
+    mixed Home\Controller\CommonController::getParam($name, $default)
 
 
 
@@ -162,9 +214,9 @@ _initialize
 
 
 
-### _getFormParam
+### getFormParam
 
-    mixed Home\Controller\CommonController::_getFormParam($name, $default)
+    mixed Home\Controller\CommonController::getFormParam($name, $default)
 
 
 
@@ -194,9 +246,9 @@ _initialize
 
 
 
-### _getListCommonParam
+### getListCommonParam
 
-    mixed Home\Controller\CommonController::_getListCommonParam()
+    mixed Home\Controller\CommonController::getListCommonParam()
 
 获取列表共有参数
 
@@ -266,9 +318,9 @@ _initialize
 
 
 
-### _responseSuccess
+### responseSuccess
 
-    mixed Home\Controller\BaseController::_responseSuccess($result)
+    mixed Home\Controller\BaseController::responseSuccess($result)
 
 请求成功响应
 
@@ -283,9 +335,9 @@ _initialize
 
 
 
-### _response
+### response
 
-    mixed Home\Controller\BaseController::_response($data, $type, $code)
+    mixed Home\Controller\BaseController::response($data, $type, $code)
 
 响应
 
