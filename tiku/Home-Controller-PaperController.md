@@ -218,6 +218,7 @@ string group //分组 (待续)
 int paper_id 试卷id
 int student_id 学生id
 string field 可选所有表字段，默认id,title,etype,explain,takes,subject_id,year,score,passscore,isshowexplain
+string is_need_item 是否需要题目  可选y n 默认不需要n
 ```
 
 返回格式
@@ -239,6 +240,23 @@ string field 可选所有表字段，默认id,title,etype,explain,takes,subject_
                  "highestscore": "最高分",
                  "average": 平均分,
                  "userscore": "用户得分" // student_id > 0
+                 "item_data": [ // 当is_need_item为y的时候需要题目信息
+                     {
+                         "id": "试卷大题的id",
+                         "title": "试卷大题的名称",
+                         "type": "试卷答题的类型",
+                          "items": [
+                             {
+                                 "id": "题目ID",
+                                 "sorts": "排序",
+                                 "scoreses": "分数",
+                                 "pid": "题目父id",
+                                 "type": "类型",
+                             }
+                         ],
+                         "itemsnum": "题目数量",
+                         "sort": "排序"
+                     },
              }
 ```
 
