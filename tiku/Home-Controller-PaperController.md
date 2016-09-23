@@ -204,7 +204,7 @@ string group //分组 (待续)
 
 ### get
 
-    array Home\Controller\PaperController::get(string $name)
+    mixed Home\Controller\PaperController::get($name)
 
 获取一张试卷
 
@@ -212,22 +212,41 @@ string group //分组 (待续)
 ```
   GET  /tiku/paper/1
 ```
+
+请求参数
+```
+int paper_id 试卷id
+int student_id 学生id
+string field 可选所有表字段，默认id,title,etype,explain,takes,subject_id,year,score,passscore,isshowexplain
+```
+
 返回格式
 ```
      [
          'status'   => '返回码',
          'info'  => '提示信息',
-         'resut'  => [
-
-            ]
-     ]
+         "result": {
+                 "title": "试卷名称",
+                 "etype": "试卷类型",
+                 "explain": "试卷介绍",
+                 "takes": "答题时间",
+                 "subject_id": "科目id",
+                 "year": "年份",
+                 "score": "总分",
+                 "passscore": "及格分",
+                 "isshowexplain": "是否显示介绍",
+                 "num": "做卷子人数",
+                 "highestscore": "最高分",
+                 "average": 平均分,
+                 "userscore": "用户得分" // student_id > 0
+             }
 ```
 
 * Visibility: **public**
 
 
 #### Arguments
-* $name **string** - &lt;p&gt;用户试卷ID&lt;/p&gt;
+* $name **mixed**
 
 
 
@@ -278,6 +297,44 @@ string group //分组 (待续)
          'resut'  => [
 
             ]
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
+### getPaperAuthInfo
+
+    \Home\Controller\json Home\Controller\PaperController::getPaperAuthInfo()
+
+获取试卷权限信息
+
+请求格式
+```
+  GET  /tiku/getPaperAuthInfo
+```
+
+请求参数
+```
+int paper_id 试卷id
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+          "result": {
+             "ms": "模式",either：任意一门课程，直接链接到该科目的课程选择页面、appointOne：指定购买一门课、appointAll:指定购买全部课程
+             "list": [
+                 {
+                     "id": "课程id",
+                     "name": "课程名称"
+                 }
+             ]
+          }
      ]
 ```
 

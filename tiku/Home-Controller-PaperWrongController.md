@@ -142,22 +142,38 @@ Methods
 
 ### get
 
-    array Home\Controller\PaperWrongController::get(string $name)
+    mixed Home\Controller\PaperWrongController::get($name)
 
-获取一张用户试卷
+获取用户一道错题
 
 请求格式
 ```
-  GET  /tiku/paperData/1
+  GET  /tiku/PaperWrong/1
 ```
+
+请求参数
+```
+int student_id 学生id
+int type 类型，1做过，2错题 8是做错了又做对了
+string source APP来源,默认为'web'
+```
+
 返回格式
 ```
      [
          'status'   => '返回码',
          'info'  => '提示信息',
-         'resut'  => [
-
-            ]
+         "result": {
+             "type": "2",1是错已做2是错题，8是做错了又做对了
+             "times": "次数",
+             "item_id": "题目id",
+             "student_id": "学生id",
+             "subject_id": "科目id",
+             "project_id": "项目id",
+             "status": "状态",
+             "isdel": "是否删除",
+             "overdue": "是否已经做过又可以重新做"//0可以做
+         }
      ]
 ```
 
@@ -165,7 +181,7 @@ Methods
 
 
 #### Arguments
-* $name **string** - &lt;p&gt;用户试卷ID&lt;/p&gt;
+* $name **mixed**
 
 
 
