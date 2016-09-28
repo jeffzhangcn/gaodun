@@ -81,7 +81,7 @@ Methods
 
     \Home\Controller\json Home\Controller\UserController::abilityAssess()
 
-获取用户试卷列表
+获取用户能力评估数据
 
 请求格式
 ```

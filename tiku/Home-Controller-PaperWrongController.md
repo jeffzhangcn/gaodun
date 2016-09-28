@@ -260,7 +260,7 @@ string source 来源，如果是app的必传
 
     \Home\Controller\json Home\Controller\PaperWrongController::getPaperWrongItemIds()
 
-用户取消错题
+得到错题表中的相关信息，已做，错题等
 
 请求格式
 ```
@@ -273,6 +273,7 @@ string icids  知识点ID 2760,2769
 string student_id  学生ID
 int icids_is_subjectId  icids参数是否为科目ID，默认0，如果是有传project_id参数
 int project_id  科目ID
+int type 错题表类型 1、2、8 默认2，1已做，2错题，8做错之后做对
 string source 来源，如果是app的必传
 ```
 

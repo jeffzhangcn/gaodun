@@ -1,12 +1,12 @@
-Home\Controller\PaperFavoriteController
+Home\Controller\NotebookStoreController
 ===============
 
-用户题目收藏
 
 
 
 
-* Class name: PaperFavoriteController
+
+* Class name: NotebookStoreController
 * Namespace: Home\Controller
 * Parent class: [Home\Controller\CommonController](Home-Controller-CommonController.md)
 
@@ -77,214 +77,31 @@ Methods
 -------
 
 
-### getIndex
-
-    mixed Home\Controller\PaperFavoriteController::getIndex()
-
-获取题目收藏列表
-
-请求格式
-```
-  GET  /tiku/paperFavorite
-```
-
-请求参数
-```
- string combine // 条件查询组合，可用组合[sps](待续)
-     说明：
-        sps:['student_id','project_id','subject_id'] // 不支持分页，is_need_page为0
- json condition //根据查询组合，给出对于组合参数
-     说明：
-         sps:{"student_id":1,"project_id":1,"subject_id":1}
- int according_one_app //是否开启某个app查找 默认0，开启1
- string is_need_page //是否需要分页，0需要，1不需要 (默认不需要)
- int page //页数
- int offset //偏移量
- string order // 排序 (待续)
- string group //分组 (待续)
-```
-
-返回格式
-```
-     [
-         'status'   => '提示码',
-         'info'  => '提示信息',
-         'result' => [
-             "item_id": "1,2" // sps
-         ]
-
-     ]
-```
-
-* Visibility: **public**
-
-
-
-
 ### post
 
-    array Home\Controller\PaperFavoriteController::post()
+    \Home\Controller\json Home\Controller\NotebookStoreController::post()
 
-插入用户题目收藏
-
-请求格式
-```
-  POST  /tiku/paperFavorite
-```
-
-返回格式
-```php
-     [
-          'status'   => '提示码',
-          'info'  => '提示信息'
-     ]
-```
-
-错误码说明
-```
-[
-     '请求成功' => 00000000,
-     '批量收藏题目失败,无数据' => 11013102,
-     '收藏失败'=> 11013103
-]
-```
-
-请求参数
-```
- int item_id          题目ID
- string source        来源
- int paper_id        试卷ID
- int student_id    学生ID
- int project_id    项目ID
- int subject_id    科目ID
- string pattern 一个或者多个  枚举：one|mult
- json mult_data 批量收藏或者取消 暂时未支持
-      [
-         {"item_id":"99340","paper_id":2112,"type":"2","project_id":"5","subject_id":"29"}
-      ]
-```
-
-* Visibility: **public**
-
-
-
-
-### get
-
-    mixed Home\Controller\PaperFavoriteController::get($name)
-
-获取用户一道错题
+采笔记
 
 请求格式
 ```
-  GET  /tiku/PaperWrong/1
+  post  /tiku/NotebookStore
 ```
-
-请求参数
-```
-int student_id 学生id
-string source APP来源,默认为'web'
-```
-
 返回格式
 ```
      [
          'status'   => '返回码',
          'info'  => '提示信息',
-         "result": {
-             "type": "2",1是错已做2是错题，8是做错了又做对了
-             "times": "次数",
-             "item_id": "题目id",
-             "student_id": "学生id",
-             "subject_id": "科目id",
-             "project_id": "项目id",
-             "status": "状态",
-             "isdel": "是否删除",
-             "overdue": "是否已经做过又可以重新做"//0可以做
-         }
+
      ]
 ```
-
-* Visibility: **public**
-
-
-#### Arguments
-* $name **mixed**
-
-
-
-### put
-
-    mixed Home\Controller\PaperFavoriteController::put($name)
-
-更新用户题目收藏
-
-请求格式
+# 参数
 ```
-  PUT  /tiku/paperFavorite
-```
-
-返回格式
-```
-     [
-         'status'   => '提示码',
-         'info'  => '提示信息',
-         'resut'  => [
-
-            ]
-     ]
-```
-
-* Visibility: **public**
-
-
-#### Arguments
-* $name **mixed**
-
-
-
-### delete
-
-    mixed Home\Controller\PaperFavoriteController::delete()
-
-取消用户题目收藏
-
-请求格式
-```
-  DELETE  /tiku/paperFavorite
-```
-
-返回格式
-```
-     [
-         'status'   => '提示码',
-         'info'  => '提示信息'
-     ]
-```
-
-错误码说明
-```
-[
-     '请求成功' => 00000000,
-     '未收藏,无法取消' => 11013104,
-     '取消收藏失败'=> 11013105
-]
-```
-
-请求参数
-```
- int     item_id          题目ID
- int     paper_id         试卷ID
- int     student_id       学生ID
- int     project_id       项目ID
- int     subject_id       科目ID
- string  source           来源
- string  pattern          一个或者多个  枚举：one|mult
- json mult_data 批量收藏或者取消 暂时未支持
-      [
-         {"item_id":"99340","paper_id":2112,"type":"2","project_id":"5","subject_id":"29"}
-      ]
-
+item_id
+note_id
+student_id
+project_id
+subject_id
 ```
 
 * Visibility: **public**

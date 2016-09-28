@@ -159,6 +159,7 @@ string group //分组 (待续)
  string icid         知识点字符串，逗号分隔
  string do_item_record      每道题的信息
  string source       APP来源,默认为'web'
+ string is_need_record 是否需要答题完之后的记录 默认y 可选y和n
 ```
 
 返回格式
