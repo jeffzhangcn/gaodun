@@ -3,7 +3,7 @@ API Index
 
 * Home
     * Home\Controller
-        * [BaseController](Home-Controller-BaseController.md)
         * [BaseRestController](Home-Controller-BaseRestController.md)
+        * [BaseController](Home-Controller-BaseController.md)
         * [NoteRestController](Home-Controller-NoteRestController.md)
 

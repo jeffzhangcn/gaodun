@@ -97,15 +97,16 @@ Methods
 
 按活动领取所有优惠券
 
-```
 请求格式
-Post /saverticket/obtainbyAid
+
+Post /saverticket/home/obtainbyAid
 param [
      aid:1//活动id
      sid:1//学生id
 ]
 
 返回格式
+
 [
      status    => 0,//错误代码
      info      => '',//错误信息
@@ -130,24 +131,30 @@ param [
 
 按活动获取活动下优惠券批次信息
 
-```
 请求格式
-Post /saverticket/getbyAid
+
+Post /saverticket/home/getbyAid
 param [
      aid:1//活动id
 
 ]
 
 返回格式
+
 [
      status    => 0,//错误代码
      info      => '',//错误信息
      result    => [
          {
-             bid:1
-             pic:""
-             starttime:2016年9月27日
-             endtime:2016年9月28日
+             "id": "1",
+             "batchname": "红包1",
+             "activityid": "1",
+             "pic": "/Uploads/Saverticket/2016/09/06/57ce6b403456b.png",
+             "usescope": "0",
+             "yhlimit": "0.00",
+             "yhmoney": "30.00",
+             "passday": "7",
+             "ruletext": "使用规则1"
          },{...}
      ]
 ]
@@ -163,17 +170,16 @@ param [
 
 按批次领取优惠券
 
-```
 请求格式
-```
-Post /saverticket/obtainbyBid
+
+Post /saverticket/home/obtainbyBid
 param [
      aid:1//活动id
      sid:1//学生id
 ]
-```
+
 返回格式
-```
+
 [
      status    => 0,//错误代码
      info      => '',//错误信息
@@ -197,17 +203,17 @@ param [
 检查并计算优惠券使用情况
 
 请求格式
-````
-Post /saverticket/checkcompute
+
+Post /saverticket/home/checkcompute
 Param [
     tid:1//优惠券id
     cid:1//课程id
     sid:1//学生id
 ]
 
-````
+
 返回格式
-````
+
 [
      status    => 0,//错误代码
      info      => '',//错误信息
@@ -228,8 +234,8 @@ Param [
 冻结优惠券
 
 请求格式
-````
-Post /saverticket/freeze
+
+Post /saverticket/home/freeze
 Param [
     tid:1
     oid:1
@@ -238,9 +244,9 @@ Param [
     deduction:5
 ]
 
-````
+
 返回格式
-````
+
 [
      status    => 0,//错误代码
      info      => '',//错误信息
@@ -259,17 +265,17 @@ Param [
 使用优惠券
 
 请求格式
-````
-Post /saverticket/use
+
+Post /saverticket/home/use
 Param [
     tid:1
     oid:1
     sid:1
 ]
 
-````
+
 返回格式
-````
+
 [
      status    => 0,//错误代码
      info      => '',//错误信息
@@ -288,17 +294,17 @@ Param [
 解冻优惠券
 
 请求格式
-````
-Post /saverticket/unfreeze
+
+Post /saverticket/home/unfreeze
 Param [
     tid:1
     oid:1
     sid:1
 ]
 
-````
+
 返回格式
-````
+
 [
      status    => 0,//错误代码
      info      => '',//错误信息
