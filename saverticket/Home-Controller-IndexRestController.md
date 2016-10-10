@@ -210,9 +210,9 @@ Post /saverticket/home/obtainbyBid
 Post /saverticket/home/checkcompute
 
 参数 [
-    tid:1//优惠券id
+    code:Y0ijsj//优惠券code
     cid:1//课程id
-    sid:1//学生id
+
 ]
 
 
@@ -242,7 +242,7 @@ Post /saverticket/home/checkcompute
 Post /saverticket/home/freeze
 
 参数 [
-    tid:1//优惠券id
+    code:1sfjk//优惠券码
     oid:1//订单id
     sid:1//学生id
     paymoney:100
@@ -267,16 +267,14 @@ Post /saverticket/home/freeze
 
     mixed Home\Controller\IndexRestController::useTicket()
 
-使用优惠券
+使用冻结的优惠券
 
 请求格式
 
 Post /saverticket/home/use
 
 参数 [
-    tid:1//优惠券id
     oid:1//订单id
-    sid:1//学生id
 ]
 
 
@@ -304,9 +302,7 @@ Post /saverticket/home/use
 Post /saverticket/home/unfreeze
 
 参数 [
-    tid:1//优惠券id
-    oid:1//订单id
-    sid:1//学生id
+    oid:1//订单id 整数可以逗号隔开
 ]
 
 
