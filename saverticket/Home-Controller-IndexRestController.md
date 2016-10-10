@@ -100,7 +100,8 @@ Methods
 请求格式
 
 Post /saverticket/home/obtainbyAid
-param [
+
+参数 [
      aid:1//活动id
      sid:1//学生id
 ]
@@ -134,7 +135,8 @@ param [
 请求格式
 
 Post /saverticket/home/getbyAid
-param [
+
+参数 [
      aid:1//活动id
 
 ]
@@ -173,7 +175,8 @@ param [
 请求格式
 
 Post /saverticket/home/obtainbyBid
-param [
+
+参数 [
      aid:1//活动id
      sid:1//学生id
 ]
@@ -205,7 +208,8 @@ param [
 请求格式
 
 Post /saverticket/home/checkcompute
-Param [
+
+参数 [
     tid:1//优惠券id
     cid:1//课程id
     sid:1//学生id
@@ -236,10 +240,11 @@ Param [
 请求格式
 
 Post /saverticket/home/freeze
-Param [
-    tid:1
-    oid:1
-    sid:1
+
+参数 [
+    tid:1//优惠券id
+    oid:1//订单id
+    sid:1//学生id
     paymoney:100
     deduction:5
 ]
@@ -267,10 +272,11 @@ Param [
 请求格式
 
 Post /saverticket/home/use
-Param [
-    tid:1
-    oid:1
-    sid:1
+
+参数 [
+    tid:1//优惠券id
+    oid:1//订单id
+    sid:1//学生id
 ]
 
 
@@ -296,10 +302,11 @@ Param [
 请求格式
 
 Post /saverticket/home/unfreeze
-Param [
-    tid:1
-    oid:1
-    sid:1
+
+参数 [
+    tid:1//优惠券id
+    oid:1//订单id
+    sid:1//学生id
 ]
 
 
