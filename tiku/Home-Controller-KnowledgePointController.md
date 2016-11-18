@@ -252,6 +252,36 @@ string source  来源。pc为web,必填
 
 
 
+### getKPIdByFid
+
+    \Home\Controller\json Home\Controller\KnowledgePointController::getKPIdByFid()
+
+通过fid(题目ID)获取知识点id
+
+请求格式
+```
+  GET  /tiku/KnowledgePoint
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'result': {
+             "fid(题目)id": [
+                  "知识点id",
+                ],
+             ]
+           }
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
 ### _initialize
 
     mixed Home\Controller\BaseController::_initialize()
