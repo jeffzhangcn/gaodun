@@ -101,6 +101,7 @@ Methods
          inIds:['in'=>'id','isdel']
          inIdsAndT:['in'=>'id','type','isdel']
          inIcids:['in'=>'icid','isdel','pid']
+         当isdel为2时，将查询全部题目
   json condition //根据查询组合，给出对于组合参数
      说明：
          inIds:{"id":"17102,16617","isdel":"0"}
@@ -456,6 +457,50 @@ int knowledge_id 知识点标签的id
              }
          ]
 
+     ]
+```
+
+* 提示码说明
+```
+[
+     '请求成功' => 00000000,
+]
+```
+
+* Visibility: **public**
+
+
+
+
+### getItemStatistics
+
+    \Home\Controller\json Home\Controller\ItemController::getItemStatistics()
+
+获取相关试题id
+
+请求格式
+```
+  post  /tiku/item/getItemStatistics
+```
+
+请求参数
+```
+string item_id 题目id
+string field 字段：rightnum，wrongnum，finishnum
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         "result": [
+             '题目id'{
+               "rightnum": "做对次数",
+               "wrongnum": "做错次数",
+               "finishnum": "做过次数",
+             },
+         ]
      ]
 ```
 
