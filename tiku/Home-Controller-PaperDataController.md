@@ -783,6 +783,153 @@ string pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不�
 
 
 
+### getPaperDataByPaperId
+
+    \Home\Controller\json Home\Controller\PaperDataController::getPaperDataByPaperId()
+
+获取一张用户试卷通过学生ID和试卷id
+
+请求格式
+```
+  GET  /tiku/getPaperDataByPaperId
+```
+
+请求参数
+```
+ int student_id 学生ID
+ string paper_id 用户试卷id为用户试卷答题记录id //y是，n不是，默认n
+ string other_attribute 其他属性(默认无)，用英文逗号分割
+         (favorite,knowledge_point_tag,notenum,answerAnalysis) : 收藏、知识点标签、笔记数量
+ string is_only_pdInfo 是否只需要paper_data数据 ，可选 Y和N，默认y
+ string source       来源
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'result'  => [
+             // 以下is_only_pdInfo 为y
+                 "id": "paper_data_id",
+                 "student_id": "学生ID",
+                 "paper_id": "试卷id",
+                 "score": "分数",
+                 "regdate": "生成时间",
+                 "status": "1为交卷",
+                 "subject_id": "科目",
+                 "project_id": "项目",
+                 "type": "试卷类型",
+                 "modifydate": "交卷时间",
+                 "title": "试卷名称",
+             //以下is_only_pdInfo 为n
+              {
+                 "paper": {
+                     "runtime": "考试时间",
+                     "pdid": "用户试卷ID",
+                     "status": "试卷状态",
+                     "regdate": "生成时间",
+                     "type": "试卷类型",
+                     "itemcount": "题目总数",
+                     "paper_id": "试卷ID",
+                     "title": "题目标题",
+                     "subject_id": "项目ID",
+                     "project_id": "科目ID",
+                     "student_id": "用户ID",
+                     "modifydate": "修改时间",
+                     "score": "得分"
+                     "paper_data_log_id" : "用户试卷单条做卷子记录"
+                     "paper_data": [
+                         {
+                             "id": "ID",
+                             "type":"大题类型",// 试卷才有 ，其他为0
+                             "len": "题目数量",
+                             "lens": "累计题目数量",
+                             "examtype": "大题名称",// 试卷才有
+                             "istrue": "正确题目数量", // 交卷之后统计
+                             "pdata": [
+                             {
+                                 "ExamID": "题目ID",
+                                 "userAnswer": "用户答案",
+                                 "scoreses": "分数",
+                                 "userScore": "用户分数",
+                                 "istrue": "是否正确",
+                                 "type": "题目类型",
+                                 "sorts": "排序",
+                                 "partnum": "选项数量",
+                                 "yanswer": "答案",
+                                     //交卷之后、已经做过提供正确答案
+                                 "title": "题目题干",
+                                 "option": "题目选项",
+                                       "select": [
+                                         {
+                                          "item_id": "题目ID",
+                                          "item_option": "选项的值",
+                                          "option": "选项序号(A,B,C,D)"
+                                         }
+                                        ],
+                                 "answerAnalysis":"题目解析",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "favorite": "是否收藏",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "knowledge_point_tag": "[知识点标签]",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "notenum": "笔记数量",
+                                     // 根据请求参数other_attribute确定自己是否需要该属性
+                                 "sonitem": [
+                                   {
+                                       "ExamID": "题目ID",
+                                       "userAnswer": "用户答案",
+                                       "scoreses": "分数",
+                                       "userScore": "用户分值",
+                                       "istrue": "是否正确",
+                                       "type": "题目类型",
+                                       "sorts": "顺序",
+                                       "partnum": "4",
+                                       "yanswer": "", //交卷之后提供正确答案
+                                       "title": "题目题干",
+                                       "option": "题目选项",
+                                       "select": [
+                                         {
+                                          "item_id": "题目ID",
+                                          "item_option": "选项的值",
+                                          "option": "选项序号(A,B,C,D)"
+                                         }
+                                        ],
+                                       "answerAnalysis":"题目解析",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "favorite": "是否收藏",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "knowledge_point_tag": "[知识点标签]",
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                       "notenum": "0"
+                                         // 根据请求参数other_attribute确定自己是否需要该属性
+                                  },
+                             ],
+                         },
+                         ],
+
+                      }
+                  ],
+              }
+         }
+         ]
+     ]
+```
+
+返回码说明
+```
+ [
+     '请求成功' => '00000000',
+     '无此用户试卷' => '11013005',
+ ]
+```
+
+* Visibility: **public**
+
+
+
+
 ### _initialize
 
     mixed Home\Controller\BaseController::_initialize()

@@ -476,7 +476,7 @@ int knowledge_id 知识点标签的id
 
     \Home\Controller\json Home\Controller\ItemController::getItemStatistics()
 
-获取相关试题id
+获取相关试题id的统计信息
 
 请求格式
 ```
