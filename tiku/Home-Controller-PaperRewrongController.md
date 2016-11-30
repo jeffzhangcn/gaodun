@@ -234,6 +234,43 @@ string source  来源。pc为web,必填
 
 
 
+### getReWrongTimesByItemIds
+
+    \Home\Controller\json Home\Controller\PaperRewrongController::getReWrongTimesByItemIds()
+
+得到题目的纠错或者用户请求视频次数
+
+请求格式
+```
+  GET  /tiku/PaperRewrong/getReWrongTimesByItemIds
+```
+
+请求参数
+```
+int type 纠错类型 1~9，9为请求视频
+string item_id 题目id，字符串，逗号分割
+string source  来源。pc为web,必填
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'resut'  => [
+               "题目id": {
+               "item_id": "题目id",
+               "num": "数量"
+             }
+            ]
+     ]
+```
+
+* Visibility: **public**
+
+
+
+
 ### _initialize
 
     mixed Home\Controller\BaseController::_initialize()
