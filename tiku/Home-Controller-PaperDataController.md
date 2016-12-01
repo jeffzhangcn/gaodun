@@ -930,6 +930,59 @@ string pdid_is_pdlid 用户试卷id为用户试卷答题记录id //y是，n不�
 
 
 
+### getRecentPaperDataInfo
+
+    \Home\Controller\json Home\Controller\PaperDataController::getRecentPaperDataInfo()
+
+获取一张用户试卷通过学生ID和试卷id
+
+请求格式
+```
+  GET  /tiku/getPaperDataByPaperId
+```
+
+请求参数
+```
+ int student_id 学生ID
+ int project_id 项目ID
+ int subject_id 科目ID
+ string status 考试状态
+ string source       来源
+```
+
+返回格式
+```
+     [
+         'status'   => '返回码',
+         'info'  => '提示信息',
+         'result'  => [
+             "pdid": "paper_data_id",
+             "title": "试卷名称",
+             "paper_id": "试卷id",
+             "status": "状态",
+             "score": "分数",
+             "subject_id": "科目ID",
+             "project_id": "项目ID",
+             "type": "类型",
+             "regdate": "生成时间",
+             "modifydate": "修改时间"
+         ]
+     ]
+```
+
+返回码说明
+```
+ [
+     '请求成功' => '00000000',
+     '无此用户试卷' => '11013005',
+ ]
+```
+
+* Visibility: **public**
+
+
+
+
 ### _initialize
 
     mixed Home\Controller\BaseController::_initialize()
